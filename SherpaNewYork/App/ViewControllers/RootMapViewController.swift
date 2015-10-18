@@ -25,7 +25,7 @@ class RootMapViewController: UIViewController, CLLocationManagerDelegate {
     
     if CLLocationManager.locationServicesEnabled() {
       locationManager.delegate = self
-      locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+      locationManager.desiredAccuracy = kCLLocationAccuracyBest
       locationManager.startUpdatingLocation()
     } else {
       // default to the coordinates of times square
