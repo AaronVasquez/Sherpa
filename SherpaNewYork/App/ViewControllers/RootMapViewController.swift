@@ -8,10 +8,8 @@ internal let kDefaultZoomLevel: Float = 16.0
 class RootMapViewController: UIViewController, CLLocationManagerDelegate {
 
   override func loadView() {
-    self.view = RootMapView.init(frame: UIScreen.mainScreen().bounds,
-                                 latitude: kDefaultLatitude,
-                                 longitude: kDefaultLongitude,
-                                 zoom: kDefaultZoomLevel)
+    view = RootMapView.init(frame: UIScreen.mainScreen().bounds,
+        latitude: kDefaultLatitude, longitude: kDefaultLongitude, zoom: kDefaultZoomLevel)
   }
 
   override func viewDidLoad() {
