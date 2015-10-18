@@ -29,18 +29,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     private func loadMapView() {
-        let camera = GMSCameraPosition.cameraWithLatitude(40.7131103, longitude: -74.0006213, zoom: 16)
+        let camera = GMSCameraPosition.cameraWithLatitude(40.7131103,
+                                                          longitude: -74.0006213,
+                                                          zoom: 16)
         let mapView = GMSMapView.mapWithFrame(self.view.bounds, camera: camera)
         self.view.addSubview(mapView)
     }
     
-    // MARK: - CLLocationManager
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        var locationCoordinates:CLLocationCoordinate2D = manager.location.coordinate
-        println("locationCoordinates = \(locationCoordinates.latitude) , \(locationCoordinates.longitude)")
-        // pass coordinates to mapView
-        locationManager.stopUpdatingLocation()
-        
-    }
+  // MARK: - CLLocationManager
+  func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    let locationCoordinates:CLLocationCoordinate2D = manager.location!.coordinate
+    print("locationCoordinates = \(locationCoordinates.latitude) , " +
+          "\(locationCoordinates.longitude)")
+    // pass coordinates to mapView
+    locationManager.stopUpdatingLocation()
+  }
 
 }
