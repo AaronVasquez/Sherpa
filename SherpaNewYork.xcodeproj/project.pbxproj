@@ -11,7 +11,7 @@
 		81166D381BD2BCA8007E0CAB /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81166D371BD2BCA8007E0CAB /* Launch Screen.xib */; };
 		81166D3A1BD2C872007E0CAB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81166D391BD2C872007E0CAB /* CoreLocation.framework */; };
 		81516BCF1BD2971C00C66DEB /* RootMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81516BCE1BD2971C00C66DEB /* RootMapViewController.swift */; };
-		9304B6BA1BD3558300A47488 /* RootMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9304B6B91BD3558300A47488 /* RootMapView.swift */; settings = {ASSET_TAGS = (); }; };
+		9304B6BA1BD3558300A47488 /* RootMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9304B6B91BD3558300A47488 /* RootMapView.swift */; };
 		93B91F6B1BD20DCF00D2CA7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B91F6A1BD20DCF00D2CA7C /* AppDelegate.swift */; };
 		93B91F721BD20DCF00D2CA7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B91F711BD20DCF00D2CA7C /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -130,7 +130,7 @@
 				93B91F641BD20DCF00D2CA7C /* Frameworks */,
 				93B91F651BD20DCF00D2CA7C /* Resources */,
 				236A72427170590AD23B6581 /* Copy Pods Resources */,
-				984168DFBE84738A37F719DA /* Embed Pods Frameworks */,
+				A556260ACCFE3151EF314911 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -201,7 +201,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SherpaNewYork/Pods-SherpaNewYork-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		984168DFBE84738A37F719DA /* Embed Pods Frameworks */ = {
+		A556260ACCFE3151EF314911 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (

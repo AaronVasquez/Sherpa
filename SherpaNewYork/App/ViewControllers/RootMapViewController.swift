@@ -6,15 +6,17 @@ internal let kDefaultLongitude: Double = -74.000
 internal let kDefaultZoomLevel: Float = 16.0
 
 class RootMapViewController: UIViewController, CLLocationManagerDelegate {
-
+  
+  var userCoordinates = CLLocationCoordinate2DMake(kDefaultLatitude, kDefaultLongitude)
+  
   override func loadView() {
+    fetchLocation()
     view = RootMapView.init(frame: UIScreen.mainScreen().bounds,
-        latitude: kDefaultLatitude, longitude: kDefaultLongitude, zoom: kDefaultZoomLevel)
+      coordinates: userCoordinates, zoom: kDefaultZoomLevel)
   }
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    fetchLocation()
   }
   
   private func fetchLocation() {
@@ -31,11 +33,8 @@ class RootMapViewController: UIViewController, CLLocationManagerDelegate {
   }
     
   // MARK: - CLLocationManager
-  func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    let locationCoordinates:CLLocationCoordinate2D = manager.location!.coordinate
-    print("locationCoordinates = \(locationCoordinates.latitude) , " +
-          "\(locationCoordinates.longitude)")
-    // pass coordinates to mapView
+  func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+    userCoordinates = manager.location!.coordinate
     manager.stopUpdatingLocation()
   }
 
