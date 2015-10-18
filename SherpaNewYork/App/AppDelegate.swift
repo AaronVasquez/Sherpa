@@ -1,5 +1,8 @@
 import UIKit
 
+// TODO(Edmund): Get a new API key and don't expose it publically on Github.
+internal let kGoogleMapsApiKey = "AIzaSyCeL1NT-6T38o-fI-PyH5zinxygymdlrMw"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -11,8 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    
-    window!.rootViewController = MapViewController.init()
+    GMSServices.provideAPIKey(kGoogleMapsApiKey)
+    window!.rootViewController = RootMapViewController.init()
     return true
   }
 
