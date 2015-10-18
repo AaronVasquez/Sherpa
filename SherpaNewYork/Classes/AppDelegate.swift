@@ -8,7 +8,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   internal let googleMapsApiKey = "AIzaSyCeL1NT-6T38o-fI-PyH5zinxygymdlrMw"
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    GMSServices.provideAPIKey(googleMapsApiKey)
+      GMSServices.provideAPIKey(googleMapsApiKey)
       self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
       self.window!.rootViewController = self.rootViewController()
       self.window!.makeKeyAndVisible()
@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   private func rootViewController() -> UIViewController {
-    return MapViewController.init()
+      return MapViewController.init()
   }
 
 }
