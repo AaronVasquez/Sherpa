@@ -1,4 +1,5 @@
 import UIKit
+import GoogleMaps
 
 // TODO(Edmund): Get a new API key and don't expose it publically on Github.
 internal let kGoogleMapsApiKey = "AIzaSyCeL1NT-6T38o-fI-PyH5zinxygymdlrMw"
