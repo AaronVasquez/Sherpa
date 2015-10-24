@@ -13,6 +13,7 @@ class RootMapView: UIView {
 
     addMap()
     addFilters()
+    addPurpleButton()
   }
 
   required init(coder aDecoder: NSCoder) {
@@ -21,6 +22,19 @@ class RootMapView: UIView {
   
   func showFilters(sender: UIButton!) {
     println("Filter clicked")
+  }
+  
+  func showList(sender: UIButton!) {
+    println("Button clicked")
+  }
+  
+  private func addPurpleButton() {
+    var purpleButton = UIButton()
+    purpleButton.backgroundColor = UIColor.purpleColor()
+    purpleButton.frame = CGRectMake(0, frame.size.height-100, frame.size.width, 100)
+    purpleButton.setTitle("Other recommendations >", forState: UIControlState.Normal)
+    purpleButton.addTarget(self, action: "showList:", forControlEvents: UIControlEvents.TouchUpInside)
+    addSubview(purpleButton)
   }
   
   private func addMap() {
@@ -35,7 +49,7 @@ class RootMapView: UIView {
   }
   
   private func addFilters() {
-    let filterButton = UIButton()
+    var filterButton = UIButton()
     let filterImage = UIImage(named: "filter-1")
     filterButton.frame = CGRectMake(frame.size.width-100, 30, 70, 70)
     filterButton.setImage(filterImage, forState: UIControlState.Normal)
