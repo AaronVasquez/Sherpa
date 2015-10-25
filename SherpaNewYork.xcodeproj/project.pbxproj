@@ -13,6 +13,7 @@
 		9304B6BA1BD3558300A47488 /* RootMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9304B6B91BD3558300A47488 /* RootMapView.swift */; };
 		93B91F6B1BD20DCF00D2CA7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B91F6A1BD20DCF00D2CA7C /* AppDelegate.swift */; };
 		93B91F721BD20DCF00D2CA7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B91F711BD20DCF00D2CA7C /* Assets.xcassets */; };
+		93C394741BDD950E0099AD9D /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C394731BDD950E0099AD9D /* Venue.swift */; };
 		F45E411175484A5D51E2F87C /* Pods_SherpaNewYork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A370B69845F22C918847B4 /* Pods_SherpaNewYork.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 		93B91F6A1BD20DCF00D2CA7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93B91F711BD20DCF00D2CA7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93B91F761BD20DCF00D2CA7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93C394731BDD950E0099AD9D /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,11 +102,20 @@
 		93B91F7C1BD20F3500D2CA7C /* App */ = {
 			isa = PBXGroup;
 			children = (
-				9304B6B81BD3556200A47488 /* Views */,
+				93C394721BDD94DC0099AD9D /* Models */,
 				9304B6B71BD3555C00A47488 /* ViewControllers */,
+				9304B6B81BD3556200A47488 /* Views */,
 				93B91F6A1BD20DCF00D2CA7C /* AppDelegate.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		93C394721BDD94DC0099AD9D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				93C394731BDD950E0099AD9D /* Venue.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		B5C47B64711D4FB54A650227 /* Frameworks */ = {
@@ -237,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93B91F6B1BD20DCF00D2CA7C /* AppDelegate.swift in Sources */,
+				93C394741BDD950E0099AD9D /* Venue.swift in Sources */,
 				9304B6BA1BD3558300A47488 /* RootMapView.swift in Sources */,
 				81516BCF1BD2971C00C66DEB /* RootMapViewController.swift in Sources */,
 			);
