@@ -32,8 +32,9 @@ class RootMapViewController: UIViewController, CLLocationManagerDelegate {
     }
   }
     
-  // MARK: - CLLocationManager
-  func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+  // MARK: CLLocationManagerDelegate
+
+  func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     userCoordinates = manager.location!.coordinate
     manager.stopUpdatingLocation()
   }

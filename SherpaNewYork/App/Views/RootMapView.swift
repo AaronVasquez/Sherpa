@@ -21,15 +21,15 @@ class RootMapView: UIView {
   }
   
   func showFilters(sender: UIButton!) {
-    println("Filter clicked")
+    print("Filter clicked")
   }
   
   func showList(sender: UIButton!) {
-    println("Button clicked")
+    print("Button clicked")
   }
   
   private func addPurpleButton() {
-    var purpleButton = UIButton()
+    let purpleButton = UIButton()
     purpleButton.backgroundColor = UIColor.purpleColor()
     purpleButton.frame = CGRectMake(0, frame.size.height-100, frame.size.width, 100)
     purpleButton.setTitle("Other recommendations >", forState: UIControlState.Normal)
@@ -49,7 +49,7 @@ class RootMapView: UIView {
   }
   
   private func addFilters() {
-    var filterButton = UIButton()
+    let filterButton = UIButton()
     let filterImage = UIImage(named: "filter-1")
     filterButton.frame = CGRectMake(frame.size.width-100, 30, 70, 70)
     filterButton.setImage(filterImage, forState: UIControlState.Normal)
@@ -58,7 +58,7 @@ class RootMapView: UIView {
   }
   
   private func addMarkers(coordinates: CLLocationCoordinate2D) {
-    var marker = GMSMarker(position: coordinates)
+    let marker = GMSMarker(position: coordinates)
     marker.title = "Current location"
     marker.map = map!
     
@@ -108,7 +108,7 @@ class RootMapView: UIView {
 
     for place: Dictionary<String, AnyObject> in jsonResponse {
       let placeCoordinates = CLLocationCoordinate2D(latitude: place["latitude"] as! Double, longitude: place["longitude"] as! Double)
-      var placeMarker = GMSMarker(position: placeCoordinates)
+      let placeMarker = GMSMarker(position: placeCoordinates)
       placeMarker.title = place["name"] as! String
       placeMarker.snippet = place["description"] as! String
       placeMarker.icon = UIImage(named: place["icon_image"] as! String)
