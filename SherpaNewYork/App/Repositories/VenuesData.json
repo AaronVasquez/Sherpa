@@ -1,0 +1,28 @@
+{
+  "venues": [
+    {
+      "id": "123",
+      "name": "Halal Guys",
+      "description": "There are fake assholes on the next corner. Don't be fooled!",
+      "coordinates": {
+        "lat": 12.3456,
+        "long": 12.3456
+      },
+      "photoUrls": [
+        "http://cdn.foodbeast.com/content/uploads/2015/03/halal-guys-nice-sauce.png"
+      ]
+    },
+    {
+      "id": "213",
+      "name": "Shake Shack",
+      "description": "Get a triple shack burger with chizz fries. Can't go wrong with a shake.",
+      "coordinates": {
+        "lat": 12.5456,
+        "long": 12.5456
+      },
+      "photoUrls": [
+        "http://infinitelegroom.com/wp-content/uploads/2015/04/shake-shack-03.jpg"
+      ]
+    }
+  ]
+}
