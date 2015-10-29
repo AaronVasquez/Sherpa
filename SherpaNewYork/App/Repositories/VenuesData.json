@@ -23,6 +23,56 @@
       "photoUrls": [
         "http://infinitelegroom.com/wp-content/uploads/2015/04/shake-shack-03.jpg"
       ]
+    },
+    {
+      "id": "1",
+      "name": "Crumbs Bakery",
+      "description": "Oven baked cookies and cupcakes",
+      "coordinates": {
+        "lat": 40.714,
+        "long": -74.000
+      },
+      "photoUrls": []
+    },    
+    {
+      "id": "2",
+      "name": "Shake Shack",
+      "description": "Best burgers and french fries",
+      "coordinates": {
+        "lat": 40.715,
+        "long": -74.001
+      },
+      "photoUrls": []
+    },
+    {
+      "id": "3",
+      "name": "Whole Foods",
+      "description": "Overpriced hippie crap",
+      "coordinates": {
+        "lat": 40.716,
+        "long": -74.000
+      },
+      "photoUrls": []
+    },
+    {
+      "id": "4",
+      "name": "Peter Luger",
+      "description": "Big pieces of steak",
+      "coordinates": {
+        "lat": 40.713,
+        "long": -73.999
+      },
+      "photoUrls": []
+    },
+    {
+      "id": "5",
+      "name": "Century 21",
+      "description": "Brand names for half the price",
+      "coordinates": {
+        "lat": 40.712,
+        "long": -73.998
+      },
+      "photoUrls": []
     }
   ]
 }

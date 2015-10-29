@@ -1,6 +1,13 @@
 import UIKit
 import GoogleMaps
 
+// TODO: Use an enum to map to the icons.
+// TODO: Figure out what categories we need.
+private let kPinIconCafe = "cafe_pin"
+private let kPinIconRestaurant = "restaurant_pin"
+private let kPinIconGrocery = "grocery_pin"
+private let kPinIconDriving = "driving_pin"
+
 class RootMapView: UIView {
   
   var coordinates: CLLocationCoordinate2D
@@ -60,60 +67,22 @@ class RootMapView: UIView {
   private func addMarkers(coordinates: CLLocationCoordinate2D) {
     let marker = GMSMarker(position: coordinates)
     marker.title = "Current location"
-    marker.map = map!
-    
-    // make request to server that returns a bunch of places
-    let jsonResponse: [Dictionary<String, AnyObject>] = [
-      [
-        "id": "1",
-        "name": "Crumbs Bakery",
-        "description": "Oven baked cookies and cupcakes",
-        "icon_image": "cafe_pin",
-        "latitude": 40.714,
-        "longitude": -74.000
-      ],
-      [
-        "id": "2",
-        "name": "Shake Shack",
-        "description": "Best burgers and french fries",
-        "icon_image": "restaurant_pin",
-        "latitude": 40.715,
-        "longitude": -74.001
-      ],
-      [
-        "id": "3",
-        "name": "Whole Foods",
-        "description": "Overpriced organic stuff",
-        "icon_image": "grocery_or_supermarket_pin",
-        "latitude": 40.716,
-        "longitude": -74.000
-      ],
-      [
-        "id": "4",
-        "name": "Peter Luger",
-        "description": "Big pieces of steak",
-        "icon_image": "restaurant_pin",
-        "latitude": 40.713,
-        "longitude": -73.999
-      ],
-      [
-        "id": "5",
-        "name": "Century 21",
-        "description": "Brand names for half the price",
-        "icon_image": "driving_pin",
-        "latitude": 40.712,
-        "longitude": -73.998
-      ]
-    ]
+    marker.map = map
 
-    for place: Dictionary<String, AnyObject> in jsonResponse {
-      let placeCoordinates = CLLocationCoordinate2D(latitude: place["latitude"] as! Double, longitude: place["longitude"] as! Double)
-      let placeMarker = GMSMarker(position: placeCoordinates)
-      placeMarker.title = place["name"] as! String
-      placeMarker.snippet = place["description"] as! String
-      placeMarker.icon = UIImage(named: place["icon_image"] as! String)
-      placeMarker.appearAnimation = kGMSMarkerAnimationPop
-      placeMarker.map = map!
+    // TODO: This should not be done in the view! Clean this up!!!
+    VenueRepository.fetchVenues {[unowned self] (venues) -> Void in
+
+      for venue in venues {
+        let placeMarker = GMSMarker(position: venue.coordinates)
+        placeMarker.title = venue.name
+        placeMarker.snippet = venue.description
+        placeMarker.icon = UIImage(named: kPinIconRestaurant) // TODO: Make this dynamic.
+        placeMarker.appearAnimation = kGMSMarkerAnimationPop
+        placeMarker.map = self.map!
+        print("balls to you")
+      }
     }
+
   }
+
 }

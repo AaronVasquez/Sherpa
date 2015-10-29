@@ -10,13 +10,13 @@ struct VenueRepository {
   }
 
   // TODO(aaron): Check if this actually works.
-  static func loadVenueData() -> NSDictionary {
+  private static func loadVenueData() -> NSDictionary {
     let filePath = NSBundle.mainBundle().pathForResource(kVenueRepositoryUrl, ofType: "json")!
     let jsonData = NSData(contentsOfFile: filePath)!
     return try! NSJSONSerialization.JSONObjectWithData(jsonData, options: []) as! NSDictionary
   }
 
-  static func buildVenues(jsonDictionary: NSDictionary) -> [Venue] {
+  private static func buildVenues(jsonDictionary: NSDictionary) -> [Venue] {
     var venues: [Venue] = []
 
     for venueDictionary in jsonDictionary["venues"] as! [NSDictionary] {
