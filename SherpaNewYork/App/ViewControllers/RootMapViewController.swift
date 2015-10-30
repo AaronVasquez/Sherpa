@@ -1,22 +1,30 @@
 import UIKit
 import CoreLocation
 
-internal let kDefaultLatitude: Double = 40.713
-internal let kDefaultLongitude: Double = -74.000
-internal let kDefaultZoomLevel: Float = 16.0
+private let kDefaultLatitude: Double = 40.713
+private let kDefaultLongitude: Double = -74.000
+private let kDefaultZoomLevel: Float = 16.0
 
 class RootMapViewController: UIViewController, CLLocationManagerDelegate {
-  
-  var userCoordinates = CLLocationCoordinate2DMake(kDefaultLatitude, kDefaultLongitude)
+  // Argh swift doesn't let us declare the view's Class.
+  var rootView: RootMapView { return view as! RootMapView }
   
   override func loadView() {
     fetchLocation()
     view = RootMapView.init(frame: UIScreen.mainScreen().bounds,
-      coordinates: userCoordinates, zoom: kDefaultZoomLevel)
+        coordinates: CLLocationCoordinate2DMake(kDefaultLatitude, kDefaultLongitude),
+        zoom: kDefaultZoomLevel)
   }
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    VenueRepository.fetchVenues {[unowned self] (venues) -> Void in
+      for venue in venues {
+        self.rootView.addMapPin(venue.coordinates, title: venue.name,
+            description: venue.description)
+      }
+    }
   }
   
   private func fetchLocation() {
@@ -35,8 +43,11 @@ class RootMapViewController: UIViewController, CLLocationManagerDelegate {
   // MARK: CLLocationManagerDelegate
 
   func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    userCoordinates = manager.location!.coordinate
+    let userCoordinates = manager.location!.coordinate
     manager.stopUpdatingLocation()
+
+    // TODO: Center to userCoordinates
+    self.rootView.addMapPin(userCoordinates, title: "Current Location", description: "This is me")
   }
 
 }
