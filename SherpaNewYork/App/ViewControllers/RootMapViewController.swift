@@ -8,7 +8,12 @@ private let kDefaultZoomLevel: Float = 16.0
 class RootMapViewController: UIViewController, CLLocationManagerDelegate {
   // Argh swift doesn't let us declare the view's Class.
   var rootView: RootMapView { return view as! RootMapView }
-  
+
+  convenience init() {
+    self.init(nibName: nil, bundle: nil)
+    title = "Map"
+  }
+
   override func loadView() {
     fetchLocation()
     view = RootMapView.init(frame: UIScreen.mainScreen().bounds,

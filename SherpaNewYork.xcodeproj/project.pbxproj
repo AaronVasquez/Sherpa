@@ -11,6 +11,7 @@
 		81166D3A1BD2C872007E0CAB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81166D391BD2C872007E0CAB /* CoreLocation.framework */; };
 		81516BCF1BD2971C00C66DEB /* RootMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81516BCE1BD2971C00C66DEB /* RootMapViewController.swift */; };
 		9304B6BA1BD3558300A47488 /* RootMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9304B6B91BD3558300A47488 /* RootMapView.swift */; };
+		9332F5DE1BE56DE4007D4212 /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9332F5DD1BE56DE4007D4212 /* RootTabBarController.swift */; };
 		93B91F6B1BD20DCF00D2CA7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B91F6A1BD20DCF00D2CA7C /* AppDelegate.swift */; };
 		93B91F721BD20DCF00D2CA7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B91F711BD20DCF00D2CA7C /* Assets.xcassets */; };
 		93C394741BDD950E0099AD9D /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C394731BDD950E0099AD9D /* Venue.swift */; };
@@ -27,6 +28,7 @@
 		81166D391BD2C872007E0CAB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		81516BCE1BD2971C00C66DEB /* RootMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootMapViewController.swift; sourceTree = "<group>"; };
 		9304B6B91BD3558300A47488 /* RootMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootMapView.swift; sourceTree = "<group>"; };
+		9332F5DD1BE56DE4007D4212 /* RootTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
 		93B91F671BD20DCF00D2CA7C /* SherpaNewYork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SherpaNewYork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B91F6A1BD20DCF00D2CA7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93B91F711BD20DCF00D2CA7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -58,11 +60,13 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		9304B6B71BD3555C00A47488 /* ViewControllers */ = {
+		9304B6B71BD3555C00A47488 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				81516BCE1BD2971C00C66DEB /* RootMapViewController.swift */,
+				9332F5DD1BE56DE4007D4212 /* RootTabBarController.swift */,
 			);
+			name = Controllers;
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
@@ -108,7 +112,7 @@
 			children = (
 				93C394721BDD94DC0099AD9D /* Models */,
 				93C394751BDD998F0099AD9D /* Repositories */,
-				9304B6B71BD3555C00A47488 /* ViewControllers */,
+				9304B6B71BD3555C00A47488 /* Controllers */,
 				9304B6B81BD3556200A47488 /* Views */,
 				93B91F6A1BD20DCF00D2CA7C /* AppDelegate.swift */,
 			);
@@ -264,6 +268,7 @@
 			files = (
 				93C394771BDD99A90099AD9D /* VenueRepository.swift in Sources */,
 				93B91F6B1BD20DCF00D2CA7C /* AppDelegate.swift in Sources */,
+				9332F5DE1BE56DE4007D4212 /* RootTabBarController.swift in Sources */,
 				93C394741BDD950E0099AD9D /* Venue.swift in Sources */,
 				9304B6BA1BD3558300A47488 /* RootMapView.swift in Sources */,
 				81516BCF1BD2971C00C66DEB /* RootMapViewController.swift in Sources */,
