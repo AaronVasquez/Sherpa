@@ -18,7 +18,7 @@ class RootTabBarController: UITabBarController {
 
     viewControllers = [
       RootMapViewController.init(),
-      listVC,
+      VenueListViewController.init(),
     ]
   }
 

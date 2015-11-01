@@ -16,6 +16,7 @@ class RootMapViewController: UIViewController, CLLocationManagerDelegate {
 
   override func loadView() {
     fetchLocation()
+    // TODO: Use autolayout.
     view = RootMapView.init(frame: UIScreen.mainScreen().bounds,
         coordinates: CLLocationCoordinate2DMake(kDefaultLatitude, kDefaultLongitude),
         zoom: kDefaultZoomLevel)
@@ -24,7 +25,7 @@ class RootMapViewController: UIViewController, CLLocationManagerDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    VenueRepository.fetchVenues {[unowned self] (venues) -> Void in
+    VenueRepository.fetchVenues { [unowned self] venues -> Void in
       for venue in venues {
         self.rootView.addMapPin(venue.coordinates, title: venue.name,
             description: venue.description)

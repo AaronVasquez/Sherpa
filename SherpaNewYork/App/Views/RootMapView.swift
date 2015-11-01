@@ -15,7 +15,7 @@ class RootMapView: UIView {
 
   // MARK: Public.
 
-  init(frame: CGRect, coordinates: CLLocationCoordinate2D, zoom: Float) {
+  required init(frame: CGRect, coordinates: CLLocationCoordinate2D, zoom: Float) {
 
     // Create mapView.
     let camera = GMSCameraPosition.cameraWithLatitude(
