@@ -157,7 +157,9 @@
 			<array>
 				<string>81516BCE1BD2971C00C66DEB</string>
 				<string>9332F5DD1BE56DE4007D4212</string>
+				<string>9332F5E31BE5924B007D4212</string>
 				<string>9332F5DF1BE57D4B007D4212</string>
+				<string>9332F5E51BE5945A007D4212</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -172,6 +174,7 @@
 			<array>
 				<string>9304B6B91BD3558300A47488</string>
 				<string>9332F5E11BE57E56007D4212</string>
+				<string>9332F5E71BE5960A007D4212</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -260,6 +263,66 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
+		<key>9332F5E31BE5924B007D4212</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>VenueDetailViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9332F5E41BE5924B007D4212</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9332F5E31BE5924B007D4212</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9332F5E51BE5945A007D4212</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>VenueNavigationController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9332F5E61BE5945A007D4212</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9332F5E51BE5945A007D4212</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9332F5E71BE5960A007D4212</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>VenueDetailView.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9332F5E81BE5960A007D4212</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9332F5E71BE5960A007D4212</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
 		<key>93B91F5E1BD20DCF00D2CA7C</key>
 		<dict>
 			<key>children</key>
@@ -341,12 +404,15 @@
 			<string>2147483647</string>
 			<key>files</key>
 			<array>
+				<string>9332F5E41BE5924B007D4212</string>
+				<string>9332F5E61BE5945A007D4212</string>
 				<string>9332F5E21BE57E56007D4212</string>
 				<string>93C394771BDD99A90099AD9D</string>
 				<string>93B91F6B1BD20DCF00D2CA7C</string>
 				<string>9332F5DE1BE56DE4007D4212</string>
 				<string>9332F5E01BE57D4B007D4212</string>
 				<string>93C394741BDD950E0099AD9D</string>
+				<string>9332F5E81BE5960A007D4212</string>
 				<string>9304B6BA1BD3558300A47488</string>
 				<string>81516BCF1BD2971C00C66DEB</string>
 			</array>

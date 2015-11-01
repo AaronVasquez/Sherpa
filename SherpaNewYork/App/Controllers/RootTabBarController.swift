@@ -11,14 +11,9 @@ class RootTabBarController: UITabBarController {
     tabBar.tintColor = UIColor.purpleColor()
     tabBar.translucent = false;
 
-    // TODO: Use an actual viewController.
-    let listVC = UIViewController.init()
-    listVC.view.backgroundColor = UIColor.redColor()
-    listVC.title = "List"
-
     viewControllers = [
       RootMapViewController.init(),
-      VenueListViewController.init(),
+      VenueNavigationController.init(),
     ]
   }
 

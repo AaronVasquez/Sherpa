@@ -64,4 +64,18 @@ class VenueListViewController: UIViewController,
 
     return tableCell
   }
+
+  // MARK: UITableViewDelegate
+
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    let venue = venues![indexPath.row]
+
+    if let navViewController = self.navigationController {
+      navViewController.pushViewController(VenueDetailViewController.init(venue: venue),
+                                           animated: true)
+    } else {
+      // Present this modally?
+    }
+  }
+
 }
