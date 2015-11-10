@@ -15,7 +15,7 @@ class VenueDetailViewController: UIViewController {
 
   override func loadView() {
     // Use autolayout.
-    view = VenueDetailView.init(frame: UIScreen.mainScreen().bounds)
+    view = VenueDetailView(frame: UIScreen.mainScreen().bounds)
   }
 
 }

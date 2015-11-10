@@ -12,8 +12,8 @@ class RootTabBarController: UITabBarController {
     tabBar.translucent = false;
 
     viewControllers = [
-      RootMapViewController.init(),
-      VenueNavigationController.init(),
+      RootMapViewController(),
+      VenueNavigationController(),
     ]
   }
 

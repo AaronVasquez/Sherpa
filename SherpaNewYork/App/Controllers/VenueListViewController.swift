@@ -20,7 +20,6 @@ class VenueListViewController: UIViewController,
   convenience init() {
     self.init(nibName: nil, bundle: nil)
     title = "Venues"
-    venues = nil // Why do I need to do this...
   }
 
   override func loadView() {
@@ -55,7 +54,8 @@ class VenueListViewController: UIViewController,
     if let oldCell = tableView.dequeueReusableCellWithIdentifier(kVenueCellIdentifier) {
       tableCell = oldCell
     } else {
-      tableCell = UITableViewCell.init(style: .Default, reuseIdentifier: kVenueCellIdentifier)
+      tableCell = UITableViewCell(style: .Default,
+        reuseIdentifier: kVenueCellIdentifier)
     }
 
     let venue = venues![indexPath.row]
@@ -71,7 +71,7 @@ class VenueListViewController: UIViewController,
     let venue = venues![indexPath.row]
 
     if let navViewController = self.navigationController {
-      navViewController.pushViewController(VenueDetailViewController.init(venue: venue),
+      navViewController.pushViewController(VenueDetailViewController(venue: venue),
                                            animated: true)
     } else {
       // Present this modally?

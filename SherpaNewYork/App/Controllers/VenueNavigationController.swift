@@ -11,7 +11,7 @@ class VenueNavigationController: UINavigationController {
     navigationBar.tintColor = UIColor.whiteColor()
     navigationBar.translucent = false
 
-    pushViewController(VenueListViewController.init(), animated: false)
+    pushViewController(VenueListViewController(), animated: false)
   }
 
 }

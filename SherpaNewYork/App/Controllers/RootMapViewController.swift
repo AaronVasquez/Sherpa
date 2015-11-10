@@ -17,7 +17,7 @@ class RootMapViewController: UIViewController, CLLocationManagerDelegate {
   override func loadView() {
     fetchLocation()
     // TODO: Use autolayout.
-    view = RootMapView.init(frame: UIScreen.mainScreen().bounds,
+    view = RootMapView(frame: UIScreen.mainScreen().bounds,
         coordinates: CLLocationCoordinate2DMake(kDefaultLatitude, kDefaultLongitude),
         zoom: kDefaultZoomLevel)
   }

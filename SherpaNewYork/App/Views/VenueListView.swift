@@ -9,7 +9,7 @@ class VenueListView: UIView {
   required init(frame: CGRect, listDataSource: protocol<UITableViewDataSource>,
       listDelegate: protocol<UITableViewDelegate>) {
 
-    listView = UITableView.init(frame: frame)
+    listView = UITableView(frame: frame)
     listView.dataSource = listDataSource
     listView.delegate = listDelegate
 
