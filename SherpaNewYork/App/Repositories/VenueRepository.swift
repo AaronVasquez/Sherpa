@@ -1,4 +1,6 @@
 import Foundation
+import SwiftyJSON
+import CoreLocation
 
 internal let kVenueRepositoryUrl = "VenuesData"
 
@@ -10,29 +12,27 @@ struct VenueRepository {
   }
 
   // TODO(aaron): Check if this actually works.
-  private static func loadVenueData() -> NSDictionary {
+  private static func loadVenueData() -> JSON {
     let filePath = NSBundle.mainBundle().pathForResource(kVenueRepositoryUrl, ofType: "json")!
     let jsonData = NSData(contentsOfFile: filePath)!
-    return try! NSJSONSerialization.JSONObjectWithData(jsonData, options: []) as! NSDictionary
+    return JSON(data: jsonData)
   }
 
-  private static func buildVenues(jsonDictionary: NSDictionary) -> [Venue] {
+  private static func buildVenues(jsonDictionary: JSON) -> [Venue] {
     var venues: [Venue] = []
 
-    for venueDictionary in jsonDictionary["venues"] as! [NSDictionary] {
-      let coords = venueDictionary["coordinates"] as! NSDictionary
-      let photos = venueDictionary["photoUrls"] as! [String]
-      let photoUrls: [NSURL] = photos.map({ (NSString urlString) -> NSURL in
-        NSURL(string: urlString)!
-      })
-
-      let venue =
-          Venue.init(id: venueDictionary["id"] as! String,
-                     name: venueDictionary["name"] as! String,
-                     description: venueDictionary["description"] as! String,
-                     lat: coords["lat"] as! Double,
-                     long: coords["long"] as! Double,
-                     photoUrls: photoUrls)
+    for (_, venue):(String, JSON) in jsonDictionary["venues"] {
+      let photoUrls: [NSURL] = venue["photoUrls"].arrayValue.map { (JSON urlString) -> NSURL in
+        NSURL(string: urlString.stringValue)!
+      }
+      
+      let venue = Venue.init(id: venue["id"].stringValue,
+        name: venue["name"].stringValue,
+        description: venue["description"].stringValue,
+        coordinates: CLLocationCoordinate2D(latitude: venue["coordinates"]["lat"].doubleValue,
+          longitude: venue["coordinates"]["long"].doubleValue),
+        photoUrls: photoUrls)
+      
       venues.append(venue)
     }
 

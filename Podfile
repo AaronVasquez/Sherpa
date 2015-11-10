@@ -4,4 +4,5 @@ use_frameworks!
 
 target 'SherpaNewYork' do
   pod 'GoogleMaps'
+  pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
 end
