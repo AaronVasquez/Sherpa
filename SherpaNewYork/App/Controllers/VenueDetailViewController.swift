@@ -3,6 +3,8 @@ import UIKit
 
 class VenueDetailViewController: UIViewController {
   private var venue: Venue
+  
+  var rootView: VenueDetailView { return view as! VenueDetailView }
 
   required init?(coder aDecoder: NSCoder) { fatalError("Storyboards make me sad.") }
 
@@ -18,4 +20,7 @@ class VenueDetailViewController: UIViewController {
     view = VenueDetailView(frame: UIScreen.mainScreen().bounds)
   }
 
+  override func viewDidLoad() {
+    self.rootView.addBannerImage(venue.photoUrls[0])
+  }
 }

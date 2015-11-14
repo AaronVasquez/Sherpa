@@ -32,8 +32,10 @@
         "lat": 40.714,
         "long": -74.000
       },
-      "photoUrls": []
-    },    
+      "photoUrls": [
+        "http://cdn.foodbeast.com/content/uploads/2015/03/halal-guys-nice-sauce.png"
+      ]
+    },
     {
       "id": "2",
       "name": "Shake Shack",
@@ -42,7 +44,9 @@
         "lat": 40.715,
         "long": -74.001
       },
-      "photoUrls": []
+      "photoUrls": [
+        "http://cdn.foodbeast.com/content/uploads/2015/03/halal-guys-nice-sauce.png"
+      ]
     },
     {
       "id": "3",
@@ -52,7 +56,9 @@
         "lat": 40.716,
         "long": -74.000
       },
-      "photoUrls": []
+      "photoUrls": [
+        "http://cdn.foodbeast.com/content/uploads/2015/03/halal-guys-nice-sauce.png"
+      ]
     },
     {
       "id": "4",
@@ -62,7 +68,9 @@
         "lat": 40.713,
         "long": -73.999
       },
-      "photoUrls": []
+      "photoUrls": [
+        "http://cdn.foodbeast.com/content/uploads/2015/03/halal-guys-nice-sauce.png"
+      ]
     },
     {
       "id": "5",
@@ -72,7 +80,9 @@
         "lat": 40.712,
         "long": -73.998
       },
-      "photoUrls": []
+      "photoUrls": [
+        "http://cdn.foodbeast.com/content/uploads/2015/03/halal-guys-nice-sauce.png"
+      ]
     }
   ]
 }
