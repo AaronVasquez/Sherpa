@@ -2,10 +2,15 @@ import Foundation
 import UIKit
 
 class VenueDetailView: UIScrollView {
+  var target: VenueDetailViewController
+  
   required init?(coder aDecoder: NSCoder) { fatalError("Storyboard makes me sad.") }
-
-  override init(frame: CGRect) {
+  
+  required init(frame: CGRect, targetController: VenueDetailViewController) {
+    target = targetController
+    
     super.init(frame: frame)
+    
     bounces = false
     backgroundColor = UIColor.greenColor()
   }
@@ -29,7 +34,7 @@ class VenueDetailView: UIScrollView {
     addSubview(textView)
   }
   
-  func addDirectionsButtons(target: UIViewController) {
+  func addDirectionsButtons() {
     let metroButton = UIButton(type: UIButtonType.System)
     
     metroButton.backgroundColor = UIColor.brownColor()
@@ -46,7 +51,7 @@ class VenueDetailView: UIScrollView {
     contentSize = CGSize(width: UIScreen.mainScreen().bounds.width, height: currentContentHeight())
   }
   
-  func currentContentHeight() -> CGFloat {
+  private func currentContentHeight() -> CGFloat {
     return subviews.reduce(0) { $0 + $1.bounds.height }
   }
 }

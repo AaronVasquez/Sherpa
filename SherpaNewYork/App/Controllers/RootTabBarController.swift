@@ -14,7 +14,7 @@ class RootTabBarController: UITabBarController {
 
     viewControllers = [
       RootMapViewController(),
-      VenueNavigationController(),
+      VenueNavigationController()
     ]
   }
 

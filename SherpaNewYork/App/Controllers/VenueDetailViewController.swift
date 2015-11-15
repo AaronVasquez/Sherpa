@@ -17,13 +17,13 @@ class VenueDetailViewController: UIViewController {
 
   override func loadView() {
     // Use autolayout.
-    view = VenueDetailView(frame: UIScreen.mainScreen().bounds)
+    view = VenueDetailView(frame: UIScreen.mainScreen().bounds, targetController: self)
   }
 
   override func viewDidLoad() {
     self.rootView.addBannerImage(venue.photoUrls[0])
     self.rootView.addDescription(venue.description)
-    self.rootView.addDirectionsButtons(self)
+    self.rootView.addDirectionsButtons()
     self.rootView.setScrollViewHeight()
   }
   
