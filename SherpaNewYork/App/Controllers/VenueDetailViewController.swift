@@ -22,5 +22,12 @@ class VenueDetailViewController: UIViewController {
 
   override func viewDidLoad() {
     self.rootView.addBannerImage(venue.photoUrls[0])
+    self.rootView.addDescription(venue.description)
+    self.rootView.addDirectionsButtons(self)
+    self.rootView.setScrollViewHeight()
+  }
+  
+  func metroButtonTapped(sender: UIButton!) {
+    print("Metro button tapped")
   }
 }
