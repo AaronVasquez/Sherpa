@@ -7,16 +7,11 @@ internal let kGoogleMapsApiKey = "AIzaSyCeL1NT-6T38o-fI-PyH5zinxygymdlrMw"
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-  lazy var window: UIWindow? = {
-    var window = UIWindow(frame: UIScreen.mainScreen().bounds)
-    window.makeKeyAndVisible()
-    return window
-  }()
+  var window: UIWindow?
 
   func application(application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     GMSServices.provideAPIKey(kGoogleMapsApiKey)
-    window!.rootViewController = RootTabBarController.init()
     return true
   }
 

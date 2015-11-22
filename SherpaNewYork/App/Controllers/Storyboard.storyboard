@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="fen-Xh-vkf">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <scenes>
+        <!--Venues-->
+        <scene sceneID="qf2-Su-V1U">
+            <objects>
+                <viewController title="Venues" id="KdK-EB-l2a" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5bL-yJ-eH5"/>
+                        <viewControllerLayoutGuide type="bottom" id="pVT-V3-GPV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dnr-Eg-dVd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Venues" id="5Gk-F6-WDp"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pdT-K2-9jH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-36" y="-130"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="er9-i3-ddx">
+            <objects>
+                <viewController title="Map" id="GPM-tl-hYF" customClass="RootMapViewController" customModule="SherpaNewYork" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="i5p-Zg-hqn"/>
+                        <viewControllerLayoutGuide type="bottom" id="8WH-0D-xmN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="teg-Py-AzY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b42-jD-amj" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="b42-jD-amj" secondAttribute="trailing" id="527-wB-PWJ"/>
+                            <constraint firstAttribute="bottom" secondItem="b42-jD-amj" secondAttribute="bottom" constant="49" id="Dm0-fT-RBA"/>
+                            <constraint firstItem="b42-jD-amj" firstAttribute="top" secondItem="i5p-Zg-hqn" secondAttribute="bottom" id="P0i-ca-ZtX"/>
+                            <constraint firstItem="b42-jD-amj" firstAttribute="top" secondItem="i5p-Zg-hqn" secondAttribute="bottom" id="Vfa-aR-Zma"/>
+                            <constraint firstItem="b42-jD-amj" firstAttribute="leading" secondItem="teg-Py-AzY" secondAttribute="leading" id="bPC-lB-Elu"/>
+                            <constraint firstItem="b42-jD-amj" firstAttribute="top" secondItem="i5p-Zg-hqn" secondAttribute="bottom" id="gTL-8r-m5G"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Map" id="dw1-87-xQ4"/>
+                    <connections>
+                        <outlet property="mapView" destination="b42-jD-amj" id="cO0-og-ehS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XVw-1u-7BO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-36" y="-759"/>
+        </scene>
+        <!--Root Tab Bar Controller-->
+        <scene sceneID="J9r-v2-rU2">
+            <objects>
+                <tabBarController id="fen-Xh-vkf" customClass="RootTabBarController" customModule="SherpaNewYork" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="epp-KU-qut">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="GPM-tl-hYF" kind="relationship" relationship="viewControllers" id="cuf-Fi-L9b"/>
+                        <segue destination="KdK-EB-l2a" kind="relationship" relationship="viewControllers" id="7Tn-68-EVY"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MTd-tt-MUu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-576" y="-444"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,59 +1,69 @@
 import UIKit
 import CoreLocation
+import GoogleMaps
 
 private let kDefaultLatitude: Double = 40.713
 private let kDefaultLongitude: Double = -74.000
 private let kDefaultZoomLevel: Float = 16.0
 
-class RootMapViewController: UIViewController, CLLocationManagerDelegate {
-  // Argh swift doesn't let us declare the view's Class.
-  var rootView: RootMapView { return view as! RootMapView }
+private let kPinIconCafe = "cafe_pin"
+private let kPinIconRestaurant = "restaurant_pin"
+private let kPinIconGrocery = "grocery_pin"
+private let kPinIconDriving = "driving_pin"
 
-  convenience init() {
-    self.init(nibName: nil, bundle: nil)
-    title = "Map"
-  }
-
-  override func loadView() {
-    fetchLocation()
-    // TODO: Use autolayout.
-    view = RootMapView(frame: UIScreen.mainScreen().bounds,
-        coordinates: CLLocationCoordinate2DMake(kDefaultLatitude, kDefaultLongitude),
-        zoom: kDefaultZoomLevel)
-  }
-
+class RootMapViewController: UIViewController {
+  
+  @IBOutlet weak var mapView: GMSMapView!
+  
+  let locationManager = CLLocationManager()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    fetchLocation()
 
     VenueRepository.fetchVenues { [unowned self] venues -> Void in
       for venue in venues {
-        self.rootView.addMapPin(venue.coordinates, title: venue.name,
+        self.addMapPin(venue.coordinates, title: venue.name,
             description: venue.description)
       }
     }
   }
   
+  func addMapPin(coordinates: CLLocationCoordinate2D, title: String, description: String) {
+    let mapPin = GMSMarker(position: coordinates)
+    mapPin.map = mapView
+    mapPin.title = title
+    mapPin.snippet = description
+    mapPin.appearAnimation = kGMSMarkerAnimationPop
+    mapPin.icon = UIImage(named: kPinIconRestaurant) // TODO: Make this dynamic
+  }
+
   private func fetchLocation() {
-    let locationManager = CLLocationManager()
+    locationManager.delegate = self
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest
     locationManager.requestWhenInUseAuthorization()
-    
-    if CLLocationManager.locationServicesEnabled() {
-      locationManager.delegate = self
-      locationManager.desiredAccuracy = kCLLocationAccuracyBest
-      locationManager.startUpdatingLocation()
-    } else {
-      // default to the coordinates of times square
-    }
+    locationManager.startUpdatingLocation()
   }
-    
-  // MARK: CLLocationManagerDelegate
+  
+  private func centerMapOn(userCoordinates: CLLocationCoordinate2D) {
+    mapView.camera = GMSCameraPosition(target: userCoordinates, zoom: kDefaultZoomLevel, bearing: 0, viewingAngle: 0)
+  }
 
+}
+
+// MARK: CLLocationManagerDelegate
+
+extension RootMapViewController: CLLocationManagerDelegate {
+  
   func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    let userCoordinates = manager.location!.coordinate
-    manager.stopUpdatingLocation()
-
-    // TODO: Center to userCoordinates
-    self.rootView.addMapPin(userCoordinates, title: "Current Location", description: "This is me")
+    locationManager.stopUpdatingLocation()
+    
+    // TODO: Add condition for if the person is not in NYC so that it defaults to times square
+    let userCoordinates = locations[0].coordinate
+    centerMapOn(userCoordinates)
+    mapView.myLocationEnabled = true
+    mapView.settings.myLocationButton = true
   }
-
+  
 }

@@ -4,18 +4,17 @@ import UIKit
 class RootTabBarController: UITabBarController {
 
   convenience init() {
-    // OMG, Apple makes it so hard to override init without using storyboards :(.
-    self.init(nibName: nil, bundle: nil)
+    self.init()
 
     // TODO: These colors are yucky.
     tabBar.tintColor = UIColor.purpleColor()
     tabBar.barTintColor = UIColor.lightGrayColor()
     tabBar.translucent = false;
-
-    viewControllers = [
-      RootMapViewController(),
-      VenueNavigationController()
-    ]
+//
+//    viewControllers = [
+//      RootMapViewController(),
+//      VenueNavigationController()
+//    ]
   }
 
 }
