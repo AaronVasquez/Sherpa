@@ -24,19 +24,18 @@ class RootMapViewController: UIViewController {
 
     VenueRepository.fetchVenues { [unowned self] venues -> Void in
       for venue in venues {
-        self.addMapPin(venue.coordinates, title: venue.name,
-            description: venue.description)
+        self.addMapPin(venue)
       }
     }
   }
   
-  func addMapPin(coordinates: CLLocationCoordinate2D, title: String, description: String) {
-    let mapPin = GMSMarker(position: coordinates)
+  func addMapPin(venue: Venue) {
+    let mapPin = GMSMarker(position: venue.coordinates)
     mapPin.map = mapView
-    mapPin.title = title
-    mapPin.snippet = description
+    mapPin.title = venue.name
+    mapPin.snippet = venue.description
     mapPin.appearAnimation = kGMSMarkerAnimationPop
-    mapPin.icon = UIImage(named: kPinIconRestaurant) // TODO: Make this dynamic
+    mapPin.icon = UIImage(named: venue.pin)
   }
 
   private func fetchLocation() {

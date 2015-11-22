@@ -11,7 +11,6 @@ struct VenueRepository {
     completion(buildVenues(loadVenueData()))
   }
 
-  // TODO(aaron): Check if this actually works.
   private static func loadVenueData() -> JSON {
     let filePath = NSBundle.mainBundle().pathForResource(kVenueRepositoryUrl, ofType: "json")!
     let jsonData = NSData(contentsOfFile: filePath)!
@@ -20,7 +19,7 @@ struct VenueRepository {
 
   private static func buildVenues(jsonDictionary: JSON) -> [Venue] {
     var venues: [Venue] = []
-
+    
     for (_, venue):(String, JSON) in jsonDictionary["venues"] {
       let photoUrls: [NSURL] = venue["photoUrls"].arrayValue.map { (JSON urlString) -> NSURL in
         NSURL(string: urlString.stringValue)!
@@ -31,6 +30,7 @@ struct VenueRepository {
         description: venue["description"].stringValue,
         coordinates: CLLocationCoordinate2D(latitude: venue["coordinates"]["lat"].doubleValue,
           longitude: venue["coordinates"]["long"].doubleValue),
+        pin: venue["pin"].stringValue,
         photoUrls: photoUrls)
       
       venues.append(venue)

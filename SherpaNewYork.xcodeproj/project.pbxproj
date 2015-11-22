@@ -11,7 +11,6 @@
 		81166D3A1BD2C872007E0CAB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81166D391BD2C872007E0CAB /* CoreLocation.framework */; };
 		81516BCF1BD2971C00C66DEB /* RootMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81516BCE1BD2971C00C66DEB /* RootMapViewController.swift */; };
 		81D6B43D1C00CC6300916FD8 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81D6B43C1C00CC6300916FD8 /* Storyboard.storyboard */; };
-		9304B6BA1BD3558300A47488 /* RootMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9304B6B91BD3558300A47488 /* RootMapView.swift */; };
 		9332F5DE1BE56DE4007D4212 /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9332F5DD1BE56DE4007D4212 /* RootTabBarController.swift */; };
 		9332F5E01BE57D4B007D4212 /* VenueListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9332F5DF1BE57D4B007D4212 /* VenueListViewController.swift */; };
 		9332F5E21BE57E56007D4212 /* VenueListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9332F5E11BE57E56007D4212 /* VenueListView.swift */; };
@@ -34,7 +33,6 @@
 		81166D391BD2C872007E0CAB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		81516BCE1BD2971C00C66DEB /* RootMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootMapViewController.swift; sourceTree = "<group>"; };
 		81D6B43C1C00CC6300916FD8 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = Controllers/Storyboard.storyboard; sourceTree = "<group>"; };
-		9304B6B91BD3558300A47488 /* RootMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootMapView.swift; sourceTree = "<group>"; };
 		9332F5DD1BE56DE4007D4212 /* RootTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
 		9332F5DF1BE57D4B007D4212 /* VenueListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueListViewController.swift; sourceTree = "<group>"; };
 		9332F5E11BE57E56007D4212 /* VenueListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueListView.swift; sourceTree = "<group>"; };
@@ -87,7 +85,6 @@
 		9304B6B81BD3556200A47488 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9304B6B91BD3558300A47488 /* RootMapView.swift */,
 				9332F5E11BE57E56007D4212 /* VenueListView.swift */,
 				9332F5E71BE5960A007D4212 /* VenueDetailView.swift */,
 			);
@@ -293,7 +290,6 @@
 				9332F5E01BE57D4B007D4212 /* VenueListViewController.swift in Sources */,
 				93C394741BDD950E0099AD9D /* Venue.swift in Sources */,
 				9332F5E81BE5960A007D4212 /* VenueDetailView.swift in Sources */,
-				9304B6BA1BD3558300A47488 /* RootMapView.swift in Sources */,
 				81516BCF1BD2971C00C66DEB /* RootMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
