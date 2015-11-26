@@ -23,6 +23,11 @@ class VenueListViewController: UIViewController {
     tableView.dataSource = self
   }
   
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    tabBarController?.tabBar.hidden = false
+  }
+  
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if let cell = sender as? UITableViewCell {
       let index = tableView.indexPathForCell(cell)!.row

@@ -14,8 +14,6 @@
 		9332F5DE1BE56DE4007D4212 /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9332F5DD1BE56DE4007D4212 /* RootTabBarController.swift */; };
 		9332F5E01BE57D4B007D4212 /* VenueListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9332F5DF1BE57D4B007D4212 /* VenueListViewController.swift */; };
 		9332F5E41BE5924B007D4212 /* VenueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9332F5E31BE5924B007D4212 /* VenueDetailViewController.swift */; };
-		9332F5E61BE5945A007D4212 /* VenueNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9332F5E51BE5945A007D4212 /* VenueNavigationController.swift */; };
-		9332F5E81BE5960A007D4212 /* VenueDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9332F5E71BE5960A007D4212 /* VenueDetailView.swift */; };
 		93B91F6B1BD20DCF00D2CA7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B91F6A1BD20DCF00D2CA7C /* AppDelegate.swift */; };
 		93B91F721BD20DCF00D2CA7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B91F711BD20DCF00D2CA7C /* Assets.xcassets */; };
 		93C394741BDD950E0099AD9D /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C394731BDD950E0099AD9D /* Venue.swift */; };
@@ -35,8 +33,6 @@
 		9332F5DD1BE56DE4007D4212 /* RootTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
 		9332F5DF1BE57D4B007D4212 /* VenueListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueListViewController.swift; sourceTree = "<group>"; };
 		9332F5E31BE5924B007D4212 /* VenueDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueDetailViewController.swift; sourceTree = "<group>"; };
-		9332F5E51BE5945A007D4212 /* VenueNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueNavigationController.swift; sourceTree = "<group>"; };
-		9332F5E71BE5960A007D4212 /* VenueDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueDetailView.swift; sourceTree = "<group>"; };
 		93B91F671BD20DCF00D2CA7C /* SherpaNewYork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SherpaNewYork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B91F6A1BD20DCF00D2CA7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93B91F711BD20DCF00D2CA7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -75,17 +71,8 @@
 				9332F5DD1BE56DE4007D4212 /* RootTabBarController.swift */,
 				9332F5E31BE5924B007D4212 /* VenueDetailViewController.swift */,
 				9332F5DF1BE57D4B007D4212 /* VenueListViewController.swift */,
-				9332F5E51BE5945A007D4212 /* VenueNavigationController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		9304B6B81BD3556200A47488 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				9332F5E71BE5960A007D4212 /* VenueDetailView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		93B91F5E1BD20DCF00D2CA7C = {
@@ -123,7 +110,6 @@
 				93C394721BDD94DC0099AD9D /* Models */,
 				93C394751BDD998F0099AD9D /* Repositories */,
 				9304B6B71BD3555C00A47488 /* Controllers */,
-				9304B6B81BD3556200A47488 /* Views */,
 				81D6B43C1C00CC6300916FD8 /* Storyboard.storyboard */,
 				93B91F6A1BD20DCF00D2CA7C /* AppDelegate.swift */,
 			);
@@ -279,13 +265,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9332F5E41BE5924B007D4212 /* VenueDetailViewController.swift in Sources */,
-				9332F5E61BE5945A007D4212 /* VenueNavigationController.swift in Sources */,
 				93C394771BDD99A90099AD9D /* VenueRepository.swift in Sources */,
 				93B91F6B1BD20DCF00D2CA7C /* AppDelegate.swift in Sources */,
 				9332F5DE1BE56DE4007D4212 /* RootTabBarController.swift in Sources */,
 				9332F5E01BE57D4B007D4212 /* VenueListViewController.swift in Sources */,
 				93C394741BDD950E0099AD9D /* Venue.swift in Sources */,
-				9332F5E81BE5960A007D4212 /* VenueDetailView.swift in Sources */,
 				81516BCF1BD2971C00C66DEB /* RootMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

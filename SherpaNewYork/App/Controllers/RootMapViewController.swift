@@ -23,12 +23,18 @@ class RootMapViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    mapView.delegate = self
     
     fetchLocation()
 
     for venue in venues {
       self.addMapPin(venue)
     }
+  }
+  
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    tabBarController?.tabBar.hidden = false
   }
   
   func addMapPin(venue: Venue) {
@@ -38,6 +44,7 @@ class RootMapViewController: UIViewController {
     mapPin.snippet = venue.description
     mapPin.appearAnimation = kGMSMarkerAnimationPop
     mapPin.icon = UIImage(named: venue.pin)
+    mapPin.userData = venue
   }
 
   private func fetchLocation() {
@@ -50,7 +57,7 @@ class RootMapViewController: UIViewController {
   private func centerMapOn(userCoordinates: CLLocationCoordinate2D) {
     mapView.camera = GMSCameraPosition(target: userCoordinates, zoom: kDefaultZoomLevel, bearing: 0, viewingAngle: 0)
   }
-
+  
 }
 
 // MARK: CLLocationManagerDelegate
@@ -65,6 +72,18 @@ extension RootMapViewController: CLLocationManagerDelegate {
     centerMapOn(userCoordinates)
     mapView.myLocationEnabled = true
     mapView.settings.myLocationButton = true
+  }
+  
+}
+
+extension RootMapViewController: GMSMapViewDelegate {
+  
+  func mapView(mapView: GMSMapView!, didTapInfoWindowOfMarker marker: GMSMarker!) {
+    if let navigationController = navigationController {
+      let vc = storyboard?.instantiateViewControllerWithIdentifier("VenueDetailViewController") as? VenueDetailViewController
+      vc!.venue = marker.userData as? Venue
+      navigationController.pushViewController(vc!, animated: true)
+    }
   }
   
 }
