@@ -8,7 +8,7 @@
         <!--Venues-->
         <scene sceneID="qf2-Su-V1U">
             <objects>
-                <viewController title="Venues" id="KdK-EB-l2a" sceneMemberID="viewController">
+                <viewController title="Venues" id="KdK-EB-l2a" customClass="VenueListViewController" customModule="SherpaNewYork" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5bL-yJ-eH5"/>
                         <viewControllerLayoutGuide type="bottom" id="pVT-V3-GPV"/>
@@ -16,13 +16,65 @@
                     <view key="view" contentMode="scaleToFill" id="dnr-Eg-dVd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kP5-4g-4Ii">
+                                <rect key="frame" x="0.0" y="119" width="320" height="400"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="kVenueCellIdentifier" id="nXt-m7-O92">
+                                        <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nXt-m7-O92" id="6jr-gX-lDY">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="xHo-vO-qm2" kind="push" identifier="VenueListSegue" id="4Pa-Ga-1ir"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Venues" id="5Gk-F6-WDp"/>
+                    <navigationItem key="navigationItem" id="wUV-0N-Hmk"/>
+                    <connections>
+                        <outlet property="tableView" destination="kP5-4g-4Ii" id="vZ4-E4-rid"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pdT-K2-9jH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-36" y="-130"/>
+            <point key="canvasLocation" x="496" y="-130"/>
+        </scene>
+        <!--Venue Detail View Controller-->
+        <scene sceneID="1EX-3x-con">
+            <objects>
+                <viewController id="xHo-vO-qm2" customClass="VenueDetailViewController" customModule="SherpaNewYork" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="D0b-L9-uJL"/>
+                        <viewControllerLayoutGuide type="bottom" id="Yei-5n-i7X"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uot-eu-rHg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlz-Hq-7pJ">
+                                <rect key="frame" x="82" y="173" width="156" height="56"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="5O8-3F-bCo"/>
+                    <connections>
+                        <outlet property="venueName" destination="qlz-Hq-7pJ" id="scL-Uu-efq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1wZ-F4-28p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="898" y="-132"/>
         </scene>
         <!--Map-->
         <scene sceneID="er9-i3-ddx">
@@ -71,12 +123,31 @@
                     </tabBar>
                     <connections>
                         <segue destination="GPM-tl-hYF" kind="relationship" relationship="viewControllers" id="cuf-Fi-L9b"/>
-                        <segue destination="KdK-EB-l2a" kind="relationship" relationship="viewControllers" id="7Tn-68-EVY"/>
+                        <segue destination="LF2-GC-B3r" kind="relationship" relationship="viewControllers" id="7Tn-68-EVY"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MTd-tt-MUu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-576" y="-444"/>
+        </scene>
+        <!--Venues-->
+        <scene sceneID="w7y-pJ-Qmm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LF2-GC-B3r" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Venues" id="5Gk-F6-WDp"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ODy-r0-zA5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="KdK-EB-l2a" kind="relationship" relationship="rootViewController" id="aJ0-SI-X6x"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T7g-go-Zho" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-36" y="-130"/>
         </scene>
     </scenes>
 </document>

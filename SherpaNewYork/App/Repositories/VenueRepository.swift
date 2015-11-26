@@ -6,9 +6,9 @@ internal let kVenueRepositoryUrl = "VenuesData"
 
 struct VenueRepository {
 
-  static func fetchVenues(completion: [Venue] -> Void) {
+  static func fetchVenues() -> [Venue] {
     // TODO(aaron): Process this data in a background thread so the main thread is not blocked.
-    completion(buildVenues(loadVenueData()))
+    return buildVenues(loadVenueData())
   }
 
   private static func loadVenueData() -> JSON {

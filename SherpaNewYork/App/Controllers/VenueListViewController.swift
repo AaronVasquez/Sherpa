@@ -4,78 +4,64 @@ import UIKit
 // TODO: Create a subclass to handle the cell.
 private let kVenueCellIdentifier = "kVenueCellIdentifier"
 
-class VenueListViewController: UIViewController,
-    UITableViewDataSource, UITableViewDelegate {
+class VenueListViewController: UIViewController {
+  
+  var selectedCellIndex = 0
 
-  // Argh swift doesn't let us declare the view's Class.
-  var rootView: VenueListView { return view as! VenueListView }
+  @IBOutlet weak var tableView: UITableView!
 
   // TODO: This should be shared between the map and list view.
-  var venues: [Venue]? {
-    didSet {
-      rootView.listView.reloadData()
-    }
-  }
-
-  convenience init() {
-    self.init(nibName: nil, bundle: nil)
-    title = "Venues"
-  }
-
-  override func loadView() {
-    // TODO: Use autolayout.
-    view = VenueListView.init(frame: UIScreen.mainScreen().bounds, listDataSource: self,
-        listDelegate: self)
+  var venues: [Venue] {
+    return VenueRepository.fetchVenues()
   }
 
   // MARK: ViewController Lifecycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    VenueRepository.fetchVenues { [unowned self] venues -> Void in
-      self.venues = venues
+    tableView.delegate = self
+    tableView.dataSource = self
+  }
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if let cell = sender as? UITableViewCell {
+      let index = tableView.indexPathForCell(cell)!.row
+      if segue.identifier! == "VenueListSegue" {
+        let dvc = segue.destinationViewController as! VenueDetailViewController
+        dvc.venue = venues[index]
+      }
     }
   }
 
+}
+
+
+extension VenueListViewController: UITableViewDataSource, UITableViewDelegate {
+  
   // MARK: UITableViewDataSource
-
+  
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if let venues = venues {
-      return venues.count
-    } else {
-      return 0;
-    }
+    return venues.count
   }
-
+  
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)
-      -> UITableViewCell {
-    var tableCell: UITableViewCell
+    -> UITableViewCell {
+    var newCell: UITableViewCell
+    let venue = venues[indexPath.row]
+      
     if let oldCell = tableView.dequeueReusableCellWithIdentifier(kVenueCellIdentifier) {
-      tableCell = oldCell
+      newCell = oldCell
     } else {
-      tableCell = UITableViewCell(style: .Default,
-        reuseIdentifier: kVenueCellIdentifier)
+      newCell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: kVenueCellIdentifier)
     }
-
-    let venue = venues![indexPath.row]
-
-    tableCell.textLabel?.text = venue.name
-
-    return tableCell
+    
+    newCell.textLabel!.text = venue.name
+    
+    return newCell
   }
 
-  // MARK: UITableViewDelegate
-
-  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    let venue = venues![indexPath.row]
-
-    if let navViewController = self.navigationController {
-      navViewController.pushViewController(VenueDetailViewController(venue: venue),
-                                           animated: true)
-    } else {
-      // Present this modally?
-    }
+  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    return 1
   }
 
 }
