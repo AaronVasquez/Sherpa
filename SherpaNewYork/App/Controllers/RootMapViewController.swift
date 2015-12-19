@@ -13,9 +13,7 @@ private let kPinIconDriving = "driving_pin"
 
 class RootMapViewController: UIViewController {
   
-  var venues: [Venue] {
-    return VenueRepository.fetchVenues()
-  }
+  let venues: [Venue] = VenueRepository.fetchVenues()
   
   @IBOutlet weak var mapView: GMSMapView!
   
