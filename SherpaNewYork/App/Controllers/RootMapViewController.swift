@@ -4,7 +4,7 @@ import GoogleMaps
 
 private let kDefaultLatitude: Double = 40.713
 private let kDefaultLongitude: Double = -74.000
-private let kDefaultZoomLevel: Float = 16.0
+private let kDefaultZoomLevel: Float = 15.0
 
 private let kPinIconCafe = "cafe_pin"
 private let kPinIconRestaurant = "restaurant_pin"
@@ -12,17 +12,17 @@ private let kPinIconGrocery = "grocery_pin"
 private let kPinIconDriving = "driving_pin"
 
 class RootMapViewController: UIViewController {
-  
-  let venues: [Venue] = VenueRepository.fetchVenues()
-  
-  @IBOutlet weak var mapView: GMSMapView!
-  
+
   let locationManager = CLLocationManager()
+  let venues: [Venue] = VenueRepository.fetchVenues()
+
+  @IBOutlet weak var mapView: GMSMapView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     mapView.delegate = self
-    
+
+    initialLocationSetup()
     fetchLocation()
 
     for venue in venues {
@@ -45,6 +45,12 @@ class RootMapViewController: UIViewController {
     mapPin.userData = venue
   }
 
+  private func initialLocationSetup() {
+    let userCoordinates = CLLocationCoordinate2D(latitude: kDefaultLatitude,
+      longitude: kDefaultLongitude);
+    centerMapOn(userCoordinates)
+  }
+
   private func fetchLocation() {
     locationManager.delegate = self
     locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -53,12 +59,11 @@ class RootMapViewController: UIViewController {
   }
   
   private func centerMapOn(userCoordinates: CLLocationCoordinate2D) {
-    mapView.camera = GMSCameraPosition(target: userCoordinates, zoom: kDefaultZoomLevel, bearing: 0, viewingAngle: 0)
+    mapView.camera = GMSCameraPosition(target: userCoordinates, zoom: kDefaultZoomLevel,
+                                       bearing: 0, viewingAngle: 0)
   }
   
 }
-
-// MARK: CLLocationManagerDelegate
 
 extension RootMapViewController: CLLocationManagerDelegate {
   
@@ -78,7 +83,8 @@ extension RootMapViewController: GMSMapViewDelegate {
   
   func mapView(mapView: GMSMapView!, didTapInfoWindowOfMarker marker: GMSMarker!) {
     if let navigationController = navigationController {
-      let vc = storyboard?.instantiateViewControllerWithIdentifier("VenueDetailViewController") as? VenueDetailViewController
+      let vc = storyboard?.instantiateViewControllerWithIdentifier("VenueDetailViewController")
+          as? VenueDetailViewController
       vc!.venue = marker.userData as? Venue
       navigationController.pushViewController(vc!, animated: true)
     }

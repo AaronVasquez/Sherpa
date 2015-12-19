@@ -5,8 +5,8 @@
       "name": "Halal Guys",
       "description": "There are fake assholes on the next corner. Don't be fooled!",
       "coordinates": {
-        "lat": 12.3456,
-        "long": 12.3456
+        "lat": 40.713,
+        "long": -74.000
       },
       "pin": "restaurant_pin",
       "photoUrls": [
@@ -18,8 +18,8 @@
       "name": "Shake Shack",
       "description": "Get a triple shack burger with chizz fries. Can't go wrong with a shake.",
       "coordinates": {
-        "lat": 12.5456,
-        "long": 12.5456
+        "lat": 40.712,
+        "long": -74.002
       },
       "pin": "restaurant_pin",
       "photoUrls": [
