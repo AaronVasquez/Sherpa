@@ -1,6 +1,7 @@
 import Foundation
-import SwiftyJSON
 import CoreLocation
+
+import SwiftyJSON
 
 internal let kVenueRepositoryUrl = "VenuesData"
 
@@ -30,7 +31,7 @@ struct VenueRepository {
         description: venue["description"].stringValue,
         coordinates: CLLocationCoordinate2D(latitude: venue["coordinates"]["lat"].doubleValue,
           longitude: venue["coordinates"]["long"].doubleValue),
-        pin: venue["pin"].stringValue,
+        type: venue["type"].intValue,
         photoUrls: photoUrls)
       
       venues.append(venue)

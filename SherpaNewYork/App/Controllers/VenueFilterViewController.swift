@@ -1,7 +1,9 @@
 import UIKit
 
-class VenueFilterViewController : UIViewController {
-  
+public class VenueFilterViewController : UIViewController {
+
+  public var venueFilter: VenueFilter!
+
   @IBAction func didCancel(sender: UIBarButtonItem) {
     self.dismissViewControllerAnimated(true, completion: nil)
   }
@@ -13,4 +15,5 @@ class VenueFilterViewController : UIViewController {
   @IBAction func showAll(sender: AnyObject) {
     self.dismissViewControllerAnimated(true, completion: nil)
   }
+
 }

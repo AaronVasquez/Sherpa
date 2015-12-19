@@ -41,7 +41,7 @@ class RootMapViewController: UIViewController {
     mapPin.title = venue.name
     mapPin.snippet = venue.description
     mapPin.appearAnimation = kGMSMarkerAnimationPop
-    mapPin.icon = UIImage(named: venue.pin)
+    mapPin.icon = pinForType(venue.type)
     mapPin.userData = venue
   }
 
@@ -62,7 +62,16 @@ class RootMapViewController: UIViewController {
     mapView.camera = GMSCameraPosition(target: userCoordinates, zoom: kDefaultZoomLevel,
                                        bearing: 0, viewingAngle: 0)
   }
-  
+
+  private func pinForType(type: VenueType) -> UIImage {
+    switch type {
+    case .Restuarant:
+      return UIImage(named: "restaurant_pin")!
+    case .Driving:
+      return UIImage(named: "driving_pin")!
+    }
+  }
+
 }
 
 extension RootMapViewController: CLLocationManagerDelegate {
