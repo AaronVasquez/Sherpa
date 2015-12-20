@@ -1,5 +1,5 @@
 import Foundation
 
-public class VenueFilter {
-
+public struct VenueFilter {
+  var type: VenueType?
 }
