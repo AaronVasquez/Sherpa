@@ -151,8 +151,7 @@
                     <navigationItem key="navigationItem" title="Sherpa" id="9f5-KP-5zW">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="search" id="jua-Zk-YCX">
                             <connections>
-                                <action selector="didTapFilter:" destination="GPM-tl-hYF" id="Wc6-OO-fCT"/>
-                                <segue destination="Rve-2K-C3V" kind="modal" id="3Pi-Zl-Geu"/>
+                                <action selector="showFilterViewController:" destination="GPM-tl-hYF" id="VuH-ML-tIB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -160,6 +159,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="mapView" destination="b42-jD-amj" id="cO0-og-ehS"/>
+                        <segue destination="Rve-2K-C3V" kind="modal" identifier="showVenueFilterViewController" id="pan-Nk-smc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XVw-1u-7BO" userLabel="First Responder" sceneMemberID="firstResponder"/>
