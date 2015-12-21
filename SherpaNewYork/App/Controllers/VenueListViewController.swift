@@ -13,17 +13,10 @@ class VenueListViewController: UIViewController {
   // TODO: This should be shared between the map and list view.
   let venues = VenueRepository.fetchVenues()
 
-  // MARK: ViewController Lifecycle
-
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.delegate = self
     tableView.dataSource = self
-  }
-  
-  override func viewWillAppear(animated: Bool) {
-    super.viewWillAppear(animated)
-    tabBarController?.tabBar.hidden = false
   }
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -61,10 +54,6 @@ extension VenueListViewController: UITableViewDataSource, UITableViewDelegate {
     newCell.textLabel!.text = venue.name
     
     return newCell
-  }
-
-  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return 1
   }
 
 }
