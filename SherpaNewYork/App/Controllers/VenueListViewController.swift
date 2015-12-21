@@ -11,9 +11,7 @@ class VenueListViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
 
   // TODO: This should be shared between the map and list view.
-  var venues: [Venue] {
-    return VenueRepository.fetchVenues()
-  }
+  let venues = VenueRepository.fetchVenues()
 
   // MARK: ViewController Lifecycle
 

@@ -12,10 +12,16 @@ class VenueDetailViewController: UIViewController {
     super.viewWillAppear(animated)
     navigationController?.navigationBar.hidden = false
     tabBarController?.tabBar.hidden = true
-    
-    if let data = NSData(contentsOfURL: venue!.photoUrls[0]) {
-      bannerImage.image = UIImage(data: data)
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+      if let data = NSData(contentsOfURL: self.venue!.photoUrls[0]) {
+        let bannerImage = UIImage(data: data)
+        dispatch_async(dispatch_get_main_queue(), {
+          self.bannerImage.image = bannerImage
+        })
+      }
     }
+
     
     descriptionTextView.text = venue!.description
   }
