@@ -15,29 +15,41 @@ private let kShowFilterSegue = "showVenueFilterViewController"
 
 class RootMapViewController: UIViewController {
 
+  @IBOutlet weak var containerView: UIView!
+  
   let locationManager = CLLocationManager()
   let allVenues: [Venue] = VenueRepository.fetchVenues()
-
-  var userCoordinates = CLLocationCoordinate2DMake(kDefaultLatitude, kDefaultLongitude)
   var venueFilter = VenueFilter.init()
 
-  @IBOutlet weak var mapView: GMSMapView!
-
+  var listViewController: UIViewController?
+  var mapViewController: MapViewController?
+  var listViewControllerShown = false
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     tabBarController?.tabBar.hidden = false
-    mapView.delegate = self
 
-    initialLocationSetup()
-    fetchLocation()
+    listViewController = storyboard?.instantiateViewControllerWithIdentifier("VenueList")
+    mapViewController = storyboard?.instantiateViewControllerWithIdentifier("MapView") as! MapViewController?
 
-    reloadMap(venueFilter)
+    self.containerView.addSubview(listViewController!.view!)
+    self.containerView.addSubview(mapViewController!.view!)
+    mapViewController!.reloadMap(venueFilter)
   }
 
   @IBAction func showFilterViewController(sender: AnyObject) {
-    performSegueWithIdentifier(kShowFilterSegue, sender: self)
+    performSegueWithIdentifier(kShowFilterSegue, sender: mapViewController!)
   }
 
+  @IBAction func showListViewController(sender: AnyObject) {
+    if (listViewControllerShown) {
+      UIView.transitionFromView(self.listViewController!.view!, toView: self.mapViewController!.view!, duration: 0.2, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
+    } else {
+      UIView.transitionFromView(self.mapViewController!.view!, toView: self.listViewController!.view!, duration: 0.2, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
+    }
+    listViewControllerShown = !listViewControllerShown
+  }
+  
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if (segue.identifier == kShowFilterSegue) {
       let venueFilterVc = segue.destinationViewController as! VenueFilterViewController
@@ -45,104 +57,11 @@ class RootMapViewController: UIViewController {
       venueFilterVc.filterDelegate = self
     }
   }
-
-  private func reloadMap(filter: VenueFilter) {
-    mapView.clear()
-    self.venueFilter = filter;
-
-    let userLocation = CLLocation.init(latitude: self.userCoordinates.latitude,
-                                       longitude: self.userCoordinates.longitude)
-
-    allVenues.filter({
-      // Only filter if there are some types to be filtered.
-      return filter.filterTypes.count > 0 ? filter.filterTypes.contains($0.type) : true;
-    }).sort({ venueOne, venueTwo in
-      switch (filter.sortBy) {
-        case SortCriteria.Distance:
-          let venueOneLocation = CLLocation.init(latitude: venueOne.coordinates.latitude,
-                                                 longitude: venueOne.coordinates.longitude)
-          let venueTwoLocation = CLLocation.init(latitude: venueTwo.coordinates.latitude,
-                                                 longitude: venueTwo.coordinates.longitude)
-          return venueOneLocation.distanceFromLocation(userLocation) <
-              venueTwoLocation.distanceFromLocation(userLocation)
-        case SortCriteria.Name:
-          return venueOne.name > venueTwo.name
-      }
-    }).forEach({
-      self.addMapPin($0)
-    })
-  }
-
-  private func addMapPin(venue: Venue) {
-    let mapPin = GMSMarker(position: venue.coordinates)
-    mapPin.map = mapView
-    mapPin.title = venue.name
-    mapPin.snippet = venue.description
-    mapPin.appearAnimation = kGMSMarkerAnimationPop
-    mapPin.icon = pinForType(venue.type)
-    mapPin.userData = venue
-  }
-
-  private func initialLocationSetup() {
-    let userCoordinates = CLLocationCoordinate2D(latitude: kDefaultLatitude,
-      longitude: kDefaultLongitude);
-    centerMapOn(userCoordinates)
-  }
-
-  private func fetchLocation() {
-    locationManager.delegate = self
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest
-    locationManager.requestWhenInUseAuthorization()
-    locationManager.startUpdatingLocation()
-  }
-  
-  private func centerMapOn(userCoordinates: CLLocationCoordinate2D) {
-    mapView.camera = GMSCameraPosition(target: userCoordinates, zoom: kDefaultZoomLevel,
-                                       bearing: 0, viewingAngle: 0)
-  }
-
-  private func pinForType(type: VenueType) -> UIImage {
-    switch type {
-    case .Restuarant:
-      return UIImage(named: kPinIconRestaurant)!
-    case .Entertainment:
-      return UIImage(named: kPinIconDriving)!
-    }
-  }
-
-}
-
-extension RootMapViewController: CLLocationManagerDelegate {
-  
-  func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    locationManager.stopUpdatingLocation()
-    
-    // TODO: Add condition for if the person is not in NYC so that it defaults to times square
-    self.userCoordinates = locations[0].coordinate
-    centerMapOn(self.userCoordinates)
-    mapView.myLocationEnabled = true
-    mapView.settings.myLocationButton = true
-
-    reloadMap(self.venueFilter)
-  }
-  
-}
-
-extension RootMapViewController: GMSMapViewDelegate {
-  
-  func mapView(mapView: GMSMapView!, didTapInfoWindowOfMarker marker: GMSMarker!) {
-    if let navigationController = navigationController {
-      let vc = storyboard?.instantiateViewControllerWithIdentifier("VenueDetailViewController")
-          as? VenueDetailViewController
-      vc!.venue = marker.userData as? Venue
-      navigationController.pushViewController(vc!, animated: true)
-    }
-  }
-  
 }
 
 extension RootMapViewController: VenueFilterDelegate {
   func filterDidChange(filter: VenueFilter) {
-    reloadMap(filter)
+    self.venueFilter = filter
+    mapViewController!.reloadMap(filter)
   }
 }
