@@ -15,6 +15,8 @@ private let kShowFilterSegue = "showVenueFilterViewController"
 
 class RootMapViewController: UIViewController {
 
+  @IBOutlet weak var containerView: UIView!
+  
   let locationManager = CLLocationManager()
   let allVenues: [Venue] = VenueRepository.fetchVenues()
   var listViewController: UIViewController?
@@ -28,8 +30,8 @@ class RootMapViewController: UIViewController {
     listViewController = storyboard?.instantiateViewControllerWithIdentifier("VenueList")
     mapViewController = storyboard?.instantiateViewControllerWithIdentifier("MapView")
 
-    self.view.addSubview(listViewController!.view!)
-    self.view.addSubview(mapViewController!.view!)
+    self.containerView.addSubview(listViewController!.view!)
+    self.containerView.addSubview(mapViewController!.view!)
   }
 
   @IBAction func showFilterViewController(sender: AnyObject) {
