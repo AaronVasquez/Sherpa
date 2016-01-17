@@ -18,8 +18,11 @@ class RootMapViewController: UIViewController {
   let locationManager = CLLocationManager()
   let allVenues: [Venue] = VenueRepository.fetchVenues()
 
+  var userCoordinates = CLLocationCoordinate2DMake(kDefaultLatitude, kDefaultLongitude)
+  var venueFilter = VenueFilter.init()
+
   @IBOutlet weak var mapView: GMSMapView!
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
     tabBarController?.tabBar.hidden = false
@@ -28,7 +31,7 @@ class RootMapViewController: UIViewController {
     initialLocationSetup()
     fetchLocation()
 
-    reloadMap(nil)
+    reloadMap(venueFilter)
   }
 
   @IBAction func showFilterViewController(sender: AnyObject) {
@@ -38,21 +41,33 @@ class RootMapViewController: UIViewController {
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if (segue.identifier == kShowFilterSegue) {
       let venueFilterVc = segue.destinationViewController as! VenueFilterViewController
-      venueFilterVc.venueFilter = VenueFilter.init()
+      venueFilterVc.venueFilter = self.venueFilter
       venueFilterVc.filterDelegate = self
     }
   }
 
-  private func reloadMap(filter: VenueFilter?) {
+  private func reloadMap(filter: VenueFilter) {
     mapView.clear()
+    self.venueFilter = filter;
 
-    allVenues.filter({ venue -> Bool in
-      if let filter = filter {
-        if let type = filter.type {
-          return type == venue.type
-        }
+    let userLocation = CLLocation.init(latitude: self.userCoordinates.latitude,
+                                       longitude: self.userCoordinates.longitude)
+
+    allVenues.filter({
+      // Only filter if there are some types to be filtered.
+      return filter.filterTypes.count > 0 ? filter.filterTypes.contains($0.type) : true;
+    }).sort({ venueOne, venueTwo in
+      switch (filter.sortBy) {
+        case SortCriteria.Distance:
+          let venueOneLocation = CLLocation.init(latitude: venueOne.coordinates.latitude,
+                                                 longitude: venueOne.coordinates.longitude)
+          let venueTwoLocation = CLLocation.init(latitude: venueTwo.coordinates.latitude,
+                                                 longitude: venueTwo.coordinates.longitude)
+          return venueOneLocation.distanceFromLocation(userLocation) <
+              venueTwoLocation.distanceFromLocation(userLocation)
+        case SortCriteria.Name:
+          return venueOne.name > venueTwo.name
       }
-      return true;
     }).forEach({
       self.addMapPin($0)
     })
@@ -89,9 +104,9 @@ class RootMapViewController: UIViewController {
   private func pinForType(type: VenueType) -> UIImage {
     switch type {
     case .Restuarant:
-      return UIImage(named: "restaurant_pin")!
-    case .Driving:
-      return UIImage(named: "driving_pin")!
+      return UIImage(named: kPinIconRestaurant)!
+    case .Entertainment:
+      return UIImage(named: kPinIconDriving)!
     }
   }
 
@@ -103,10 +118,12 @@ extension RootMapViewController: CLLocationManagerDelegate {
     locationManager.stopUpdatingLocation()
     
     // TODO: Add condition for if the person is not in NYC so that it defaults to times square
-    let userCoordinates = locations[0].coordinate
-    centerMapOn(userCoordinates)
+    self.userCoordinates = locations[0].coordinate
+    centerMapOn(self.userCoordinates)
     mapView.myLocationEnabled = true
     mapView.settings.myLocationButton = true
+
+    reloadMap(self.venueFilter)
   }
   
 }

@@ -10,21 +10,44 @@ public class VenueFilterViewController : UIViewController {
   public var venueFilter: VenueFilter!
   public var filterDelegate: VenueFilterDelegate!
 
-  @IBAction func didCancel(sender: UIBarButtonItem) {
-    self.dismissViewControllerAnimated(true, completion: nil)
+  @IBOutlet weak var restuarantSwitch: UISwitch!
+  @IBOutlet weak var entertainmentSwitch: UISwitch!
+
+  // Sort
+
+  @IBAction func sortCriteriaDidChange(sender: UISegmentedControl) {
+    venueFilter.sortBy = SortCriteria(rawValue: sender.selectedSegmentIndex)!
   }
 
-  @IBAction func showResturants(sender: AnyObject) {
-    notifyAndDismissChange(VenueType.Restuarant)
+  // Filter
+
+  @IBAction func filterUnselectAll(sender: AnyObject) {
+    restuarantSwitch.setOn(false, animated:true)
+    entertainmentSwitch.setOn(false, animated:true)
+
+    venueFilter.filterTypes.removeAll()
   }
 
-  @IBAction func showAll(sender: AnyObject) {
-    notifyAndDismissChange(nil)
+  @IBAction func filterOnRestaurants(sender: UISwitch) {
+    if (sender.on) {
+      venueFilter.filterTypes.insert(VenueType.Restuarant)
+    } else {
+      venueFilter.filterTypes.remove(VenueType.Restuarant)
+    }
   }
 
-  private func notifyAndDismissChange(type: VenueType?) {
-    venueFilter.type = type
-    filterDelegate.filterDidChange(venueFilter)
+  @IBAction func filterOnEntertainment(sender: UISwitch) {
+    if (sender.on) {
+      venueFilter.filterTypes.insert(VenueType.Entertainment)
+    } else {
+      venueFilter.filterTypes.remove(VenueType.Entertainment)
+    }
+  }
+
+  // Apply Filter
+
+  @IBAction func applyFilter(sender: AnyObject) {
+    filterDelegate.filterDidChange(venueFilter);
     self.dismissViewControllerAnimated(true, completion: nil)
   }
 

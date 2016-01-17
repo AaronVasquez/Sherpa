@@ -3,7 +3,7 @@ import Foundation
 
 public enum VenueType: Int {
   case Restuarant = 1
-  case Driving = 2
+  case Entertainment = 2
 }
 
 public class Venue {
@@ -15,7 +15,8 @@ public class Venue {
   let type: VenueType
   let photoUrls: [NSURL]
   
-  required public init(id: String, name: String, description: String, coordinates: CLLocationCoordinate2D, type: Int, photoUrls: [NSURL]) {
+  required public init(id: String, name: String, description: String,
+      coordinates: CLLocationCoordinate2D, type: Int, photoUrls: [NSURL]) {
     self.id = id
     self.name = name
     self.description = description
@@ -24,5 +25,4 @@ public class Venue {
     self.photoUrls = photoUrls
   }
 
-  // TODO(aaron): Figure out the different categories (ie: Food, Entertainment, etc.).
 }
