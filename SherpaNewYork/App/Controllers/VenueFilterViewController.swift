@@ -7,11 +7,20 @@ public protocol VenueFilterDelegate {
 public class VenueFilterViewController : UIViewController {
 
   // TODO: Inject this through the initializer.
-  public var venueFilter: VenueFilter!
+  public var venueFilter: VenueFilter! {
+    didSet {
+      reloadViewFromFilterChange(venueFilter)
+    }
+  }
   public var filterDelegate: VenueFilterDelegate!
 
+  @IBOutlet weak var sortByControl: UISegmentedControl!
   @IBOutlet weak var restuarantSwitch: UISwitch!
   @IBOutlet weak var entertainmentSwitch: UISwitch!
+
+  public override func viewDidLoad() {
+    reloadViewFromFilterChange(venueFilter)
+  }
 
   // Sort
 
@@ -49,6 +58,25 @@ public class VenueFilterViewController : UIViewController {
   @IBAction func applyFilter(sender: AnyObject) {
     filterDelegate.filterDidChange(venueFilter);
     self.dismissViewControllerAnimated(true, completion: nil)
+  }
+
+  // Private
+
+  private func reloadViewFromFilterChange(newFilter: VenueFilter) {
+    if (view == nil) {
+      return
+    }
+
+    sortByControl.selectedSegmentIndex = newFilter.sortBy.rawValue
+
+    newFilter.filterTypes.forEach({
+      switch ($0) {
+        case VenueType.Restuarant:
+          restuarantSwitch.setOn(true, animated: false)
+        case VenueType.Entertainment:
+          restuarantSwitch.setOn(true, animated: false)
+      }
+    })
   }
 
 }

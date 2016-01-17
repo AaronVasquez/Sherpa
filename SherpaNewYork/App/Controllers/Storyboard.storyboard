@@ -281,6 +281,7 @@
                     <connections>
                         <outlet property="entertainmentSwitch" destination="Lea-pA-NUI" id="gWl-VH-wqC"/>
                         <outlet property="restuarantSwitch" destination="OBe-UN-fkm" id="Uf4-3U-njl"/>
+                        <outlet property="sortByControl" destination="rye-FN-wh1" id="nBI-xN-bUs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JKP-Zd-M7m" userLabel="First Responder" sceneMemberID="firstResponder"/>
