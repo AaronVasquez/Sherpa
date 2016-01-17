@@ -74,7 +74,7 @@ public class VenueFilterViewController : UIViewController {
         case VenueType.Restuarant:
           restuarantSwitch.setOn(true, animated: false)
         case VenueType.Entertainment:
-          restuarantSwitch.setOn(true, animated: false)
+          entertainmentSwitch.setOn(true, animated: false)
       }
     })
   }
