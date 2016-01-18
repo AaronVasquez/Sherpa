@@ -15,14 +15,11 @@ private let kShowFilterSegue = "showVenueFilterViewController"
 
 class MapViewController: UIViewController {
   
+  var delegate: VenueDetailDelegate?
+  
   let locationManager = CLLocationManager()
   var userCoordinates = CLLocationCoordinate2DMake(kDefaultLatitude, kDefaultLongitude)
   let allVenues: [Venue] = VenueRepository.fetchVenues()  // This should be shared with root.
-  var listView: UIView {
-    return (storyboard?.instantiateViewControllerWithIdentifier("VenueList").view!)!
-  }
-  
-  var listViewShown = false
   
   @IBOutlet weak var mapView: GMSMapView!
   
@@ -119,13 +116,13 @@ extension MapViewController: CLLocationManagerDelegate {
 
 extension MapViewController: GMSMapViewDelegate {
   
+//  func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
+//    print("for when you have the label on the bottom")
+//    return true
+//  }
+  
   func mapView(mapView: GMSMapView!, didTapInfoWindowOfMarker marker: GMSMarker!) {
-    if let navigationController = navigationController {
-      let vc = storyboard?.instantiateViewControllerWithIdentifier("VenueDetailViewController")
-        as? VenueDetailViewController
-      vc!.venue = marker.userData as? Venue
-      navigationController.pushViewController(vc!, animated: true)
-    }
+    self.delegate?.didPressVenueDetailButton((marker.userData as? Venue)!)
   }
   
 }

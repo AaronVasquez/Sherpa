@@ -58,6 +58,7 @@ class RootViewController: UIViewController {
     }
     if (segue.identifier == kMapEmbedSegue) {
       let mapVc = segue.destinationViewController as! MapViewController
+      mapVc.delegate = self
       mapViewController = mapVc
     }
     
