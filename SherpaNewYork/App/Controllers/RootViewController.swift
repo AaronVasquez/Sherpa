@@ -16,7 +16,7 @@ private let kMapEmbedSegue = "MapEmbedSegue"
 private let kListEmbedSegue = "ListEmbedSegue"
 private let kVenueDetailSegue = "VenueDetailSegue"
 
-class RootMapViewController: UIViewController {
+class RootViewController: UIViewController {
   
   @IBOutlet var mapView: UIView!
   
@@ -74,14 +74,14 @@ class RootMapViewController: UIViewController {
   }
 }
 
-extension RootMapViewController: VenueDetailDelegate {
+extension RootViewController: VenueDetailDelegate {
   func didPressVenueDetailButton(venue: Venue) {
     chosenVenue = venue
     performSegueWithIdentifier(kVenueDetailSegue, sender: self)
   }
 }
 
-extension RootMapViewController: VenueFilterDelegate {
+extension RootViewController: VenueFilterDelegate {
   func filterDidChange(filter: VenueFilter) {
     self.venueFilter = filter
     mapViewController!.reloadMap(filter)

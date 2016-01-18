@@ -22,7 +22,6 @@ class VenueDetailViewController: UIViewController {
       }
     }
 
-    
     descriptionTextView.text = venue!.description
   }
   

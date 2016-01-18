@@ -25,16 +25,6 @@ class VenueListViewController: UIViewController {
     super.viewWillAppear(animated)
     tabBarController?.tabBar.hidden = false
   }
-  
-//  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//    if let cell = sender as? UITableViewCell {
-//      let index = tableView.indexPathForCell(cell)!.row
-//      if segue.identifier! == "VenueListSegue" {
-//        let dvc = segue.destinationViewController as! VenueDetailViewController
-//        dvc.venue = venues[index]
-//      }
-//    }
-//  }
 }
 
 extension VenueListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -44,8 +34,8 @@ extension VenueListViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return venues.count
   }
+  
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    print("zzz")
     self.delegate?.didPressVenueDetailButton(venues[indexPath.row])
   }
 
