@@ -12,29 +12,29 @@ private let kPinIconGrocery = "grocery_pin"
 private let kPinIconDriving = "driving_pin"
 
 private let kShowFilterSegue = "showVenueFilterViewController"
+private let kMapEmbedSegue = "MapEmbedSegue"
+private let kListEmbedSegue = "ListEmbedSegue"
+private let kVenueDetailSegue = "VenueDetailSegue"
 
 class RootMapViewController: UIViewController {
-
-  @IBOutlet weak var containerView: UIView!
+  
+  @IBOutlet var mapView: UIView!
+  
+  @IBOutlet var listView: UIView!
   
   let locationManager = CLLocationManager()
   let allVenues: [Venue] = VenueRepository.fetchVenues()
+  var chosenVenue: Venue?
   var venueFilter = VenueFilter.init()
 
   var listViewController: UIViewController?
   var mapViewController: MapViewController?
+  
   var listViewControllerShown = false
   
   override func viewDidLoad() {
     super.viewDidLoad()
     tabBarController?.tabBar.hidden = false
-
-    listViewController = storyboard?.instantiateViewControllerWithIdentifier("VenueList")
-    mapViewController = storyboard?.instantiateViewControllerWithIdentifier("MapView") as! MapViewController?
-
-    self.containerView.addSubview(listViewController!.view!)
-    self.containerView.addSubview(mapViewController!.view!)
-    mapViewController!.reloadMap(venueFilter)
   }
 
   @IBAction func showFilterViewController(sender: AnyObject) {
@@ -43,9 +43,9 @@ class RootMapViewController: UIViewController {
 
   @IBAction func showListViewController(sender: AnyObject) {
     if (listViewControllerShown) {
-      UIView.transitionFromView(self.listViewController!.view!, toView: self.mapViewController!.view!, duration: 0.2, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
+      UIView.transitionFromView(listViewController!.view, toView: mapViewController!.view, duration: 0.2, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
     } else {
-      UIView.transitionFromView(self.mapViewController!.view!, toView: self.listViewController!.view!, duration: 0.2, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
+      UIView.transitionFromView(mapViewController!.view, toView: listViewController!.view, duration: 0.2, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
     }
     listViewControllerShown = !listViewControllerShown
   }
@@ -56,6 +56,28 @@ class RootMapViewController: UIViewController {
       venueFilterVc.venueFilter = self.venueFilter
       venueFilterVc.filterDelegate = self
     }
+    if (segue.identifier == kMapEmbedSegue) {
+      let mapVc = segue.destinationViewController as! MapViewController
+      mapViewController = mapVc
+    }
+    
+    if (segue.identifier == kListEmbedSegue) {
+      let listVc = segue.destinationViewController as! VenueListViewController
+      listVc.delegate = self
+      listViewController = listVc
+    }
+    
+    if (segue.identifier == kVenueDetailSegue) {
+      let venueDetailVc = segue.destinationViewController as! VenueDetailViewController
+      venueDetailVc.venue = chosenVenue
+    }
+  }
+}
+
+extension RootMapViewController: VenueDetailDelegate {
+  func didPressVenueDetailButton(venue: Venue) {
+    chosenVenue = venue
+    performSegueWithIdentifier(kVenueDetailSegue, sender: self)
   }
 }
 

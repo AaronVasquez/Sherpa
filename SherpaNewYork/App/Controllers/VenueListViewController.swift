@@ -6,6 +6,8 @@ private let kVenueCellIdentifier = "kVenueCellIdentifier"
 
 class VenueListViewController: UIViewController {
   
+  var delegate: VenueDetailDelegate?
+  
   var selectedCellIndex = 0
 
   @IBOutlet weak var tableView: UITableView!
@@ -24,18 +26,16 @@ class VenueListViewController: UIViewController {
     tabBarController?.tabBar.hidden = false
   }
   
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    if let cell = sender as? UITableViewCell {
-      let index = tableView.indexPathForCell(cell)!.row
-      if segue.identifier! == "VenueListSegue" {
-        let dvc = segue.destinationViewController as! VenueDetailViewController
-        dvc.venue = venues[index]
-      }
-    }
-  }
-
+//  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//    if let cell = sender as? UITableViewCell {
+//      let index = tableView.indexPathForCell(cell)!.row
+//      if segue.identifier! == "VenueListSegue" {
+//        let dvc = segue.destinationViewController as! VenueDetailViewController
+//        dvc.venue = venues[index]
+//      }
+//    }
+//  }
 }
-
 
 extension VenueListViewController: UITableViewDataSource, UITableViewDelegate {
   
@@ -44,7 +44,11 @@ extension VenueListViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return venues.count
   }
-  
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    print("zzz")
+    self.delegate?.didPressVenueDetailButton(venues[indexPath.row])
+  }
+
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)
     -> UITableViewCell {
     var newCell: UITableViewCell

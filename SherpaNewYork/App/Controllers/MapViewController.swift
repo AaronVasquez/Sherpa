@@ -33,6 +33,9 @@ class MapViewController: UIViewController {
     
     initialLocationSetup()
     fetchLocation()
+    
+    let venueFilter = VenueFilter.init()
+    reloadMap(venueFilter)
   }
   
   func reloadMap(filter: VenueFilter) {
