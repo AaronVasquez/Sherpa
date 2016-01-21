@@ -386,10 +386,21 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCB-39-Bjd" userLabel="Invisible Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="66"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.92058004609999999" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="descriptionTapped:" destination="tnQ-SX-ODW" eventType="touchUpInside" id="Phb-bM-keg"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="jCB-39-Bjd" firstAttribute="top" secondItem="2wY-nu-4ST" secondAttribute="top" id="6aO-75-AeQ"/>
                                     <constraint firstAttribute="height" constant="66" id="U1K-Vt-c61"/>
+                                    <constraint firstItem="jCB-39-Bjd" firstAttribute="leading" secondItem="2wY-nu-4ST" secondAttribute="leading" id="YQq-Yu-RQ4"/>
+                                    <constraint firstAttribute="bottom" secondItem="jCB-39-Bjd" secondAttribute="bottom" id="ub5-dB-DjU"/>
+                                    <constraint firstAttribute="trailing" secondItem="jCB-39-Bjd" secondAttribute="trailing" id="wlk-eY-l7U"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qUS-WB-OdE">
@@ -445,13 +456,13 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bottomViewHeightConstraint" destination="nN4-NP-TEn" id="nlG-wU-hmr"/>
-                        <outlet property="descriptionView" destination="qUS-WB-OdE" id="sMW-tg-UFs"/>
-                        <outlet property="descriptionViewButton" destination="CTa-v6-wBP" id="BaA-2i-eZb"/>
+                        <outlet property="firstDescriptionButton" destination="CTa-v6-wBP" id="aHq-Er-eRZ"/>
+                        <outlet property="firstDescriptionHeightConstraint" destination="nN4-NP-TEn" id="cP1-ow-2y2"/>
+                        <outlet property="firstVenueNameLabel" destination="jgy-Ey-h7U" id="vfA-wq-vk7"/>
                         <outlet property="mapView" destination="hw9-0c-wfz" id="BdP-so-60v"/>
-                        <outlet property="newthing" destination="2wY-nu-4ST" id="Bgv-O1-85j"/>
-                        <outlet property="newthingheight" destination="U1K-Vt-c61" id="Ow3-1C-Bi3"/>
-                        <outlet property="venueNameLabel" destination="jgy-Ey-h7U" id="UMH-dC-5VC"/>
+                        <outlet property="secondDescriptionButton" destination="jCB-39-Bjd" id="1eH-mt-4Al"/>
+                        <outlet property="secondDescriptionHeightConstraint" destination="U1K-Vt-c61" id="8uV-mV-9NW"/>
+                        <outlet property="secondVenueNameLabel" destination="sIg-JZ-zV5" id="RRi-Ov-Pzg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="74d-ps-Ekj" userLabel="First Responder" sceneMemberID="firstResponder"/>

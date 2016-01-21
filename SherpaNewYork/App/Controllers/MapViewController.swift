@@ -21,20 +21,22 @@ class MapViewController: UIViewController {
   var userCoordinates = CLLocationCoordinate2DMake(kDefaultLatitude, kDefaultLongitude)
   let allVenues: [Venue] = VenueRepository.fetchVenues()  // This should be shared with root.
 
-  var originalBottomViewHeightConstraint:CGFloat?
+  var originalfirstDescriptionHeightConstraint:CGFloat?
   var selectedVenue: Venue?
   
   var firstDescriptionShown = false
 
   @IBOutlet weak var mapView: GMSMapView!
-  @IBOutlet weak var descriptionView: UIView!
-  @IBOutlet weak var descriptionViewButton: UIButton!
-  @IBOutlet weak var bottomViewHeightConstraint: NSLayoutConstraint!
+
+  @IBOutlet weak var firstDescriptionButton: UIButton!
+  @IBOutlet weak var secondDescriptionButton: UIButton!
   
-  @IBOutlet weak var venueNameLabel: UILabel!
+  @IBOutlet weak var firstVenueNameLabel: UILabel!
+  @IBOutlet weak var secondVenueNameLabel: UILabel!
   
-  @IBOutlet weak var newthingheight: NSLayoutConstraint!
-  @IBOutlet weak var newthing: UIView!
+  @IBOutlet weak var firstDescriptionHeightConstraint: NSLayoutConstraint!
+  @IBOutlet weak var secondDescriptionHeightConstraint: NSLayoutConstraint!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     tabBarController?.tabBar.hidden = false
@@ -49,16 +51,16 @@ class MapViewController: UIViewController {
   
   override func viewWillAppear(animated: Bool) {
 
-    self.descriptionViewButton.alpha = 1.0
-    self.descriptionViewButton.backgroundColor = UIColor.clearColor()
+    self.firstDescriptionButton.backgroundColor = UIColor.clearColor()
+    self.secondDescriptionButton.backgroundColor = UIColor.clearColor()
     
     if (selectedVenue == nil) {
       // Record the original constraint size
-      self.originalBottomViewHeightConstraint = self.bottomViewHeightConstraint.constant
+      self.originalfirstDescriptionHeightConstraint = self.firstDescriptionHeightConstraint.constant
       
       // Set the constraint to zero
-      self.bottomViewHeightConstraint.constant = 0.0
-      newthingheight.constant = 0
+      self.firstDescriptionHeightConstraint.constant = 0.0
+      secondDescriptionHeightConstraint.constant = 0
     }
 
   }
@@ -148,17 +150,21 @@ extension MapViewController: CLLocationManagerDelegate {
 extension MapViewController: GMSMapViewDelegate {
   
   func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
-    selectedVenue = marker.userData as? Venue
+    let newChosenVenue = marker.userData as? Venue
+    if (selectedVenue != nil && selectedVenue!.name == newChosenVenue!.name) {
+      return true
+    }
     
-    self.venueNameLabel.text = selectedVenue!.name
+    selectedVenue = newChosenVenue
     
     if firstDescriptionShown {
-      newthingheight.constant = 66
-      self.bottomViewHeightConstraint.constant = 0
+      secondDescriptionHeightConstraint.constant = self.originalfirstDescriptionHeightConstraint!
+      self.secondVenueNameLabel.text = selectedVenue!.name
+      self.firstDescriptionHeightConstraint.constant = 0
     } else {
-      
-      newthingheight.constant = 0
-      self.bottomViewHeightConstraint.constant = self.originalBottomViewHeightConstraint!
+      secondDescriptionHeightConstraint.constant = 0
+      self.firstVenueNameLabel.text = selectedVenue!.name
+      self.firstDescriptionHeightConstraint.constant = self.originalfirstDescriptionHeightConstraint!
     }
     
     firstDescriptionShown = !firstDescriptionShown
