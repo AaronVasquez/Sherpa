@@ -33,6 +33,8 @@ class MapViewController: UIViewController {
   
   @IBOutlet weak var venueNameLabel: UILabel!
   
+  @IBOutlet weak var newthingheight: NSLayoutConstraint!
+  @IBOutlet weak var newthing: UIView!
   override func viewDidLoad() {
     super.viewDidLoad()
     tabBarController?.tabBar.hidden = false
@@ -56,6 +58,7 @@ class MapViewController: UIViewController {
       
       // Set the constraint to zero
       self.bottomViewHeightConstraint.constant = 0.0
+      newthingheight.constant = 0
     }
 
   }
@@ -147,10 +150,20 @@ extension MapViewController: GMSMapViewDelegate {
   func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
     selectedVenue = marker.userData as? Venue
     
-    self.venueNameLabel.layer.actions = ["text": NSNull(), "frame": NSNull()]
     self.venueNameLabel.text = selectedVenue!.name
     
-    self.bottomViewHeightConstraint.constant = self.originalBottomViewHeightConstraint!
+    if firstDescriptionShown {
+      newthingheight.constant = 66
+      self.bottomViewHeightConstraint.constant = 0
+    } else {
+      
+      newthingheight.constant = 0
+      self.bottomViewHeightConstraint.constant = self.originalBottomViewHeightConstraint!
+    }
+    
+    firstDescriptionShown = !firstDescriptionShown
+
+    
     
     self.view.setNeedsUpdateConstraints()
 
