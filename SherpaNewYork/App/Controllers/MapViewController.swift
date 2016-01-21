@@ -20,8 +20,18 @@ class MapViewController: UIViewController {
   let locationManager = CLLocationManager()
   var userCoordinates = CLLocationCoordinate2DMake(kDefaultLatitude, kDefaultLongitude)
   let allVenues: [Venue] = VenueRepository.fetchVenues()  // This should be shared with root.
+
+  var originalBottomViewHeightConstraint:CGFloat?
+  var selectedVenue: Venue?
   
+  var firstDescriptionShown = false
+
   @IBOutlet weak var mapView: GMSMapView!
+  @IBOutlet weak var descriptionView: UIView!
+  @IBOutlet weak var descriptionViewButton: UIButton!
+  @IBOutlet weak var bottomViewHeightConstraint: NSLayoutConstraint!
+  
+  @IBOutlet weak var venueNameLabel: UILabel!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -33,6 +43,21 @@ class MapViewController: UIViewController {
     
     let venueFilter = VenueFilter.init()
     reloadMap(venueFilter)
+  }
+  
+  override func viewWillAppear(animated: Bool) {
+
+    self.descriptionViewButton.alpha = 1.0
+    self.descriptionViewButton.backgroundColor = UIColor.clearColor()
+    
+    if (selectedVenue == nil) {
+      // Record the original constraint size
+      self.originalBottomViewHeightConstraint = self.bottomViewHeightConstraint.constant
+      
+      // Set the constraint to zero
+      self.bottomViewHeightConstraint.constant = 0.0
+    }
+
   }
   
   func reloadMap(filter: VenueFilter) {
@@ -98,6 +123,9 @@ class MapViewController: UIViewController {
     }
   }
   
+  @IBAction func descriptionTapped(sender: AnyObject) {
+    self.delegate?.didPressVenueDetailButton(selectedVenue!)
+  }
 }
 
 extension MapViewController: CLLocationManagerDelegate {
@@ -116,13 +144,21 @@ extension MapViewController: CLLocationManagerDelegate {
 
 extension MapViewController: GMSMapViewDelegate {
   
-//  func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
-//    print("for when you have the label on the bottom")
-//    return true
-//  }
-  
-  func mapView(mapView: GMSMapView!, didTapInfoWindowOfMarker marker: GMSMarker!) {
-    self.delegate?.didPressVenueDetailButton((marker.userData as? Venue)!)
+  func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
+    selectedVenue = marker.userData as? Venue
+    
+    self.venueNameLabel.layer.actions = ["text": NSNull(), "frame": NSNull()]
+    self.venueNameLabel.text = selectedVenue!.name
+    
+    self.bottomViewHeightConstraint.constant = self.originalBottomViewHeightConstraint!
+    
+    self.view.setNeedsUpdateConstraints()
+
+    UIView.animateWithDuration(0.5) { () -> Void in
+      self.view.layoutIfNeeded()
+    }
+
+    return true
   }
   
 }
