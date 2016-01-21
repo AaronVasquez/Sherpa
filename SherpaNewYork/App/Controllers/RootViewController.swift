@@ -85,6 +85,7 @@ extension RootViewController: VenueDetailDelegate {
 extension RootViewController: VenueFilterDelegate {
   func filterDidChange(filter: VenueFilter) {
     self.venueFilter = filter
+    mapViewController!.hideDescriptions()
     mapViewController!.reloadMap(filter)
   }
 }

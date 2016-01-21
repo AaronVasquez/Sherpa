@@ -56,10 +56,10 @@ class MapViewController: UIViewController {
     
     if (selectedVenue == nil) {
       // Record the original constraint size
-      self.originalfirstDescriptionHeightConstraint = self.firstDescriptionHeightConstraint.constant
+      originalfirstDescriptionHeightConstraint = firstDescriptionHeightConstraint.constant
       
       // Set the constraint to zero
-      self.firstDescriptionHeightConstraint.constant = 0.0
+      firstDescriptionHeightConstraint.constant = 0.0
       secondDescriptionHeightConstraint.constant = 0
     }
 
@@ -89,6 +89,15 @@ class MapViewController: UIViewController {
     }).forEach({
       self.addMapPin($0)
     })
+  }
+  
+  func hideDescriptions() {
+    firstDescriptionHeightConstraint.constant = 0
+    secondDescriptionHeightConstraint.constant = 0
+    firstDescriptionShown = false
+    
+    self.view.setNeedsUpdateConstraints()
+    self.view.layoutIfNeeded()
   }
   
   private func addMapPin(venue: Venue) {
@@ -158,21 +167,18 @@ extension MapViewController: GMSMapViewDelegate {
     selectedVenue = newChosenVenue
     
     if firstDescriptionShown {
-      secondDescriptionHeightConstraint.constant = self.originalfirstDescriptionHeightConstraint!
-      self.secondVenueNameLabel.text = selectedVenue!.name
-      self.firstDescriptionHeightConstraint.constant = 0
+      secondDescriptionHeightConstraint.constant = originalfirstDescriptionHeightConstraint!
+      secondVenueNameLabel.text = selectedVenue!.name
+      firstDescriptionHeightConstraint.constant = 0
     } else {
+      firstVenueNameLabel.text = selectedVenue!.name
+      firstDescriptionHeightConstraint.constant = originalfirstDescriptionHeightConstraint!
       secondDescriptionHeightConstraint.constant = 0
-      self.firstVenueNameLabel.text = selectedVenue!.name
-      self.firstDescriptionHeightConstraint.constant = self.originalfirstDescriptionHeightConstraint!
     }
-    
-    firstDescriptionShown = !firstDescriptionShown
 
-    
+    firstDescriptionShown = !firstDescriptionShown
     
     self.view.setNeedsUpdateConstraints()
-
     UIView.animateWithDuration(0.5) { () -> Void in
       self.view.layoutIfNeeded()
     }
