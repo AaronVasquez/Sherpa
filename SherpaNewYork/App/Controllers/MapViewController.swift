@@ -19,7 +19,7 @@ class MapViewController: UIViewController {
   
   let locationManager = CLLocationManager()
   var userCoordinates = CLLocationCoordinate2DMake(kDefaultLatitude, kDefaultLongitude)
-  let allVenues: [Venue] = VenueRepository.fetchVenues()  // This should be shared with root.
+  var venueCollection: VenueCollection?
 
   var originalfirstDescriptionHeightConstraint:CGFloat?
   var selectedVenue: Venue?
@@ -44,9 +44,8 @@ class MapViewController: UIViewController {
     
     initialLocationSetup()
     fetchLocation()
-    
-    let venueFilter = VenueFilter.init()
-    reloadMap(venueFilter)
+
+    reloadMap()
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -65,28 +64,11 @@ class MapViewController: UIViewController {
 
   }
   
-  func reloadMap(filter: VenueFilter) {
+  func reloadMap() {
+    hideDescriptions()
     mapView.clear()
 
-    let userLocation = CLLocation.init(latitude: self.userCoordinates.latitude,
-                                       longitude: self.userCoordinates.longitude)
-
-    allVenues.filter({
-      // Only filter if there are some types to be filtered.
-      return filter.filterTypes.count > 0 ? filter.filterTypes.contains($0.type) : true;
-    }).sort({ venueOne, venueTwo in
-      switch (filter.sortBy) {
-        case SortCriteria.Distance:
-          let venueOneLocation = CLLocation.init(latitude: venueOne.coordinates.latitude,
-                                                 longitude: venueOne.coordinates.longitude)
-          let venueTwoLocation = CLLocation.init(latitude: venueTwo.coordinates.latitude,
-                                                 longitude: venueTwo.coordinates.longitude)
-          return venueOneLocation.distanceFromLocation(userLocation) <
-              venueTwoLocation.distanceFromLocation(userLocation)
-        case SortCriteria.Name:
-          return venueOne.name > venueTwo.name
-      }
-    }).forEach({
+    venueCollection!.filteredVenues.forEach({
       self.addMapPin($0)
     })
   }

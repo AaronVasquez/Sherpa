@@ -17,19 +17,16 @@ private let kListEmbedSegue = "ListEmbedSegue"
 private let kVenueDetailSegue = "VenueDetailSegue"
 
 class RootViewController: UIViewController {
-  
   @IBOutlet var mapView: UIView!
-  
   @IBOutlet var listView: UIView!
   
   let locationManager = CLLocationManager()
-  let allVenues: [Venue] = VenueRepository.fetchVenues()
+  let venueCollection = VenueCollection.init();
   var chosenVenue: Venue?
   var venueFilter = VenueFilter.init()
 
-  var listViewController: UIViewController?
+  var listViewController: VenueListViewController?
   var mapViewController: MapViewController?
-  
   var listViewControllerShown = false
   
   override func viewDidLoad() {
@@ -43,9 +40,17 @@ class RootViewController: UIViewController {
 
   @IBAction func showListViewController(sender: AnyObject) {
     if (listViewControllerShown) {
-      UIView.transitionFromView(listViewController!.view, toView: mapViewController!.view, duration: 0.2, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
+      UIView.transitionFromView(listViewController!.view,
+          toView: mapViewController!.view,
+          duration: 0.4,
+          options: UIViewAnimationOptions.TransitionFlipFromLeft,
+          completion: nil)
     } else {
-      UIView.transitionFromView(mapViewController!.view, toView: listViewController!.view, duration: 0.2, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
+      UIView.transitionFromView(mapViewController!.view,
+          toView: listViewController!.view,
+          duration: 0.4,
+          options: UIViewAnimationOptions.TransitionFlipFromRight,
+          completion: nil)
     }
     listViewControllerShown = !listViewControllerShown
   }
@@ -59,12 +64,14 @@ class RootViewController: UIViewController {
     if (segue.identifier == kMapEmbedSegue) {
       let mapVc = segue.destinationViewController as! MapViewController
       mapVc.delegate = self
+      mapVc.venueCollection = self.venueCollection
       mapViewController = mapVc
     }
     
     if (segue.identifier == kListEmbedSegue) {
       let listVc = segue.destinationViewController as! VenueListViewController
       listVc.delegate = self
+      listVc.venueCollection = self.venueCollection
       listViewController = listVc
     }
     
@@ -85,7 +92,13 @@ extension RootViewController: VenueDetailDelegate {
 extension RootViewController: VenueFilterDelegate {
   func filterDidChange(filter: VenueFilter) {
     self.venueFilter = filter
-    mapViewController!.hideDescriptions()
-    mapViewController!.reloadMap(filter)
+
+    let userCoordinates = self.mapViewController?.userCoordinates;
+    let userLocation = CLLocation.init(latitude: userCoordinates!.latitude,
+                                       longitude: userCoordinates!.longitude)
+    venueCollection.applyFilter(filter, location: userLocation)
+
+    mapViewController!.reloadMap()
+    listViewController!.reloadList()
   }
 }
