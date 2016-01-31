@@ -13,6 +13,8 @@ class VenueDetailViewController: UIViewController {
     navigationController?.navigationBar.hidden = false
     tabBarController?.tabBar.hidden = true
 
+    self.title = venue?.name
+
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
       if let data = NSData(contentsOfURL: self.venue!.photoUrls[0]) {
         let bannerImage = UIImage(data: data)
