@@ -23,6 +23,7 @@
 		93C394741BDD950E0099AD9D /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C394731BDD950E0099AD9D /* Venue.swift */; };
 		93C394771BDD99A90099AD9D /* VenueRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C394761BDD99A90099AD9D /* VenueRepository.swift */; };
 		93C394791BDD9A310099AD9D /* VenuesData.json in Resources */ = {isa = PBXBuildFile; fileRef = 93C394781BDD9A310099AD9D /* VenuesData.json */; };
+		93D1119C1C5E8C2100886189 /* VenueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D1119B1C5E8C2100886189 /* VenueTableViewCell.swift */; };
 		F45E411175484A5D51E2F87C /* Pods_SherpaNewYork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A370B69845F22C918847B4 /* Pods_SherpaNewYork.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		93C394731BDD950E0099AD9D /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		93C394761BDD99A90099AD9D /* VenueRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueRepository.swift; sourceTree = "<group>"; };
 		93C394781BDD9A310099AD9D /* VenuesData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = VenuesData.json; sourceTree = "<group>"; };
+		93D1119B1C5E8C2100886189 /* VenueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 		93B91F7C1BD20F3500D2CA7C /* App */ = {
 			isa = PBXGroup;
 			children = (
+				93D1119A1C5E8C0800886189 /* Views */,
 				93C394721BDD94DC0099AD9D /* Models */,
 				93C394751BDD998F0099AD9D /* Repositories */,
 				9304B6B71BD3555C00A47488 /* Controllers */,
@@ -143,6 +146,14 @@
 				93C394781BDD9A310099AD9D /* VenuesData.json */,
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		93D1119A1C5E8C0800886189 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				93D1119B1C5E8C2100886189 /* VenueTableViewCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		B5C47B64711D4FB54A650227 /* Frameworks */ = {
@@ -285,6 +296,7 @@
 				93C394741BDD950E0099AD9D /* Venue.swift in Sources */,
 				93085EC41C5D72C60062694A /* VenueCollection.swift in Sources */,
 				935C3BD51C26073B00001E71 /* VenueFilter.swift in Sources */,
+				93D1119C1C5E8C2100886189 /* VenueTableViewCell.swift in Sources */,
 				81516BCF1BD2971C00C66DEB /* RootViewController.swift in Sources */,
 				8194E0D41C4D7898002C644C /* VenueDetailDelegate.swift in Sources */,
 			);

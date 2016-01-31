@@ -2,7 +2,8 @@ import Foundation
 import UIKit
 
 // TODO: Create a subclass to handle the cell.
-private let kVenueCellIdentifier = "kVenueCellIdentifier"
+private let kVenueCellIdentifier = "LMATableCell"
+private let kVenueTableCellHeight: CGFloat = 200.0;
 
 public class VenueListViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
@@ -28,31 +29,39 @@ public class VenueListViewController: UIViewController {
   }
 }
 
-extension VenueListViewController: UITableViewDataSource, UITableViewDelegate {
+extension VenueListViewController: UITableViewDataSource {
   
   public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return venueCollection!.filteredVenues.count
   }
   
+
+
+  public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)
+      -> UITableViewCell {
+    let venue = venueCollection!.filteredVenues[indexPath.row]
+
+    let venueTableCell =
+      tableView.dequeueReusableCellWithIdentifier(kVenueCellIdentifier)! as! VenueTableViewCell
+
+    venueTableCell.titleLabel.text = venue.name;
+
+    // TODO: Figure out the gradient.
+    // TODO: Cache the images.
+
+    return venueTableCell
+  }
+}
+
+extension VenueListViewController: UITableViewDelegate {
+
   public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     self.delegate?.didPressVenueDetailButton(venueCollection!.filteredVenues[indexPath.row])
   }
 
-  public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)
-    -> UITableViewCell {
-    var newCell: UITableViewCell
-    let venue = venueCollection!.filteredVenues[indexPath.row]
-      
-    if let oldCell = tableView.dequeueReusableCellWithIdentifier(kVenueCellIdentifier) {
-      newCell = oldCell
-    } else {
-      newCell = UITableViewCell(style: UITableViewCellStyle.Default,
-                      reuseIdentifier: kVenueCellIdentifier)
-    }
-    
-    newCell.textLabel!.text = venue.name
-    
-    return newCell
+  public func tableView(tableView: UITableView, heightForRowAtIndexPath
+                        indexPath: NSIndexPath) -> CGFloat {
+    return kVenueTableCellHeight;
   }
 
 }
