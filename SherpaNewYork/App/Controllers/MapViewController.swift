@@ -55,10 +55,10 @@ class MapViewController: UIViewController {
     
     if (selectedVenue == nil) {
       // Record the original constraint size
-      originalfirstDescriptionHeightConstraint = firstDescriptionHeightConstraint.constant
-      
+      originalfirstDescriptionHeightConstraint = 66 //firstDescriptionHeightConstraint.constant
+      print(originalfirstDescriptionHeightConstraint)
       // Set the constraint to zero
-      firstDescriptionHeightConstraint.constant = 0.0
+      firstDescriptionHeightConstraint.constant = 0
       secondDescriptionHeightConstraint.constant = 0
     }
 
