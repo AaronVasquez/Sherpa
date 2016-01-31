@@ -1,4 +1,6 @@
 import UIKit
+
+import ChameleonFramework
 import GoogleMaps
 
 // TODO(Edmund): Get a new API key and don't expose it publically on Github.
@@ -11,7 +13,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+
+    // Set up Google Maps.
     GMSServices.provideAPIKey(kGoogleMapsApiKey)
+
+    // Set up Chameleon
+    Chameleon.setGlobalThemeUsingPrimaryColor(FlatOrange(), withContentStyle:.Contrast)
+
+    UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: false)
+
     return true
   }
 
