@@ -145,8 +145,10 @@ extension MapViewController: GMSMapViewDelegate {
     if (selectedVenue != nil && selectedVenue!.name == newChosenVenue!.name) {
       return true
     }
-    
+
     selectedVenue = newChosenVenue
+
+    mapView.animateToLocation(selectedVenue!.coordinates)
     
     if firstDescriptionShown {
       secondDescriptionHeightConstraint.constant = originalfirstDescriptionHeightConstraint!
@@ -161,9 +163,15 @@ extension MapViewController: GMSMapViewDelegate {
     firstDescriptionShown = !firstDescriptionShown
     
     self.view.setNeedsUpdateConstraints()
-    UIView.animateWithDuration(0.5) { () -> Void in
-      self.view.layoutIfNeeded()
-    }
+    UIView.animateWithDuration(0.25,
+        delay: 0,
+        usingSpringWithDamping: 0.75,
+        initialSpringVelocity: 0.0,
+        options: .BeginFromCurrentState,
+        animations: { () -> Void in
+          self.view.layoutIfNeeded()
+        },
+        completion: nil)
 
     return true
   }
