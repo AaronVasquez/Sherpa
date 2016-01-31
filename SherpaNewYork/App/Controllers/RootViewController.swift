@@ -42,14 +42,14 @@ class RootViewController: UIViewController {
     if (listViewControllerShown) {
       UIView.transitionFromView(listViewController!.view,
           toView: mapViewController!.view,
-          duration: 0.4,
-          options: UIViewAnimationOptions.TransitionFlipFromLeft,
+          duration: 0.2,
+          options: UIViewAnimationOptions.TransitionCrossDissolve,
           completion: nil)
     } else {
       UIView.transitionFromView(mapViewController!.view,
           toView: listViewController!.view,
-          duration: 0.4,
-          options: UIViewAnimationOptions.TransitionFlipFromRight,
+          duration: 0.2,
+          options: UIViewAnimationOptions.TransitionCrossDissolve,
           completion: nil)
     }
     listViewControllerShown = !listViewControllerShown
