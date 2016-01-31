@@ -309,7 +309,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JKP-Zd-M7m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="667" y="-1506"/>
+            <point key="canvasLocation" x="745" y="-1537"/>
         </scene>
         <!--Venue List View Controller-->
         <scene sceneID="gjC-dy-pUc">
@@ -404,14 +404,17 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2wY-nu-4ST">
                                 <rect key="frame" x="0.0" y="438" width="320" height="66"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ajkfdsfdjkks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIg-JZ-zV5">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ajkfdsfdjkks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIg-JZ-zV5">
                                         <rect key="frame" x="13" y="8" width="295" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="5o8-mF-Cxt"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3 stars" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlg-a5-T41">
-                                        <rect key="frame" x="13" y="37" width="53" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 stars" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlg-a5-T41">
+                                        <rect key="frame" x="13" y="37" width="295" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -427,10 +430,16 @@
                                 <color key="backgroundColor" red="0.1911550909280777" green="0.6378670334815979" blue="0.26147949695587158" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="jCB-39-Bjd" firstAttribute="top" secondItem="2wY-nu-4ST" secondAttribute="top" id="6aO-75-AeQ"/>
+                                    <constraint firstItem="sIg-JZ-zV5" firstAttribute="top" secondItem="2wY-nu-4ST" secondAttribute="topMargin" id="OxX-tE-w0U"/>
                                     <constraint firstAttribute="height" constant="66" id="U1K-Vt-c61"/>
+                                    <constraint firstAttribute="trailing" secondItem="vlg-a5-T41" secondAttribute="trailing" constant="12" id="VQ2-Zc-nG1"/>
                                     <constraint firstItem="jCB-39-Bjd" firstAttribute="leading" secondItem="2wY-nu-4ST" secondAttribute="leading" id="YQq-Yu-RQ4"/>
+                                    <constraint firstItem="sIg-JZ-zV5" firstAttribute="centerX" secondItem="jCB-39-Bjd" secondAttribute="centerX" id="hQs-TJ-pQ4"/>
+                                    <constraint firstItem="sIg-JZ-zV5" firstAttribute="leading" secondItem="vlg-a5-T41" secondAttribute="leading" id="uIs-xE-qoF"/>
                                     <constraint firstAttribute="bottom" secondItem="jCB-39-Bjd" secondAttribute="bottom" id="ub5-dB-DjU"/>
                                     <constraint firstAttribute="trailing" secondItem="jCB-39-Bjd" secondAttribute="trailing" id="wlk-eY-l7U"/>
+                                    <constraint firstItem="vlg-a5-T41" firstAttribute="top" secondItem="sIg-JZ-zV5" secondAttribute="bottom" constant="8" symbolic="YES" id="xhV-v3-YmU"/>
+                                    <constraint firstItem="sIg-JZ-zV5" firstAttribute="trailing" secondItem="vlg-a5-T41" secondAttribute="trailing" id="zbT-G9-I9k"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qUS-WB-OdE">
@@ -443,7 +452,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 stars" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obd-Or-KpW">
-                                        <rect key="frame" x="13" y="37" width="53" height="21"/>
+                                        <rect key="frame" x="13" y="37" width="295" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -469,6 +478,7 @@
                                     <constraint firstItem="Obd-Or-KpW" firstAttribute="leading" secondItem="jgy-Ey-h7U" secondAttribute="leading" id="eif-d3-dBf"/>
                                     <constraint firstItem="jgy-Ey-h7U" firstAttribute="leading" secondItem="qUS-WB-OdE" secondAttribute="leading" constant="13" id="enB-CR-OBA"/>
                                     <constraint firstAttribute="height" constant="66" id="nN4-NP-TEn"/>
+                                    <constraint firstAttribute="trailing" secondItem="Obd-Or-KpW" secondAttribute="trailing" constant="12" id="oDq-za-HCF"/>
                                     <constraint firstAttribute="trailing" secondItem="jgy-Ey-h7U" secondAttribute="trailing" constant="12.5" id="or2-w6-PeG"/>
                                     <constraint firstAttribute="trailing" secondItem="CTa-v6-wBP" secondAttribute="trailing" id="rTZ-zn-z56"/>
                                     <constraint firstAttribute="bottom" secondItem="CTa-v6-wBP" secondAttribute="bottom" id="xcc-gc-kHq"/>
@@ -492,10 +502,12 @@
                     <connections>
                         <outlet property="firstDescriptionButton" destination="CTa-v6-wBP" id="aHq-Er-eRZ"/>
                         <outlet property="firstDescriptionHeightConstraint" destination="nN4-NP-TEn" id="cP1-ow-2y2"/>
+                        <outlet property="firstVenueDescriptionLabel" destination="Obd-Or-KpW" id="2H3-ez-w2Y"/>
                         <outlet property="firstVenueNameLabel" destination="jgy-Ey-h7U" id="vfA-wq-vk7"/>
                         <outlet property="mapView" destination="hw9-0c-wfz" id="BdP-so-60v"/>
                         <outlet property="secondDescriptionButton" destination="jCB-39-Bjd" id="1eH-mt-4Al"/>
                         <outlet property="secondDescriptionHeightConstraint" destination="U1K-Vt-c61" id="8uV-mV-9NW"/>
+                        <outlet property="secondVenueDescriptionLabel" destination="vlg-a5-T41" id="2Q9-7l-NbJ"/>
                         <outlet property="secondVenueNameLabel" destination="sIg-JZ-zV5" id="RRi-Ov-Pzg"/>
                     </connections>
                 </viewController>

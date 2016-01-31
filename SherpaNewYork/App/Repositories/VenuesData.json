@@ -4,6 +4,8 @@
       "id": "123",
       "name": "Halal Guys",
       "description": "There are fake assholes on the next corner. Don't be fooled!",
+      "shortDescription": "Chicken and Rice",
+      "price": 1,
       "coordinates": {
         "lat": 40.713,
         "long": -74.000
@@ -17,6 +19,8 @@
       "id": "213",
       "name": "Shake Shack",
       "description": "Get a triple shack burger with chizz fries. Can't go wrong with a shake.",
+      "shortDescription": "Burgers",
+      "price": 2,
       "coordinates": {
         "lat": 40.712,
         "long": -74.002
@@ -30,6 +34,8 @@
       "id": "1",
       "name": "Crumbs Bakery",
       "description": "Oven baked cookies and cupcakes",
+      "shortDescription": "Cookies",
+      "price": 2,
       "coordinates": {
         "lat": 40.714,
         "long": -74.000
@@ -43,6 +49,8 @@
       "id": "2",
       "name": "Dunkin Donuts",
       "description": "Dunkin Donuts is doughnuts without the ugh",
+      "shortDescription": "Doughnuts",
+      "price": 1,
       "coordinates": {
         "lat": 40.715,
         "long": -74.001
@@ -56,6 +64,8 @@
       "id": "3",
       "name": "Whole Foods",
       "description": "Overpriced hippie crap",
+      "shortDescription": "Groceries",
+      "price": 4,
       "coordinates": {
         "lat": 40.716,
         "long": -74.000
@@ -69,6 +79,8 @@
       "id": "4",
       "name": "Peter Luger",
       "description": "Big pieces of steak",
+      "shortDescription": "Dinner",
+      "price": 5,
       "coordinates": {
         "lat": 40.713,
         "long": -73.999
@@ -82,6 +94,8 @@
       "id": "5",
       "name": "Century 21",
       "description": "Brand names for half the price",
+      "shortDescription": "Shopping",
+      "price": 2,
       "coordinates": {
         "lat": 40.712,
         "long": -73.998

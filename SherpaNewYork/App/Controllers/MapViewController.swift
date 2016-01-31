@@ -34,6 +34,9 @@ class MapViewController: UIViewController {
   @IBOutlet weak var firstVenueNameLabel: UILabel!
   @IBOutlet weak var secondVenueNameLabel: UILabel!
   
+  @IBOutlet weak var firstVenueDescriptionLabel: UILabel!
+  @IBOutlet weak var secondVenueDescriptionLabel: UILabel!
+  
   @IBOutlet weak var firstDescriptionHeightConstraint: NSLayoutConstraint!
   @IBOutlet weak var secondDescriptionHeightConstraint: NSLayoutConstraint!
   
@@ -153,10 +156,12 @@ extension MapViewController: GMSMapViewDelegate {
     if firstDescriptionShown {
       secondDescriptionHeightConstraint.constant = originalfirstDescriptionHeightConstraint!
       secondVenueNameLabel.text = selectedVenue!.name
+      secondVenueDescriptionLabel.text = selectedVenue!.pinDescription()
       firstDescriptionHeightConstraint.constant = 0
     } else {
-      firstVenueNameLabel.text = selectedVenue!.name
       firstDescriptionHeightConstraint.constant = originalfirstDescriptionHeightConstraint!
+      firstVenueNameLabel.text = selectedVenue!.name
+      firstVenueDescriptionLabel.text = selectedVenue!.pinDescription()
       secondDescriptionHeightConstraint.constant = 0
     }
 
