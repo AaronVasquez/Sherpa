@@ -29,6 +29,8 @@ struct VenueRepository {
       let venue = Venue.init(id: venue["id"].stringValue,
         name: venue["name"].stringValue,
         description: venue["description"].stringValue,
+        shortDescription: venue["shortDescription"].stringValue,
+        price: venue["price"].intValue,
         coordinates: CLLocationCoordinate2D(latitude: venue["coordinates"]["lat"].doubleValue,
         longitude: venue["coordinates"]["long"].doubleValue),
         type: venue["type"].intValue,
