@@ -32,6 +32,7 @@ class MapViewController: UIViewController {
   @IBOutlet weak var venueDescriptionNameLabel: UILabel!
   @IBOutlet weak var venueDescriptionCategoryLabel: UILabel!
   @IBOutlet weak var venueDescriptionHeightConstraint: NSLayoutConstraint!
+  @IBOutlet weak var venueDescriptionThumbnailImage: UIImageView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -155,6 +156,7 @@ extension MapViewController: GMSMapViewDelegate {
         completion: { (success) -> Void in
           self.venueDescriptionNameLabel.text = self.selectedVenue!.name
           self.venueDescriptionCategoryLabel.text = self.selectedVenue!.pinDescription()
+          self.venueDescriptionThumbnailImage.imageFromUrl(self.selectedVenue!.thumbnailUrl)
         })
     
     venueDescriptionHeightConstraint.constant = originalvenueDescriptionHeightConstraint!
@@ -173,4 +175,18 @@ extension MapViewController: GMSMapViewDelegate {
     return true
   }
   
+}
+
+
+extension UIImageView {
+  public func imageFromUrl(urlString: String) {
+    if let url = NSURL(string: urlString) {
+      let request = NSURLRequest(URL: url)
+      NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: { (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
+        if let imageData = data as NSData? {
+          self.image = UIImage(data: imageData)
+        }
+      })
+    }
+  }
 }
