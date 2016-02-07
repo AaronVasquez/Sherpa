@@ -21,24 +21,17 @@ class MapViewController: UIViewController {
   var userCoordinates = CLLocationCoordinate2DMake(kDefaultLatitude, kDefaultLongitude)
   var venueCollection: VenueCollection?
 
-  var originalfirstDescriptionHeightConstraint:CGFloat?
+  var originalvenueDescriptionHeightConstraint:CGFloat?
   var selectedVenue: Venue?
   
   var firstDescriptionShown = false
 
   @IBOutlet weak var mapView: GMSMapView!
 
-  @IBOutlet weak var firstDescriptionButton: UIButton!
-  @IBOutlet weak var secondDescriptionButton: UIButton!
-  
-  @IBOutlet weak var firstVenueNameLabel: UILabel!
-  @IBOutlet weak var secondVenueNameLabel: UILabel!
-  
-  @IBOutlet weak var firstVenueDescriptionLabel: UILabel!
-  @IBOutlet weak var secondVenueDescriptionLabel: UILabel!
-  
-  @IBOutlet weak var firstDescriptionHeightConstraint: NSLayoutConstraint!
-  @IBOutlet weak var secondDescriptionHeightConstraint: NSLayoutConstraint!
+  @IBOutlet weak var venueDescriptionButton: UIButton!
+  @IBOutlet weak var venueDescriptionNameLabel: UILabel!
+  @IBOutlet weak var venueDescriptionCategoryLabel: UILabel!
+  @IBOutlet weak var venueDescriptionHeightConstraint: NSLayoutConstraint!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -53,16 +46,13 @@ class MapViewController: UIViewController {
   
   override func viewWillAppear(animated: Bool) {
 
-    self.firstDescriptionButton.backgroundColor = UIColor.clearColor()
-    self.secondDescriptionButton.backgroundColor = UIColor.clearColor()
+    self.venueDescriptionButton.backgroundColor = UIColor.clearColor()
     
     if (selectedVenue == nil) {
       // Record the original constraint size
-      originalfirstDescriptionHeightConstraint = 66 //firstDescriptionHeightConstraint.constant
-      print(originalfirstDescriptionHeightConstraint)
+      originalvenueDescriptionHeightConstraint = 66 //venueDescriptionHeightConstraint.constant
       // Set the constraint to zero
-      firstDescriptionHeightConstraint.constant = 0
-      secondDescriptionHeightConstraint.constant = 0
+      venueDescriptionHeightConstraint.constant = 0
     }
 
   }
@@ -77,8 +67,7 @@ class MapViewController: UIViewController {
   }
   
   func hideDescriptions() {
-    firstDescriptionHeightConstraint.constant = 0
-    secondDescriptionHeightConstraint.constant = 0
+    venueDescriptionHeightConstraint.constant = 0
     firstDescriptionShown = false
     
     self.view.setNeedsUpdateConstraints()
@@ -153,20 +142,7 @@ extension MapViewController: GMSMapViewDelegate {
 
     mapView.animateToLocation(selectedVenue!.coordinates)
     
-    if firstDescriptionShown {
-      secondDescriptionHeightConstraint.constant = originalfirstDescriptionHeightConstraint!
-      secondVenueNameLabel.text = selectedVenue!.name
-      secondVenueDescriptionLabel.text = selectedVenue!.pinDescription()
-      firstDescriptionHeightConstraint.constant = 0
-    } else {
-      firstDescriptionHeightConstraint.constant = originalfirstDescriptionHeightConstraint!
-      firstVenueNameLabel.text = selectedVenue!.name
-      firstVenueDescriptionLabel.text = selectedVenue!.pinDescription()
-      secondDescriptionHeightConstraint.constant = 0
-    }
-
-    firstDescriptionShown = !firstDescriptionShown
-    
+    venueDescriptionHeightConstraint.constant = 0
     self.view.setNeedsUpdateConstraints()
     UIView.animateWithDuration(0.25,
         delay: 0,
@@ -176,7 +152,23 @@ extension MapViewController: GMSMapViewDelegate {
         animations: { () -> Void in
           self.view.layoutIfNeeded()
         },
-        completion: nil)
+        completion: { (success) -> Void in
+          self.venueDescriptionNameLabel.text = self.selectedVenue!.name
+          self.venueDescriptionCategoryLabel.text = self.selectedVenue!.pinDescription()
+        })
+    
+    venueDescriptionHeightConstraint.constant = originalvenueDescriptionHeightConstraint!
+    self.view.setNeedsUpdateConstraints()
+    UIView.animateWithDuration(0.25,
+      delay: 0.25,
+      usingSpringWithDamping: 0.75,
+      initialSpringVelocity: 0.0,
+      options: .BeginFromCurrentState,
+      animations: { () -> Void in
+        self.view.layoutIfNeeded()
+      },
+      completion: nil)
+    
 
     return true
   }
