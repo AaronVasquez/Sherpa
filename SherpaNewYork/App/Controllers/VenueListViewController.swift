@@ -2,8 +2,8 @@ import Foundation
 import UIKit
 
 import ChameleonFramework.UIColor_Chameleon
-import AMScrollingNavbar
 import SDWebImage.UIImageView_WebCache
+import TLYShyNavBar.TLYShyNavBarManager
 
 // TODO: Create a subclass to handle the cell.
 private let kVenueCellIdentifier = "LMATableCell"
@@ -27,9 +27,7 @@ public class VenueListViewController: UIViewController {
   override public func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
 
-    if let navigationController = self.navigationController as? ScrollingNavigationController {
-      navigationController.followScrollView(tableView, delay: 30.0)
-    }
+    shyNavBarManager.scrollView = tableView
   }
 
   public func reloadList() {
