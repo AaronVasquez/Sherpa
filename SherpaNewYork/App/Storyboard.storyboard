@@ -4,7 +4,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Venue Detail View Controller-->
@@ -115,22 +114,25 @@
                             <constraint firstItem="72T-kS-tox" firstAttribute="centerX" secondItem="gNS-tX-DqB" secondAttribute="centerX" id="ldL-t1-VoX"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Sherpa" id="f3m-Va-fSl">
+                    <navigationItem key="navigationItem" id="f3m-Va-fSl">
+                        <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title=" " id="P0l-aM-Q3W"/>
-                        <rightBarButtonItems>
-                            <barButtonItem style="plain" systemItem="search" id="jua-Zk-YCX">
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="showFilterViewController:" destination="GPM-tl-hYF" id="VuH-ML-tIB"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="List" id="rvG-om-99e">
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="showListViewController:" destination="GPM-tl-hYF" id="fkn-Vn-Lt3"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <segmentedControl key="titleView" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Oru-6A-Z96">
+                            <rect key="frame" x="60" y="7" width="200" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Map"/>
+                                <segment title="List"/>
+                            </segments>
+                            <connections>
+                                <action selector="toggleMapAndList:" destination="GPM-tl-hYF" eventType="valueChanged" id="lu3-N2-RQL"/>
+                            </connections>
+                        </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="search" id="jua-Zk-YCX">
+                            <connections>
+                                <action selector="showFilterViewController:" destination="GPM-tl-hYF" id="VuH-ML-tIB"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
