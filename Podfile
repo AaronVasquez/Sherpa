@@ -6,5 +6,6 @@ target 'SherpaNewYork' do
   pod 'ChameleonFramework/Swift'
   pod 'GoogleMaps'
   pod 'SDWebImage'
+  pod 'iCarousel'
   pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
 end

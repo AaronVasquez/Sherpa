@@ -3,6 +3,7 @@ PODS:
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
   - GoogleMaps (1.10.5)
+  - iCarousel (1.8.2)
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
@@ -11,6 +12,7 @@ PODS:
 DEPENDENCIES:
   - ChameleonFramework/Swift
   - GoogleMaps
+  - iCarousel
   - SDWebImage
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
 
@@ -26,6 +28,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   GoogleMaps: da51c62c338c2d9c47cdad470a0d1e0e4b8544e4
+  iCarousel: 67c8a43da5a46795b56aadfc96cd36a16f6149b2
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
 

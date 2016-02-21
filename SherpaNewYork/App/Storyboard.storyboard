@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4vD-LM-CcY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4vD-LM-CcY">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
@@ -19,47 +19,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oY0-bo-cg9">
-                                <rect key="frame" x="0.0" y="44" width="320" height="956"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s75-vY-beZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="213"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="213" id="tmt-jy-egP"/>
-                                        </constraints>
-                                    </imageView>
-                                    <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MTA-Zs-og8">
-                                        <rect key="frame" x="0.0" y="221" width="320" height="184"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                </subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O3E-BG-cLP" customClass="iCarousel">
+                                <rect key="frame" x="0.0" y="64" width="320" height="192"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="s75-vY-beZ" firstAttribute="leading" secondItem="oY0-bo-cg9" secondAttribute="leading" id="3ng-QT-wOm"/>
-                                    <constraint firstAttribute="trailing" secondItem="s75-vY-beZ" secondAttribute="trailing" id="Fe5-qz-Y2D"/>
-                                    <constraint firstItem="s75-vY-beZ" firstAttribute="centerX" secondItem="oY0-bo-cg9" secondAttribute="centerX" id="G6n-D2-bOw"/>
-                                    <constraint firstItem="s75-vY-beZ" firstAttribute="top" secondItem="oY0-bo-cg9" secondAttribute="top" id="Lsf-WH-5MO"/>
-                                    <constraint firstAttribute="bottom" secondItem="s75-vY-beZ" secondAttribute="bottom" constant="242" id="kKe-W5-pqs"/>
+                                    <constraint firstAttribute="height" constant="192" id="Soh-aD-yox"/>
                                 </constraints>
-                            </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KoK-Uk-reX">
-                                <rect key="frame" x="108" y="507" width="104" height="43"/>
-                                <state key="normal" title="Metro"/>
-                                <connections>
-                                    <action selector="metroButtonTapped:" destination="xHo-vO-qm2" eventType="touchUpInside" id="ipH-tM-oF5"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="oY0-bo-cg9" firstAttribute="leading" secondItem="uot-eu-rHg" secondAttribute="leading" id="Ahp-7N-fxs"/>
-                            <constraint firstItem="oY0-bo-cg9" firstAttribute="bottom" secondItem="Yei-5n-i7X" secondAttribute="top" id="CX4-Tr-uLe"/>
-                            <constraint firstItem="oY0-bo-cg9" firstAttribute="top" secondItem="D0b-L9-uJL" secondAttribute="bottom" id="gVM-MQ-Kyg"/>
-                            <constraint firstAttribute="trailing" secondItem="oY0-bo-cg9" secondAttribute="trailing" id="mAM-V9-bmg"/>
-                            <constraint firstItem="oY0-bo-cg9" firstAttribute="centerX" secondItem="uot-eu-rHg" secondAttribute="centerX" id="sR7-0i-lZP"/>
+                            <constraint firstItem="O3E-BG-cLP" firstAttribute="top" secondItem="D0b-L9-uJL" secondAttribute="bottom" id="atc-eV-V3S"/>
+                            <constraint firstItem="O3E-BG-cLP" firstAttribute="leading" secondItem="uot-eu-rHg" secondAttribute="leading" id="hWp-gs-mup"/>
+                            <constraint firstAttribute="trailing" secondItem="O3E-BG-cLP" secondAttribute="trailing" id="mue-An-fRI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5O8-3F-bCo"/>
@@ -68,9 +40,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="1000"/>
                     <connections>
-                        <outlet property="bannerImage" destination="s75-vY-beZ" id="7bP-w2-T0u"/>
-                        <outlet property="descriptionTextView" destination="MTA-Zs-og8" id="uKg-Ev-ScU"/>
-                        <outlet property="scrollView" destination="oY0-bo-cg9" id="ALB-aZ-eUD"/>
+                        <outlet property="carousel" destination="O3E-BG-cLP" id="R1f-Jg-4w3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1wZ-F4-28p" userLabel="First Responder" sceneMemberID="firstResponder"/>
