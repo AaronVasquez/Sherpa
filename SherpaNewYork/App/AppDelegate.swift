@@ -17,11 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Set up Google Maps.
     GMSServices.provideAPIKey(kGoogleMapsApiKey)
 
-    // Set up Chameleon
-    Chameleon.setGlobalThemeUsingPrimaryColor(FlatWatermelonDark(), withContentStyle:.Contrast)
-
     UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: false)
-
+                    
     return true
   }
 
