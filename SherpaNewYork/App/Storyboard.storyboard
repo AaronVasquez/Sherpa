@@ -86,17 +86,17 @@
                         <viewControllerLayoutGuide type="bottom" id="8WH-0D-xmN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="teg-Py-AzY">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gNS-tX-DqB">
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gNS-tX-DqB">
                                 <rect key="frame" x="-4" y="64" width="328" height="504"/>
                                 <connections>
                                     <segue destination="684-2V-LvF" kind="embed" identifier="ListEmbedSegue" id="RlZ-zd-pxc"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="72T-kS-tox">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <connections>
                                     <segue destination="tnQ-SX-ODW" kind="embed" identifier="MapEmbedSegue" id="8tD-gc-wax"/>
                                 </connections>
@@ -128,7 +128,7 @@
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="listView" destination="gNS-tX-DqB" id="e0d-8Q-CI8"/>
@@ -311,7 +311,7 @@
         <!--Venue List View Controller-->
         <scene sceneID="gjC-dy-pUc">
             <objects>
-                <viewController storyboardIdentifier="VenueList" id="684-2V-LvF" customClass="VenueListViewController" customModule="SherpaNewYork" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VenueList" automaticallyAdjustsScrollViewInsets="NO" id="684-2V-LvF" customClass="VenueListViewController" customModule="SherpaNewYork" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yoX-b1-SpZ"/>
                         <viewControllerLayoutGuide type="bottom" id="gpo-7W-g1R"/>
@@ -320,21 +320,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="328" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eM8-dV-gDS">
+                                <rect key="frame" x="44" y="188" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rYE-Cl-e0P">
                                 <rect key="frame" x="0.0" y="0.0" width="328" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="kVenueCellIdentifier" id="06B-5y-COV">
-                                        <rect key="frame" x="0.0" y="28" width="328" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="06B-5y-COV" id="iKw-U5-Gim">
-                                            <rect key="frame" x="0.0" y="0.0" width="295" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LMATableCell" rowHeight="200" id="sID-4R-ZQe" customClass="VenueTableViewCell" customModule="SherpaNewYork" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="328" height="200"/>
+                                        <rect key="frame" x="0.0" y="28" width="328" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sID-4R-ZQe" id="7nY-sY-ABQ">
                                             <rect key="frame" x="0.0" y="0.0" width="328" height="200"/>
@@ -356,6 +352,7 @@
                                                     <color key="backgroundColor" red="0.111818932" green="0.11183650050000001" blue="0.1118125319" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.89126098155975342" green="0.3545563817024231" blue="0.39968371391296387" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="bannerImageView" destination="DxH-lK-T4M" id="g23-7e-Yph"/>
@@ -366,7 +363,6 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="rYE-Cl-e0P" firstAttribute="top" secondItem="CT2-dc-L3I" secondAttribute="top" id="Bg5-v6-1RE"/>
                             <constraint firstAttribute="trailing" secondItem="rYE-Cl-e0P" secondAttribute="trailing" id="Xmc-tH-hVn"/>
