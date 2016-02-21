@@ -12,7 +12,6 @@
 		81279EC01C4C14BE003CC625 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81279EBF1C4C14BE003CC625 /* MapViewController.swift */; };
 		81516BCF1BD2971C00C66DEB /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81516BCE1BD2971C00C66DEB /* RootViewController.swift */; };
 		8194E0D41C4D7898002C644C /* VenueDetailDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8194E0D31C4D7898002C644C /* VenueDetailDelegate.swift */; };
-		81A7D6A51C7A48B300A08451 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A7D6A41C7A48B300A08451 /* QuartzCore.framework */; };
 		81D6B43D1C00CC6300916FD8 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81D6B43C1C00CC6300916FD8 /* Storyboard.storyboard */; };
 		93085EC41C5D72C60062694A /* VenueCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93085EC31C5D72C60062694A /* VenueCollection.swift */; };
 		9332F5E01BE57D4B007D4212 /* VenueListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9332F5DF1BE57D4B007D4212 /* VenueListViewController.swift */; };
@@ -37,7 +36,6 @@
 		81279EBF1C4C14BE003CC625 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		81516BCE1BD2971C00C66DEB /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		8194E0D31C4D7898002C644C /* VenueDetailDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueDetailDelegate.swift; sourceTree = "<group>"; };
-		81A7D6A41C7A48B300A08451 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		81D6B43C1C00CC6300916FD8 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		93085EC31C5D72C60062694A /* VenueCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueCollection.swift; sourceTree = "<group>"; };
 		9332F5DF1BE57D4B007D4212 /* VenueListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueListViewController.swift; sourceTree = "<group>"; };
@@ -59,7 +57,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81A7D6A51C7A48B300A08451 /* QuartzCore.framework in Frameworks */,
 				81166D3A1BD2C872007E0CAB /* CoreLocation.framework in Frameworks */,
 				F45E411175484A5D51E2F87C /* Pods_SherpaNewYork.framework in Frameworks */,
 			);
@@ -162,7 +159,6 @@
 		B5C47B64711D4FB54A650227 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				81A7D6A41C7A48B300A08451 /* QuartzCore.framework */,
 				81166D391BD2C872007E0CAB /* CoreLocation.framework */,
 				38A370B69845F22C918847B4 /* Pods_SherpaNewYork.framework */,
 			);
