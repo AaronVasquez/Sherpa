@@ -333,10 +333,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="328" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="shake-shack-test" translatesAutoresizingMaskIntoConstraints="NO" id="DxH-lK-T4M">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shake-shack-test" translatesAutoresizingMaskIntoConstraints="NO" id="DxH-lK-T4M">
                                                     <rect key="frame" x="0.0" y="0.0" width="328" height="199"/>
                                                 </imageView>
-                                                <view opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JqB-x5-Sai">
+                                                <view opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JqB-x5-Sai">
                                                     <rect key="frame" x="0.0" y="100" width="328" height="100"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chick N' Shack" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVe-5G-uTh">
@@ -355,6 +355,16 @@
                                                     <color key="backgroundColor" red="0.111818932" green="0.11183650050000001" blue="0.1118125319" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="JqB-x5-Sai" firstAttribute="top" secondItem="7nY-sY-ABQ" secondAttribute="topMargin" constant="92" id="MOh-iX-WBS"/>
+                                                <constraint firstItem="DxH-lK-T4M" firstAttribute="width" secondItem="7nY-sY-ABQ" secondAttribute="width" id="Np6-tn-XWN"/>
+                                                <constraint firstItem="DxH-lK-T4M" firstAttribute="leading" secondItem="JqB-x5-Sai" secondAttribute="leading" id="QCf-1N-hUA"/>
+                                                <constraint firstItem="DxH-lK-T4M" firstAttribute="centerY" secondItem="7nY-sY-ABQ" secondAttribute="centerY" id="aSZ-fe-8rX"/>
+                                                <constraint firstItem="DxH-lK-T4M" firstAttribute="leading" secondItem="7nY-sY-ABQ" secondAttribute="leading" id="cjB-yi-vZq"/>
+                                                <constraint firstAttribute="bottom" secondItem="JqB-x5-Sai" secondAttribute="bottom" id="efw-7y-q2N"/>
+                                                <constraint firstItem="DxH-lK-T4M" firstAttribute="top" secondItem="7nY-sY-ABQ" secondAttribute="top" id="uyN-ac-lSS"/>
+                                                <constraint firstItem="DxH-lK-T4M" firstAttribute="trailing" secondItem="JqB-x5-Sai" secondAttribute="trailing" id="xKH-t8-bo0"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="bannerImageView" destination="DxH-lK-T4M" id="g23-7e-Yph"/>
