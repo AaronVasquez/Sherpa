@@ -1,6 +1,8 @@
 import UIKit
 import CoreLocation
+
 import GoogleMaps
+import SDWebImage
 
 private let kDefaultLatitude: Double = 40.713
 private let kDefaultLongitude: Double = -74.000
@@ -157,7 +159,7 @@ extension MapViewController: GMSMapViewDelegate {
         completion: { (success) -> Void in
           self.venueDescriptionNameLabel.text = self.selectedVenue!.name
           self.venueDescriptionCategoryLabel.text = self.selectedVenue!.pinDescription()
-          self.venueDescriptionThumbnailImage.imageFromUrl(self.selectedVenue!.thumbnailUrl)
+          self.venueDescriptionThumbnailImage.sd_setImageWithURL(self.selectedVenue!.thumbnailUrl)
         })
     
     venueDescriptionHeightConstraint.constant = originalvenueDescriptionHeightConstraint!

@@ -11,7 +11,6 @@
 		81166D3A1BD2C872007E0CAB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81166D391BD2C872007E0CAB /* CoreLocation.framework */; };
 		81279EC01C4C14BE003CC625 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81279EBF1C4C14BE003CC625 /* MapViewController.swift */; };
 		81516BCF1BD2971C00C66DEB /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81516BCE1BD2971C00C66DEB /* RootViewController.swift */; };
-		816F6A7C1C67F63300A96204 /* UIImageViewAsynchronousRequestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816F6A7B1C67F63300A96204 /* UIImageViewAsynchronousRequestExtension.swift */; };
 		8194E0D41C4D7898002C644C /* VenueDetailDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8194E0D31C4D7898002C644C /* VenueDetailDelegate.swift */; };
 		81D6B43D1C00CC6300916FD8 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81D6B43C1C00CC6300916FD8 /* Storyboard.storyboard */; };
 		93085EC41C5D72C60062694A /* VenueCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93085EC31C5D72C60062694A /* VenueCollection.swift */; };
@@ -36,7 +35,6 @@
 		81166D391BD2C872007E0CAB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		81279EBF1C4C14BE003CC625 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		81516BCE1BD2971C00C66DEB /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		816F6A7B1C67F63300A96204 /* UIImageViewAsynchronousRequestExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewAsynchronousRequestExtension.swift; sourceTree = "<group>"; };
 		8194E0D31C4D7898002C644C /* VenueDetailDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueDetailDelegate.swift; sourceTree = "<group>"; };
 		81D6B43C1C00CC6300916FD8 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		93085EC31C5D72C60062694A /* VenueCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueCollection.swift; sourceTree = "<group>"; };
@@ -74,15 +72,6 @@
 				0B2AF95994A3609CB183E35D /* Pods-SherpaNewYork.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		816F6A7A1C67F60900A96204 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				816F6A7B1C67F63300A96204 /* UIImageViewAsynchronousRequestExtension.swift */,
-			);
-			name = Extensions;
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 		9304B6B71BD3555C00A47488 /* Controllers */ = {
@@ -133,7 +122,6 @@
 				93D1119A1C5E8C0800886189 /* Views */,
 				93C394721BDD94DC0099AD9D /* Models */,
 				93C394751BDD998F0099AD9D /* Repositories */,
-				816F6A7A1C67F60900A96204 /* Extensions */,
 				9304B6B71BD3555C00A47488 /* Controllers */,
 				81D6B43C1C00CC6300916FD8 /* Storyboard.storyboard */,
 				93B91F6A1BD20DCF00D2CA7C /* AppDelegate.swift */,
@@ -311,7 +299,6 @@
 				93D1119C1C5E8C2100886189 /* VenueTableViewCell.swift in Sources */,
 				81516BCF1BD2971C00C66DEB /* RootViewController.swift in Sources */,
 				8194E0D41C4D7898002C644C /* VenueDetailDelegate.swift in Sources */,
-				816F6A7C1C67F63300A96204 /* UIImageViewAsynchronousRequestExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

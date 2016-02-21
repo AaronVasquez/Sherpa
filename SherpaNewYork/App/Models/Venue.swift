@@ -15,11 +15,11 @@ public class Venue {
   let price: Int
   let coordinates: CLLocationCoordinate2D
   let type: VenueType
-  let thumbnailUrl: String
+  let thumbnailUrl: NSURL
   let photoUrls: [NSURL]
   
   required public init(id: String, name: String, description: String, shortDescription: String, price: Int,
-    coordinates: CLLocationCoordinate2D, type: Int, thumbnailUrl: String, photoUrls: [NSURL]) {
+    coordinates: CLLocationCoordinate2D, type: Int, thumbnailUrl: NSURL, photoUrls: [NSURL]) {
     self.id = id
     self.name = name
     self.description = description
