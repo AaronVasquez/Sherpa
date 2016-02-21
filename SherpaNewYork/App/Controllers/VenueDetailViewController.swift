@@ -11,12 +11,11 @@ class VenueDetailViewController: UIViewController, UICollectionViewDataSource, U
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
-    navigationController?.navigationBar.hidden = false
-    tabBarController?.tabBar.hidden = true
-    
+
+    self.title = venue?.name
+
     carousel.delegate = self
     carousel.dataSource = self
-    self.title = venue?.name
   }
   
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -27,22 +26,14 @@ class VenueDetailViewController: UIViewController, UICollectionViewDataSource, U
     return cell
   }
   
-  func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-    return 1
-  }
-  
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return venue!.photoUrls.count
   }
   
   func collectionView(collectionView: UICollectionView,
-    layout collectionViewLayout: UICollectionViewLayout,
-    sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+                      layout collectionViewLayout: UICollectionViewLayout,
+                      sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
       return CGSizeMake(collectionView.bounds.size.width, 200)
-  }
-  
-  @IBAction func metroButtonTapped(sender: AnyObject) {
-    print("Metro button tapped")
   }
   
 }

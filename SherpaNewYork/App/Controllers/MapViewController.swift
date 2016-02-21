@@ -17,16 +17,15 @@ private let kShowFilterSegue = "showVenueFilterViewController"
 
 class MapViewController: UIViewController {
   
+  private let locationManager = CLLocationManager()
+
   var delegate: VenueDetailDelegate?
-  
-  let locationManager = CLLocationManager()
+
   var userCoordinates = CLLocationCoordinate2DMake(kDefaultLatitude, kDefaultLongitude)
   var venueCollection: VenueCollection?
 
-  var originalvenueDescriptionHeightConstraint:CGFloat?
-  var selectedVenue: Venue?
-  
-  var firstDescriptionShown = false
+  private var originalvenueDescriptionHeightConstraint:CGFloat?
+  private var selectedVenue: Venue?
 
   @IBOutlet weak var mapView: GMSMapView!
 
@@ -71,7 +70,6 @@ class MapViewController: UIViewController {
   
   func hideDescriptions() {
     venueDescriptionHeightConstraint.constant = 0
-    firstDescriptionShown = false
     selectedVenue = nil
     
     self.view.setNeedsUpdateConstraints()
@@ -148,33 +146,29 @@ extension MapViewController: GMSMapViewDelegate {
     
     venueDescriptionHeightConstraint.constant = 0
     self.view.setNeedsUpdateConstraints()
-    UIView.animateWithDuration(0.25,
+    UIView.animateWithDuration(0.1,
         delay: 0,
-        usingSpringWithDamping: 0.75,
+        usingSpringWithDamping: 0.7,
         initialSpringVelocity: 0.0,
         options: .BeginFromCurrentState,
-        animations: { () -> Void in
-          self.view.layoutIfNeeded()
-        },
-        completion: { (success) -> Void in
+        animations: { self.view.layoutIfNeeded() },
+        completion: { (_) -> Void in
           self.venueDescriptionNameLabel.text = self.selectedVenue!.name
           self.venueDescriptionCategoryLabel.text = self.selectedVenue!.pinDescription()
           self.venueDescriptionThumbnailImage.sd_setImageWithURL(self.selectedVenue!.thumbnailUrl)
-        })
-    
-    venueDescriptionHeightConstraint.constant = originalvenueDescriptionHeightConstraint!
-    self.view.setNeedsUpdateConstraints()
-    UIView.animateWithDuration(0.25,
-      delay: 0.25,
-      usingSpringWithDamping: 0.75,
-      initialSpringVelocity: 0.0,
-      options: .BeginFromCurrentState,
-      animations: { () -> Void in
-        self.view.layoutIfNeeded()
-      },
-      completion: nil)
-    
 
+          self.venueDescriptionHeightConstraint.constant =
+              self.originalvenueDescriptionHeightConstraint!
+          self.view.setNeedsUpdateConstraints()
+          UIView.animateWithDuration(0.15,
+              delay: 0.0,
+              usingSpringWithDamping: 0.7,
+              initialSpringVelocity: 0.0,
+              options: .BeginFromCurrentState,
+              animations: { self.view.layoutIfNeeded() },
+              completion: nil)
+
+        })
     return true
   }
 }

@@ -20,13 +20,13 @@ class RootViewController: UIViewController {
   @IBOutlet var mapView: UIView!
   @IBOutlet var listView: UIView!
   
-  let locationManager = CLLocationManager()
-  let venueCollection = VenueCollection.init();
+  private let locationManager = CLLocationManager()
+  private let venueCollection = VenueCollection.init();
 
-  var chosenVenue: Venue?
-  var venueFilter = VenueFilter.init()
-  var listViewController: VenueListViewController?
-  var mapViewController: MapViewController?
+  private var chosenVenue: Venue?
+  private var venueFilter = VenueFilter.init()
+  private var listViewController: VenueListViewController?
+  private var mapViewController: MapViewController?
   
   override func viewDidLoad() {
     super.viewDidLoad()
