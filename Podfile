@@ -5,5 +5,6 @@ use_frameworks!
 target 'SherpaNewYork' do
   pod 'ChameleonFramework/Swift'
   pod 'GoogleMaps'
+  pod 'SDWebImage'
   pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
 end

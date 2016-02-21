@@ -2,6 +2,7 @@ import Foundation
 import UIKit
 
 import ChameleonFramework.UIColor_Chameleon
+import SDWebImage
 
 // TODO: Create a subclass to handle the cell.
 private let kVenueCellIdentifier = "LMATableCell"
@@ -54,8 +55,7 @@ extension VenueListViewController: UITableViewDataSource {
                      withFrame: informationView.bounds,
                      andColors: [UIColor.clearColor(), UIColor.init(white: 0.0, alpha: 0.8)])
 
-    // TODO: Figure out the gradient.
-    // TODO: Cache the images.
+    venueTableCell.bannerImageView.sd_setImageWithURL(venue.photoUrls[0])
 
     return venueTableCell
   }
