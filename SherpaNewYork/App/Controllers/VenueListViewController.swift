@@ -45,9 +45,10 @@ extension VenueListViewController: UITableViewDataSource {
 
     let venueTableCell =
         tableView.dequeueReusableCellWithIdentifier(kVenueCellIdentifier)! as! VenueTableViewCell
-    let informationView = venueTableCell.informationContainerView;
+    let informationView = venueTableCell.informationContainerView
 
-    venueTableCell.titleLabel.text = venue.name;
+    venueTableCell.titleLabel.text = venue.name
+    venueTableCell.descriptionLabel.text = venue.shortDescription
     venueTableCell.informationContainerView.backgroundColor =
         UIColor.init(gradientStyle:.TopToBottom,
                      withFrame: informationView.bounds,
@@ -68,7 +69,7 @@ extension VenueListViewController: UITableViewDelegate {
 
   public func tableView(tableView: UITableView, heightForRowAtIndexPath
                         indexPath: NSIndexPath) -> CGFloat {
-    return kVenueTableCellHeight;
+    return kVenueTableCellHeight
   }
 
 }
