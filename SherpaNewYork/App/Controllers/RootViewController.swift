@@ -57,7 +57,8 @@ class RootViewController: UIViewController {
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if (segue.identifier == kShowFilterSegue) {
-      let navController = segue.destinationViewController as! UINavigationController//VenueFilterViewController
+      //VenueFilterViewController
+      let navController = segue.destinationViewController as! UINavigationController
       let venueFilterVc = navController.childViewControllers[0] as! VenueFilterViewController
       venueFilterVc.venueFilter = self.venueFilter
       venueFilterVc.filterDelegate = self

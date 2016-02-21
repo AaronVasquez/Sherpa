@@ -1,6 +1,8 @@
 import Foundation
 import UIKit
 
+import ChameleonFramework.UIColor_Chameleon
+
 // TODO: Create a subclass to handle the cell.
 private let kVenueCellIdentifier = "LMATableCell"
 private let kVenueTableCellHeight: CGFloat = 200.0;
@@ -42,9 +44,14 @@ extension VenueListViewController: UITableViewDataSource {
     let venue = venueCollection!.filteredVenues[indexPath.row]
 
     let venueTableCell =
-      tableView.dequeueReusableCellWithIdentifier(kVenueCellIdentifier)! as! VenueTableViewCell
+        tableView.dequeueReusableCellWithIdentifier(kVenueCellIdentifier)! as! VenueTableViewCell
+    let informationView = venueTableCell.informationContainerView;
 
     venueTableCell.titleLabel.text = venue.name;
+    venueTableCell.informationContainerView.backgroundColor =
+        UIColor.init(gradientStyle:.TopToBottom,
+                     withFrame: informationView.bounds,
+                     andColors: [UIColor.clearColor(), UIColor.init(white: 0.0, alpha: 0.8)])
 
     // TODO: Figure out the gradient.
     // TODO: Cache the images.
