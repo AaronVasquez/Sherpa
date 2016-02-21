@@ -1,6 +1,8 @@
 import Foundation
 import UIKit
 
+import SDWebImage
+
 class VenueDetailViewController: UIViewController {
   var venue: Venue?
   
@@ -14,15 +16,7 @@ class VenueDetailViewController: UIViewController {
     tabBarController?.tabBar.hidden = true
 
     self.title = venue?.name
-
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
-      if let data = NSData(contentsOfURL: self.venue!.photoUrls[0]) {
-        let bannerImage = UIImage(data: data)
-        dispatch_async(dispatch_get_main_queue(), {
-          self.bannerImage.image = bannerImage
-        })
-      }
-    }
+    self.bannerImage.sd_setImageWithURL(self.venue!.photoUrls[0])
 
     descriptionTextView.text = venue!.description
   }
