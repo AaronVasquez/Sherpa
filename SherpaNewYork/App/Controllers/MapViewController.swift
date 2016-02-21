@@ -2,7 +2,7 @@ import UIKit
 import CoreLocation
 
 import GoogleMaps
-import SDWebImage
+import SDWebImage.UIImageView_WebCache
 
 private let kDefaultLatitude: Double = 40.713
 private let kDefaultLongitude: Double = -74.000

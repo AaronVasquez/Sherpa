@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-import SDWebImage
+import SDWebImage.UIImageView_WebCache
 
 class VenueDetailViewController: UIViewController {
   var venue: Venue?

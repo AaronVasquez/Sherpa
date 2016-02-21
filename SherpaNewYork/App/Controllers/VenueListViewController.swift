@@ -2,7 +2,8 @@ import Foundation
 import UIKit
 
 import ChameleonFramework.UIColor_Chameleon
-import SDWebImage
+import AMScrollingNavbar
+import SDWebImage.UIImageView_WebCache
 
 // TODO: Create a subclass to handle the cell.
 private let kVenueCellIdentifier = "LMATableCell"
@@ -18,13 +19,17 @@ public class VenueListViewController: UIViewController {
 
   override public func viewDidLoad() {
     super.viewDidLoad()
+
     tableView.delegate = self
     tableView.dataSource = self
   }
-  
+
   override public func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
-    tabBarController?.tabBar.hidden = false
+
+    if let navigationController = self.navigationController as? ScrollingNavigationController {
+      navigationController.followScrollView(tableView, delay: 30.0)
+    }
   }
 
   public func reloadList() {
