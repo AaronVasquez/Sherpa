@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 
+import MHFacebookImageViewer.UIImageView_MHFacebookImageViewer
 import SDWebImage.UIImageView_WebCache
 
 class VenueDetailViewController: UIViewController {
@@ -28,8 +29,14 @@ extension VenueDetailViewController: UICollectionViewDataSource {
 
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCellWithReuseIdentifier("image", forIndexPath: indexPath) as! VenueDetailViewImageCell
+    let imageUrl = venue!.photoUrls[indexPath.row]
+    let imageView = cell.imageView
 
-    cell.imageView.sd_setImageWithURL(venue!.photoUrls[indexPath.row])
+    imageView.sd_setImageWithURL(imageUrl) { (_, _, _, loadedUrl) -> Void in
+      if imageUrl.isEqual(loadedUrl) {
+        imageView.setupImageViewer()
+      }
+    }
 
     return cell
   }
