@@ -3,7 +3,7 @@ import UIKit
 
 import SDWebImage.UIImageView_WebCache
 
-class VenueDetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class VenueDetailViewController: UIViewController {
   
   var venue: Venue?
   
@@ -17,23 +17,31 @@ class VenueDetailViewController: UIViewController, UICollectionViewDataSource, U
     carousel.delegate = self
     carousel.dataSource = self
   }
-  
-  func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("image", forIndexPath: indexPath) as! VenueDetailViewImageCell
-    
-    cell.imageView.sd_setImageWithURL(venue!.photoUrls[indexPath.row])
-    
-    return cell
-  }
-  
+}
+
+extension VenueDetailViewController: UICollectionViewDataSource {
+
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return venue!.photoUrls.count
   }
-  
+
+
+  func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("image", forIndexPath: indexPath) as! VenueDetailViewImageCell
+
+    cell.imageView.sd_setImageWithURL(venue!.photoUrls[indexPath.row])
+
+    return cell
+  }
+}
+
+extension VenueDetailViewController: UICollectionViewDelegate {
+
   func collectionView(collectionView: UICollectionView,
-                      layout collectionViewLayout: UICollectionViewLayout,
-                      sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    layout collectionViewLayout: UICollectionViewLayout,
+    sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
       return CGSizeMake(collectionView.bounds.size.width, 200)
   }
-  
 }
+
+

@@ -5,6 +5,7 @@ use_frameworks!
 target 'SherpaNewYork' do
   pod 'ChameleonFramework/Swift'
   pod 'GoogleMaps'
+  pod 'NYTPhotoViewer'
   pod 'SDWebImage'
   pod 'SwiftyJSON'
   pod 'TLYShyNavBar'
