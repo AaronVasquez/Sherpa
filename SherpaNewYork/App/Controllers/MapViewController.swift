@@ -160,7 +160,7 @@ extension MapViewController: GMSMapViewDelegate {
           self.venueDescriptionHeightConstraint.constant =
               self.originalvenueDescriptionHeightConstraint!
           self.view.setNeedsUpdateConstraints()
-          UIView.animateWithDuration(0.15,
+          UIView.animateWithDuration(0.25,
               delay: 0.0,
               usingSpringWithDamping: 0.7,
               initialSpringVelocity: 0.0,

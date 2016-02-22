@@ -18,7 +18,8 @@ public class VenueFilterViewController : UIViewController {
   @IBOutlet weak var restuarantSwitch: UISwitch!
   @IBOutlet weak var entertainmentSwitch: UISwitch!
 
-  public override func viewDidLoad() {
+  override public func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
     reloadViewFromFilterChange(venueFilter)
   }
 

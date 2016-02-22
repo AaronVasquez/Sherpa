@@ -15,6 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // Set up Google Maps.
     GMSServices.provideAPIKey(kGoogleMapsApiKey)
+
+    // Remove ugly hairline.
+    UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarPosition: .Any, barMetrics: .Default)
+    UINavigationBar.appearance().shadowImage = UIImage()
+
     return true
   }
 

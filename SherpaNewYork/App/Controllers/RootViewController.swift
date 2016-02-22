@@ -27,11 +27,6 @@ class RootViewController: UIViewController {
   private var venueFilter = VenueFilter.init()
   private var listViewController: VenueListViewController?
   private var mapViewController: MapViewController?
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    tabBarController?.tabBar.hidden = false
-  }
 
   @IBAction func showFilterViewController(sender: AnyObject) {
     performSegueWithIdentifier(kShowFilterSegue, sender: mapViewController!)
@@ -44,7 +39,7 @@ class RootViewController: UIViewController {
 
     UIView.transitionFromView(fromView,
       toView: toView,
-      duration: 0.2,
+      duration: 0.1,
       options: UIViewAnimationOptions.TransitionCrossDissolve,
       completion: nil)
   }

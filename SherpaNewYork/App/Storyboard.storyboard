@@ -18,8 +18,9 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="936"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="q0L-mi-FpN">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="q0L-mi-FpN">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                                <color key="backgroundColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="4ty-tC-aWj"/>
                                 </constraints>
@@ -157,11 +158,11 @@
                         <viewControllerLayoutGuide type="bottom" id="pR7-d1-ALl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qY7-oI-R3H">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort by" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWX-cc-ySn">
-                                <rect key="frame" x="20" y="72" width="280" height="21"/>
+                                <rect key="frame" x="20" y="8" width="280" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="RIV-jP-rHk"/>
                                 </constraints>
@@ -170,7 +171,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tDq-Ls-vvZ">
-                                <rect key="frame" x="0.0" y="101" width="320" height="45"/>
+                                <rect key="frame" x="0.0" y="37" width="320" height="45"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rye-FN-wh1">
                                         <rect key="frame" x="20" y="8" width="280" height="29"/>
@@ -193,7 +194,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ny4-1f-Nhe">
-                                <rect key="frame" x="0.0" y="192" width="320" height="94"/>
+                                <rect key="frame" x="0.0" y="128" width="320" height="94"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurants" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A12-TA-d9a">
                                         <rect key="frame" x="21" y="13" width="234" height="21"/>
@@ -246,7 +247,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J59-D5-Rb5">
-                                <rect key="frame" x="207" y="154" width="103" height="30"/>
+                                <rect key="frame" x="207" y="90" width="103" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="103" id="VS7-f2-Gtu"/>
                                 </constraints>
@@ -259,7 +260,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter by" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBq-ju-gxK">
-                                <rect key="frame" x="20" y="157" width="280" height="21"/>
+                                <rect key="frame" x="20" y="93" width="280" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="jlS-W1-0ha"/>
                                 </constraints>
@@ -288,7 +289,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Filter" id="6eq-ac-Tdl">
-                        <barButtonItem key="rightBarButtonItem" title="Done" style="plain" id="mIJ-eq-rW3">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="mIJ-eq-rW3">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="applyFilter:" destination="Rve-2K-C3V" id="e2x-wh-ZF8"/>
@@ -333,8 +334,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="328" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shake-shack-test" translatesAutoresizingMaskIntoConstraints="NO" id="DxH-lK-T4M">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DxH-lK-T4M">
                                                     <rect key="frame" x="0.0" y="0.0" width="328" height="199"/>
+                                                    <color key="backgroundColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
                                                 <view opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JqB-x5-Sai">
                                                     <rect key="frame" x="0.0" y="100" width="328" height="100"/>
@@ -422,8 +424,9 @@
                                         <color key="textColor" red="0.42655369639396667" green="0.47584608197212219" blue="0.48026475310325623" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cafe_pin" translatesAutoresizingMaskIntoConstraints="NO" id="vs7-df-nu6">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vs7-df-nu6">
                                         <rect key="frame" x="8" y="8" width="50" height="50"/>
+                                        <color key="backgroundColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="E4C-PE-uQS"/>
                                             <constraint firstAttribute="width" constant="50" id="Jcz-6N-dqn"/>
@@ -513,7 +516,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eSr-Vj-qKa" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jdD-H1-tyK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="jdD-H1-tyK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -531,8 +534,4 @@
             <point key="canvasLocation" x="1045" y="-1505"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="cafe_pin" width="35" height="42"/>
-        <image name="shake-shack-test" width="225" height="225"/>
-    </resources>
 </document>

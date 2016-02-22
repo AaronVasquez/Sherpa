@@ -26,7 +26,7 @@ public class VenueCollection {
 
         return venueOneDistance < venueTwoDistance
       case SortCriteria.Name:
-        return venueOne.name > venueTwo.name
+        return venueOne.name < venueTwo.name
       }
     })
   }
