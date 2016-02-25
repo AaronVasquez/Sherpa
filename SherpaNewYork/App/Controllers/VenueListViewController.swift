@@ -53,6 +53,7 @@ extension VenueListViewController: UITableViewDataSource {
 
     venueTableCell.titleLabel.text = venue.name
     venueTableCell.descriptionLabel.text = venue.shortDescription
+    venueTableCell.dollarSigns.text = venue.dollarSigns()
     venueTableCell.informationContainerView.backgroundColor =
         UIColor.init(gradientStyle:.TopToBottom,
                      withFrame: informationView.bounds,

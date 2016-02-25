@@ -338,11 +338,11 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="328" height="199"/>
                                                     <color key="backgroundColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
-                                                <view opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JqB-x5-Sai">
+                                                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JqB-x5-Sai">
                                                     <rect key="frame" x="0.0" y="100" width="328" height="100"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chick N' Shack" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVe-5G-uTh">
-                                                            <rect key="frame" x="8" y="48" width="312" height="21"/>
+                                                            <rect key="frame" x="8" y="48" width="284" height="21"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -353,8 +353,14 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$$$$$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E5i-rE-KXl">
+                                                            <rect key="frame" x="269" y="48" width="51" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.111818932" green="0.11183650050000001" blue="0.1118125319" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.12637259066104889" green="0.12639245390892029" blue="0.12636536359786987" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -371,6 +377,7 @@
                                         <connections>
                                             <outlet property="bannerImageView" destination="DxH-lK-T4M" id="g23-7e-Yph"/>
                                             <outlet property="descriptionLabel" destination="gNK-XX-ohQ" id="Vw3-Z1-x2X"/>
+                                            <outlet property="dollarSigns" destination="E5i-rE-KXl" id="ayh-gU-N2F"/>
                                             <outlet property="informationContainerView" destination="JqB-x5-Sai" id="7XK-Da-ywo"/>
                                             <outlet property="titleLabel" destination="lVe-5G-uTh" id="rTP-Da-1fn"/>
                                         </connections>
@@ -428,7 +435,7 @@
                                         <color key="backgroundColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkg-AP-DdD">
-                                        <rect key="frame" x="74" y="8" width="234" height="21"/>
+                                        <rect key="frame" x="74" y="8" width="204" height="21"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <color key="textColor" red="0.42655369639396667" green="0.47584608197212219" blue="0.48026475310325623" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -437,6 +444,12 @@
                                         <rect key="frame" x="74" y="37" width="234" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.42655369640000002" green="0.475846082" blue="0.4802647531" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$$$$$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHX-Dc-x3O">
+                                        <rect key="frame" x="253" y="8" width="55" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                        <color key="textColor" red="0.51784205436706543" green="0.58159953355789185" blue="0.58617168664932251" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -465,6 +478,7 @@
                         <outlet property="mapView" destination="hw9-0c-wfz" id="BdP-so-60v"/>
                         <outlet property="venueDescriptionButton" destination="CTa-v6-wBP" id="c17-hZ-ERG"/>
                         <outlet property="venueDescriptionCategoryLabel" destination="hGb-Gs-M0F" id="VLN-Ed-yAM"/>
+                        <outlet property="venueDescriptionDollars" destination="pHX-Dc-x3O" id="Ib0-dC-M0k"/>
                         <outlet property="venueDescriptionHeightConstraint" destination="nN4-NP-TEn" id="YWC-nX-uXr"/>
                         <outlet property="venueDescriptionNameLabel" destination="zkg-AP-DdD" id="Dmb-Q5-F3R"/>
                         <outlet property="venueDescriptionThumbnailImage" destination="RuO-cs-w93" id="RrT-LX-9LB"/>

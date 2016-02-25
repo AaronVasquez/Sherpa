@@ -31,11 +31,7 @@ public class Venue {
     self.photoUrls = photoUrls
   }
   
-  func pinDescription() -> String {
-    return "\(self.shortDescription) - \(self.dollarSigns())"
-  }
-  
-  func dollarSigns() -> String {
+  public func dollarSigns() -> String {
     var result = ""
     for _ in 0..<self.price {
       result += "$"

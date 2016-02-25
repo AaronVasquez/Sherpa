@@ -20,10 +20,12 @@ class MapViewController: UIViewController {
   @IBOutlet weak var mapView: GMSMapView!
 
   @IBOutlet weak var venueDescriptionButton: UIButton!
+  @IBOutlet weak var venueDescriptionHeightConstraint: NSLayoutConstraint!
+
+  @IBOutlet weak var venueDescriptionThumbnailImage: UIImageView!
   @IBOutlet weak var venueDescriptionNameLabel: UILabel!
   @IBOutlet weak var venueDescriptionCategoryLabel: UILabel!
-  @IBOutlet weak var venueDescriptionHeightConstraint: NSLayoutConstraint!
-  @IBOutlet weak var venueDescriptionThumbnailImage: UIImageView!
+  @IBOutlet weak var venueDescriptionDollars: UILabel!
 
   private let locationManager = CLLocationManager()
 
@@ -153,9 +155,13 @@ extension MapViewController: GMSMapViewDelegate {
         options: .BeginFromCurrentState,
         animations: { self.view.layoutIfNeeded() },
         completion: { (_) -> Void in
-          self.venueDescriptionNameLabel.text = self.selectedVenue!.name
-          self.venueDescriptionCategoryLabel.text = self.selectedVenue!.pinDescription()
-          self.venueDescriptionThumbnailImage.sd_setImageWithURL(self.selectedVenue!.thumbnailUrl)
+          let venue = self.selectedVenue!
+
+          self.venueDescriptionNameLabel.text = venue.name
+          self.venueDescriptionCategoryLabel.text = venue.shortDescription
+          self.venueDescriptionDollars.text = venue.dollarSigns()
+
+          self.venueDescriptionThumbnailImage.sd_setImageWithURL(venue.thumbnailUrl)
 
           self.venueDescriptionHeightConstraint.constant =
               self.originalvenueDescriptionHeightConstraint!
