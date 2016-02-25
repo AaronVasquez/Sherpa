@@ -17,6 +17,14 @@ private let kShowFilterSegue = "showVenueFilterViewController"
 
 class MapViewController: UIViewController {
   
+  @IBOutlet weak var mapView: GMSMapView!
+
+  @IBOutlet weak var venueDescriptionButton: UIButton!
+  @IBOutlet weak var venueDescriptionNameLabel: UILabel!
+  @IBOutlet weak var venueDescriptionCategoryLabel: UILabel!
+  @IBOutlet weak var venueDescriptionHeightConstraint: NSLayoutConstraint!
+  @IBOutlet weak var venueDescriptionThumbnailImage: UIImageView!
+
   private let locationManager = CLLocationManager()
 
   var delegate: VenueDetailDelegate?
@@ -26,14 +34,6 @@ class MapViewController: UIViewController {
 
   private var originalvenueDescriptionHeightConstraint:CGFloat?
   private var selectedVenue: Venue?
-
-  @IBOutlet weak var mapView: GMSMapView!
-
-  @IBOutlet weak var venueDescriptionButton: UIButton!
-  @IBOutlet weak var venueDescriptionNameLabel: UILabel!
-  @IBOutlet weak var venueDescriptionCategoryLabel: UILabel!
-  @IBOutlet weak var venueDescriptionHeightConstraint: NSLayoutConstraint!
-  @IBOutlet weak var venueDescriptionThumbnailImage: UIImageView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
