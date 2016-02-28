@@ -104,17 +104,17 @@
                                                     <constraint firstItem="FQ3-zM-mWq" firstAttribute="leading" secondItem="hhv-zX-Sap" secondAttribute="leading" id="OHp-ak-uPb"/>
                                                 </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="pMJ-N5-Fvg">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="pMJ-N5-Fvg">
                                                 <rect key="frame" x="0.0" y="237" width="320" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WmC-R2-5T6">
-                                                        <rect key="frame" x="0.0" y="0.0" width="160" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="206" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXf-uR-biI">
-                                                        <rect key="frame" x="160" y="0.0" width="160" height="30"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXf-uR-biI">
+                                                        <rect key="frame" x="206" y="0.0" width="114" height="30"/>
                                                         <state key="normal" title="(917) 567- 4828"/>
                                                         <connections>
                                                             <action selector="phoneNumberTapped:" destination="xHo-vO-qm2" eventType="touchUpInside" id="4Gj-RG-G4n"/>
@@ -122,17 +122,17 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="J7W-Pa-HAH">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="J7W-Pa-HAH">
                                                 <rect key="frame" x="0.0" y="267" width="320" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Website" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJV-7r-aPw">
-                                                        <rect key="frame" x="0.0" y="0.0" width="160" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="202" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGz-DX-bH3">
-                                                        <rect key="frame" x="160" y="0.0" width="160" height="30"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGz-DX-bH3">
+                                                        <rect key="frame" x="202" y="0.0" width="118" height="30"/>
                                                         <state key="normal" title="www.sherpa.com"/>
                                                     </button>
                                                 </subviews>
