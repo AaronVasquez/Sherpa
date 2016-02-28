@@ -35,6 +35,7 @@ struct VenueRepository {
         longitude: venue["coordinates"]["long"].doubleValue),
         type: venue["type"].intValue,
         phoneNumber: venue["phoneNumber"].stringValue,
+        websiteUrl: venue["websiteUrl"].URL!,
         thumbnailUrl: venue["thumbnailUrl"].URL!,
         photoUrls: photoUrls)
       

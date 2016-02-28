@@ -12,6 +12,7 @@ class VenueDetailViewController: UIViewController {
   @IBOutlet weak var shortDescription: UILabel!
   @IBOutlet weak var longDescription: UILabel!
   @IBOutlet weak var phoneNumber: UIButton!
+  @IBOutlet weak var website: UIButton!
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
@@ -20,6 +21,7 @@ class VenueDetailViewController: UIViewController {
     self.longDescription.text = venue!.description
     self.shortDescription.text = venue!.shortDescription
     self.phoneNumber.setTitle(venue!.phoneNumber, forState: .Normal)
+    self.website.setTitle(venue!.websiteUrl.absoluteString, forState: .Normal)
     
     carousel.delegate = self
     carousel.dataSource = self
