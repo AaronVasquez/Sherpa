@@ -11,7 +11,7 @@ class VenueDetailViewController: UIViewController {
   @IBOutlet weak var carousel: UICollectionView!
   @IBOutlet weak var shortDescription: UILabel!
   @IBOutlet weak var longDescription: UILabel!
-  @IBOutlet weak var phoneNumber: UILabel!
+  @IBOutlet weak var phoneNumber: UIButton!
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
@@ -19,10 +19,18 @@ class VenueDetailViewController: UIViewController {
     self.title = venue!.name
     self.longDescription.text = venue!.description
     self.shortDescription.text = venue!.shortDescription
-    self.phoneNumber.text = venue!.phoneNumber
+    self.phoneNumber.setTitle(venue!.phoneNumber, forState: .Normal)
     
     carousel.delegate = self
     carousel.dataSource = self
+  }
+  
+  @IBAction func phoneNumberTapped(sender: AnyObject) {
+    if let number = NSURL(string: "tel://\(venue!.phoneNumber)") {
+      UIApplication.sharedApplication().openURL(number)
+    }
+    
+    
   }
 }
 
