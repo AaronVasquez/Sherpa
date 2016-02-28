@@ -11,6 +11,7 @@ class VenueDetailViewController: UIViewController {
   @IBOutlet weak var carousel: UICollectionView!
   @IBOutlet weak var shortDescription: UILabel!
   @IBOutlet weak var longDescription: UILabel!
+  @IBOutlet weak var phoneNumber: UILabel!
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
@@ -18,7 +19,8 @@ class VenueDetailViewController: UIViewController {
     self.title = venue!.name
     self.longDescription.text = venue!.description
     self.shortDescription.text = venue!.shortDescription
-
+    self.phoneNumber.text = venue!.phoneNumber
+    
     carousel.delegate = self
     carousel.dataSource = self
   }

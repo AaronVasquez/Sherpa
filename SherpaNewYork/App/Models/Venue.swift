@@ -15,11 +15,12 @@ public class Venue {
   let price: Int
   let coordinates: CLLocationCoordinate2D
   let type: VenueType
+  let phoneNumber: String
   let thumbnailUrl: NSURL
   let photoUrls: [NSURL]
   
   required public init(id: String, name: String, description: String, shortDescription: String, price: Int,
-    coordinates: CLLocationCoordinate2D, type: Int, thumbnailUrl: NSURL, photoUrls: [NSURL]) {
+    coordinates: CLLocationCoordinate2D, type: Int, phoneNumber: String, thumbnailUrl: NSURL, photoUrls: [NSURL]) {
     self.id = id
     self.name = name
     self.description = description
@@ -27,6 +28,7 @@ public class Venue {
     self.price = price
     self.coordinates = coordinates
     self.type = VenueType(rawValue: type)!  // This can crash if we use an invalid Int.
+    self.phoneNumber = phoneNumber
     self.thumbnailUrl = thumbnailUrl
     self.photoUrls = photoUrls
   }

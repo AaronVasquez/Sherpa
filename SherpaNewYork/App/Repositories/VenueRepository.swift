@@ -34,6 +34,7 @@ struct VenueRepository {
         coordinates: CLLocationCoordinate2D(latitude: venue["coordinates"]["lat"].doubleValue,
         longitude: venue["coordinates"]["long"].doubleValue),
         type: venue["type"].intValue,
+        phoneNumber: venue["phoneNumber"].stringValue,
         thumbnailUrl: venue["thumbnailUrl"].URL!,
         photoUrls: photoUrls)
       
