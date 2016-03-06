@@ -8,5 +8,4 @@ target 'SherpaNewYork' do
   pod 'MHFacebookImageViewer', git: 'https://github.com/michaelhenry/MHFacebookImageViewer.git'
   pod 'SDWebImage'
   pod 'SwiftyJSON'
-  pod 'TLYShyNavBar'
 end

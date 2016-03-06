@@ -30,7 +30,6 @@ PODS:
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
   - SwiftyJSON (2.3.2)
-  - TLYShyNavBar (1.0.0)
 
 DEPENDENCIES:
   - ChameleonFramework/Swift
@@ -38,7 +37,6 @@ DEPENDENCIES:
   - MHFacebookImageViewer (from `https://github.com/michaelhenry/MHFacebookImageViewer.git`)
   - SDWebImage
   - SwiftyJSON
-  - TLYShyNavBar
 
 EXTERNAL SOURCES:
   MHFacebookImageViewer:
@@ -56,6 +54,5 @@ SPEC CHECKSUMS:
   MHFacebookImageViewer: 5235694a4b4ec539dcbb9bdd0127da1d04711d1e
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
-  TLYShyNavBar: d313a1c50c58cb7af744829120eaa33ca8a998ce
 
 COCOAPODS: 0.39.0
