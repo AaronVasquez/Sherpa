@@ -79,8 +79,7 @@ class MapViewController: UIViewController {
     mapPin.title = venue.name
     mapPin.snippet = venue.description
     mapPin.appearAnimation = kGMSMarkerAnimationPop
-//    mapPin.icon = UIImage(named: kPinIcon)!.imageWithRenderingMode(.AlwaysTemplate)
-//    mapPin.layer.backgroundColor = colorForType(venue.type).CGColor
+    mapPin.icon = GMSMarker.markerImageWithColor(colorForType(venue.type))
     mapPin.userData = venue
   }
   
