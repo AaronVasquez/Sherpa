@@ -6,11 +6,6 @@ private let kDefaultLatitude: Double = 40.713
 private let kDefaultLongitude: Double = -74.000
 private let kDefaultZoomLevel: Float = 15.0
 
-private let kPinIconCafe = "cafe_pin"
-private let kPinIconRestaurant = "restaurant_pin"
-private let kPinIconGrocery = "grocery_pin"
-private let kPinIconDriving = "driving_pin"
-
 private let kShowFilterSegue = "showVenueFilterViewController"
 private let kMapEmbedSegue = "MapEmbedSegue"
 private let kListEmbedSegue = "ListEmbedSegue"

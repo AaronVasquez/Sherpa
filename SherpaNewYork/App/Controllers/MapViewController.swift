@@ -8,11 +8,6 @@ private let kDefaultLatitude: Double = 40.713
 private let kDefaultLongitude: Double = -74.000
 private let kDefaultZoomLevel: Float = 15.0
 
-private let kPinIconCafe = "cafe_pin"
-private let kPinIconRestaurant = "restaurant_pin"
-private let kPinIconGrocery = "grocery_pin"
-private let kPinIconDriving = "driving_pin"
-
 private let kShowFilterSegue = "showVenueFilterViewController"
 
 class MapViewController: UIViewController {
@@ -84,7 +79,8 @@ class MapViewController: UIViewController {
     mapPin.title = venue.name
     mapPin.snippet = venue.description
     mapPin.appearAnimation = kGMSMarkerAnimationPop
-    mapPin.icon = pinForType(venue.type)
+//    mapPin.icon = UIImage(named: kPinIcon)!.imageWithRenderingMode(.AlwaysTemplate)
+//    mapPin.layer.backgroundColor = colorForType(venue.type).CGColor
     mapPin.userData = venue
   }
   
@@ -105,13 +101,13 @@ class MapViewController: UIViewController {
     mapView.camera = GMSCameraPosition(target: userCoordinates, zoom: kDefaultZoomLevel,
       bearing: 0, viewingAngle: 0)
   }
-  
-  private func pinForType(type: VenueType) -> UIImage {
+
+  private func colorForType(type: VenueType) -> UIColor {
     switch type {
     case .Restuarant:
-      return UIImage(named: "restaurant_pin")!
+      return UIColor.flatOrangeColor()
     case .Entertainment:
-      return UIImage(named: "driving_pin")!
+      return UIColor.flatBlueColor()
     }
   }
   
