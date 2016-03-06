@@ -3,6 +3,7 @@ import UIKit
 
 import MHFacebookImageViewer.UIImageView_MHFacebookImageViewer
 import SDWebImage.UIImageView_WebCache
+import SafariServices
 
 class VenueDetailViewController: UIViewController {
   
@@ -31,8 +32,11 @@ class VenueDetailViewController: UIViewController {
     if let number = NSURL(string: "tel://\(venue!.phoneNumber)") {
       UIApplication.sharedApplication().openURL(number)
     }
-    
-    
+  }
+  
+  @IBAction func websiteTapped(sender: AnyObject) {
+    let svc = SFSafariViewController(URL: venue!.websiteUrl)
+    self.presentViewController(svc, animated: true, completion: nil)
   }
 }
 
