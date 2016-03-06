@@ -11,7 +11,6 @@ class VenueDetailViewController: UIViewController {
   
   @IBOutlet weak var rootScrollView: UIScrollView!
   @IBOutlet weak var rootStackView: UIStackView!
-
   @IBOutlet weak var carousel: UICollectionView!
   @IBOutlet weak var shortDescription: UILabel!
   @IBOutlet weak var longDescription: UILabel!

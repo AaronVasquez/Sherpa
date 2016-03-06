@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4vD-LM-CcY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4vD-LM-CcY">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -474,26 +474,41 @@
                                                 <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JqB-x5-Sai">
                                                     <rect key="frame" x="0.0" y="100" width="328" height="100"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chick N' Shack" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVe-5G-uTh">
-                                                            <rect key="frame" x="8" y="48" width="284" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chick N' Shack" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVe-5G-uTh">
+                                                            <rect key="frame" x="8" y="48" width="244" height="20"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="20" id="01P-lv-lcn"/>
+                                                                <constraint firstAttribute="width" constant="244" id="yum-Wx-JrL"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNK-XX-ohQ">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNK-XX-ohQ">
                                                             <rect key="frame" x="8" y="71" width="312" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$$$$$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E5i-rE-KXl">
-                                                            <rect key="frame" x="269" y="48" width="51" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$$$$$" textAlignment="right" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E5i-rE-KXl">
+                                                            <rect key="frame" x="266" y="48" width="45" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.51784205436706543" green="0.58159953355789185" blue="0.58617168664932251" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.12637259066104889" green="0.12639245390892029" blue="0.12636536359786987" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="gNK-XX-ohQ" firstAttribute="leading" secondItem="lVe-5G-uTh" secondAttribute="leading" id="5kA-Yx-glS"/>
+                                                        <constraint firstItem="E5i-rE-KXl" firstAttribute="leading" secondItem="lVe-5G-uTh" secondAttribute="trailing" constant="14" id="FCL-J8-oES"/>
+                                                        <constraint firstItem="E5i-rE-KXl" firstAttribute="top" secondItem="JqB-x5-Sai" secondAttribute="top" constant="48" id="Usa-S6-ory"/>
+                                                        <constraint firstItem="lVe-5G-uTh" firstAttribute="leading" secondItem="JqB-x5-Sai" secondAttribute="leadingMargin" id="XP5-X5-WOt"/>
+                                                        <constraint firstItem="lVe-5G-uTh" firstAttribute="top" secondItem="E5i-rE-KXl" secondAttribute="top" id="hLD-Nf-iWd"/>
+                                                        <constraint firstItem="gNK-XX-ohQ" firstAttribute="trailing" secondItem="JqB-x5-Sai" secondAttribute="trailingMargin" id="kfO-SG-9IR"/>
+                                                        <constraint firstItem="gNK-XX-ohQ" firstAttribute="bottom" secondItem="JqB-x5-Sai" secondAttribute="bottomMargin" id="vgs-Ys-L4k"/>
+                                                        <constraint firstAttribute="trailing" secondItem="E5i-rE-KXl" secondAttribute="trailing" constant="17" id="vu5-Dj-44X"/>
+                                                        <constraint firstItem="gNK-XX-ohQ" firstAttribute="top" secondItem="lVe-5G-uTh" secondAttribute="bottom" constant="3" id="wAD-SP-uqj"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>

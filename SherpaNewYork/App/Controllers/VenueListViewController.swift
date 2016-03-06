@@ -33,8 +33,6 @@ extension VenueListViewController: UITableViewDataSource {
   public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return venueCollection!.filteredVenues.count
   }
-  
-
 
   public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)
       -> UITableViewCell {
@@ -45,7 +43,7 @@ extension VenueListViewController: UITableViewDataSource {
     let informationView = venueTableCell.informationContainerView
 
     venueTableCell.titleLabel.text = venue.name
-    venueTableCell.descriptionLabel.text = venue.shortDescription
+    venueTableCell.descriptionLabel.text = "\(venue.shortDescription) - \(user.distanceFrom((venue.coordinates)))"
     venueTableCell.dollarSigns.text = venue.dollarSigns()
     venueTableCell.informationContainerView.backgroundColor =
         UIColor.init(gradientStyle:.TopToBottom,

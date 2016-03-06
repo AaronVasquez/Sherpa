@@ -4,8 +4,6 @@ import CoreLocation
 import GoogleMaps
 import SDWebImage.UIImageView_WebCache
 
-private let kDefaultLatitude: Double = 40.713
-private let kDefaultLongitude: Double = -74.000
 private let kDefaultZoomLevel: Float = 15.0
 
 private let kShowFilterSegue = "showVenueFilterViewController"
@@ -26,7 +24,7 @@ class MapViewController: UIViewController {
 
   var delegate: VenueDetailDelegate?
 
-  var userCoordinates = CLLocationCoordinate2DMake(kDefaultLatitude, kDefaultLongitude)
+  var userCoordinates: CLLocationCoordinate2D = user.coordinates
   var venueCollection: VenueCollection?
 
   private var originalvenueDescriptionHeightConstraint:CGFloat?
@@ -84,8 +82,7 @@ class MapViewController: UIViewController {
   }
   
   private func initialLocationSetup() {
-    let userCoordinates = CLLocationCoordinate2D(latitude: kDefaultLatitude,
-      longitude: kDefaultLongitude);
+    let userCoordinates = user.coordinates
     centerMapOn(userCoordinates)
   }
   
@@ -122,6 +119,7 @@ extension MapViewController: CLLocationManagerDelegate {
     
     // TODO: Add condition for if the person is not in NYC so that it defaults to times square
     self.userCoordinates = locations[0].coordinate
+    user.coordinates = self.userCoordinates
     centerMapOn(userCoordinates)
     mapView.myLocationEnabled = true
     mapView.settings.myLocationButton = true
