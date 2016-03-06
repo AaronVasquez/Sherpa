@@ -33,7 +33,7 @@ class VenueDetailViewController: UIViewController {
 
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    rootScrollView.contentSize = rootStackView.bounds.size
+    rootScrollView.contentSize = CGSize(width: 320, height: 1000)//rootStackView.bounds.size
   }
 
   @IBAction func phoneNumberTapped(sender: AnyObject) {
