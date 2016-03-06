@@ -9,6 +9,9 @@ class VenueDetailViewController: UIViewController {
   
   var venue: Venue?
   
+  @IBOutlet weak var rootScrollView: UIScrollView!
+  @IBOutlet weak var rootStackView: UIStackView!
+
   @IBOutlet weak var carousel: UICollectionView!
   @IBOutlet weak var shortDescription: UILabel!
   @IBOutlet weak var longDescription: UILabel!
@@ -27,7 +30,12 @@ class VenueDetailViewController: UIViewController {
     carousel.delegate = self
     carousel.dataSource = self
   }
-  
+
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    rootScrollView.contentSize = rootStackView.bounds.size
+  }
+
   @IBAction func phoneNumberTapped(sender: AnyObject) {
     if let number = NSURL(string: "tel://\(venue!.phoneNumber)") {
       UIApplication.sharedApplication().openURL(number)
