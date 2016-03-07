@@ -1,5 +1,7 @@
 import UIKit
 import CoreLocation
+
+import DGRunkeeperSwitch
 import GoogleMaps
 
 private let kDefaultLatitude: Double = 40.713
@@ -12,8 +14,10 @@ private let kListEmbedSegue = "ListEmbedSegue"
 private let kVenueDetailSegue = "VenueDetailSegue"
 
 class RootViewController: UIViewController {
-  @IBOutlet var mapView: UIView!
-  @IBOutlet var listView: UIView!
+  @IBOutlet weak var mapView: UIView!
+  @IBOutlet weak var listView: UIView!
+
+  @IBOutlet weak var mapListToggle: DGRunkeeperSwitch!
   
   private let locationManager = CLLocationManager()
   private let venueCollection = VenueCollection.init();
@@ -23,12 +27,26 @@ class RootViewController: UIViewController {
   private var listViewController: VenueListViewController?
   private var mapViewController: MapViewController?
 
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    // Sets up the toggle view.
+    mapListToggle.leftTitle = "Map"
+    mapListToggle.rightTitle = "List"
+    mapListToggle.backgroundColor = .flatMintColorDark()
+    mapListToggle.selectedBackgroundColor = .flatWhiteColor()
+    mapListToggle.titleColor = .whiteColor()
+    mapListToggle.selectedTitleColor = .flatMintColor()
+    mapListToggle.titleFont = .systemFontOfSize(14)
+    mapListToggle.addTarget(self, action: Selector("toggleMapAndList:"), forControlEvents: .ValueChanged)
+  }
+
   @IBAction func showFilterViewController(sender: AnyObject) {
     performSegueWithIdentifier(kShowFilterSegue, sender: mapViewController!)
   }
 
-  @IBAction func toggleMapAndList(sender: UISegmentedControl) {
-    let showMap = sender.selectedSegmentIndex == 0
+  @IBAction func toggleMapAndList(sender: DGRunkeeperSwitch) {
+    let showMap = sender.selectedIndex == 0
     let fromView =  showMap ? listViewController!.view : mapViewController!.view
     let toView = showMap ? mapViewController!.view : listViewController!.view
 

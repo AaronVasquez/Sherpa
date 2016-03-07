@@ -252,17 +252,11 @@
                     <navigationItem key="navigationItem" id="f3m-Va-fSl">
                         <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title=" " id="P0l-aM-Q3W"/>
-                        <segmentedControl key="titleView" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Oru-6A-Z96">
-                            <rect key="frame" x="60" y="7" width="200" height="30"/>
+                        <view key="titleView" contentMode="scaleToFill" id="WPp-wr-Qrb" customClass="DGRunkeeperSwitch" customModule="DGRunkeeperSwitch">
+                            <rect key="frame" x="96" y="6" width="128" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="Map"/>
-                                <segment title="List"/>
-                            </segments>
-                            <connections>
-                                <action selector="toggleMapAndList:" destination="GPM-tl-hYF" eventType="valueChanged" id="lu3-N2-RQL"/>
-                            </connections>
-                        </segmentedControl>
+                            <color key="backgroundColor" red="0.19115509089999999" green="0.63786703349999996" blue="0.26147949700000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="search" id="jua-Zk-YCX">
                             <connections>
                                 <action selector="showFilterViewController:" destination="GPM-tl-hYF" id="VuH-ML-tIB"/>
@@ -273,6 +267,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="listView" destination="gNS-tX-DqB" id="e0d-8Q-CI8"/>
+                        <outlet property="mapListToggle" destination="WPp-wr-Qrb" id="gvR-ES-wWg"/>
                         <outlet property="mapView" destination="72T-kS-tox" id="caO-rD-6WY"/>
                         <segue destination="eSr-Vj-qKa" kind="modal" identifier="showVenueFilterViewController" id="pan-Nk-smc"/>
                         <segue destination="xHo-vO-qm2" kind="push" identifier="VenueDetailSegue" id="Dnb-eQ-SM3"/>
@@ -457,7 +452,7 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rYE-Cl-e0P">
                                 <rect key="frame" x="0.0" y="0.0" width="328" height="504"/>
-                                <color key="backgroundColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.15101002156734467" green="0.56891876459121704" blue="0.43715286254882812" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LMATableCell" rowHeight="200" id="sID-4R-ZQe" customClass="VenueTableViewCell" customModule="SherpaNewYork" customModuleProvider="target">

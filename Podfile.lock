@@ -23,6 +23,7 @@ PODS:
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
+  - DGRunkeeperSwitch (1.1.1)
   - GoogleMaps (1.10.5)
   - MHFacebookImageViewer (1.0):
     - AFNetworking (~> 2.4.1)
@@ -33,6 +34,7 @@ PODS:
 
 DEPENDENCIES:
   - ChameleonFramework/Swift
+  - DGRunkeeperSwitch
   - GoogleMaps
   - MHFacebookImageViewer (from `https://github.com/michaelhenry/MHFacebookImageViewer.git`)
   - SDWebImage
@@ -50,6 +52,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AFNetworking: 41d45d2c14219af0fa5addf3cfd433a002c13c9f
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  DGRunkeeperSwitch: da12f199532a99958a1e87ec0a5af61efdba11ec
   GoogleMaps: da51c62c338c2d9c47cdad470a0d1e0e4b8544e4
   MHFacebookImageViewer: 5235694a4b4ec539dcbb9bdd0127da1d04711d1e
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
