@@ -5,7 +5,6 @@ use_frameworks!
 target 'SherpaNewYork' do
   pod 'ChameleonFramework/Swift'
   pod "DGRunkeeperSwitch"
-  pod 'GoogleMaps'
   pod 'MHFacebookImageViewer', git: 'https://github.com/michaelhenry/MHFacebookImageViewer.git'
   pod 'SDWebImage'
   pod 'SwiftyJSON'

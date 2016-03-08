@@ -1,16 +1,17 @@
 import UIKit
 import CoreLocation
+import MapKit
 
-import GoogleMaps
 import SDWebImage.UIImageView_WebCache
 
-private let kDefaultZoomLevel: Float = 15.0
+private let kDefaultZoomLevel = 15.0
+private let kInitialDescriptionHeight: CGFloat = 66.0
 
 private let kShowFilterSegue = "showVenueFilterViewController"
 
 class MapViewController: UIViewController {
   
-  @IBOutlet weak var mapView: GMSMapView!
+  @IBOutlet weak var mapView: MKMapView!
 
   @IBOutlet weak var venueDescriptionButton: UIButton!
   @IBOutlet weak var venueDescriptionHeightConstraint: NSLayoutConstraint!
@@ -34,6 +35,7 @@ class MapViewController: UIViewController {
     super.viewDidLoad()
     tabBarController?.tabBar.hidden = false
     mapView.delegate = self
+    mapView.showsUserLocation = true
     
     initialLocationSetup()
     fetchLocation()
@@ -42,25 +44,20 @@ class MapViewController: UIViewController {
   }
   
   override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
 
     self.venueDescriptionButton.backgroundColor = UIColor.clearColor()
-    
     if (selectedVenue == nil) {
-      // Record the original constraint size
-      originalvenueDescriptionHeightConstraint = 66 //venueDescriptionHeightConstraint.constant
-      // Set the constraint to zero
+      originalvenueDescriptionHeightConstraint = kInitialDescriptionHeight
       venueDescriptionHeightConstraint.constant = 0
     }
-
   }
   
   func reloadMap() {
     hideDescriptions()
-    mapView.clear()
+    clearMapView(mapView)
 
-    venueCollection!.filteredVenues.forEach({
-      self.addMapPin($0)
-    })
+    venueCollection!.filteredVenues.forEach({ self.addMapPin(mapView, venue: $0) })
   }
   
   func hideDescriptions() {
@@ -70,15 +67,18 @@ class MapViewController: UIViewController {
     self.view.setNeedsUpdateConstraints()
     self.view.layoutIfNeeded()
   }
+
+  // TODO: Extend the mapView instead of doing this.
+  private func clearMapView(mapView: MKMapView) {
+    mapView.removeAnnotations(mapView.annotations.filter({
+      return !$0.isEqual(mapView.userLocation)
+    }))
+  }
   
-  private func addMapPin(venue: Venue) {
-    let mapPin = GMSMarker(position: venue.coordinates)
-    mapPin.map = mapView
-    mapPin.title = venue.name
-    mapPin.snippet = venue.description
-    mapPin.appearAnimation = kGMSMarkerAnimationPop
-    mapPin.icon = GMSMarker.markerImageWithColor(colorForType(venue.type))
-    mapPin.userData = venue
+  private func addMapPin(map: MKMapView, venue: Venue) {
+    let annotation = MKPointAnnotation.init()
+    annotation.coordinate = venue.coordinates
+    map.addAnnotation(annotation)
   }
   
   private func initialLocationSetup() {
@@ -93,20 +93,20 @@ class MapViewController: UIViewController {
     locationManager.startUpdatingLocation()
   }
   
-  private func centerMapOn(userCoordinates: CLLocationCoordinate2D) {
-    mapView.camera = GMSCameraPosition(target: userCoordinates, zoom: kDefaultZoomLevel,
-      bearing: 0, viewingAngle: 0)
+  private func centerMapOn(coordinate: CLLocationCoordinate2D) {
+    mapView.setCenterCoordinate(coordinate, animated: true)
   }
 
-  private func colorForType(type: VenueType) -> UIColor {
-    switch type {
-    case .Restuarant:
-      return UIColor.flatOrangeColor()
-    case .Entertainment:
-      return UIColor.flatBlueColor()
-    }
-  }
-  
+// TODO: Customize the annotation pin.
+//  private func colorForType(type: VenueType) -> UIColor {
+//    switch type {
+//    case .Restuarant:
+//      return UIColor.flatOrangeColor()
+//    case .Entertainment:
+//      return UIColor.flatBlueColor()
+//    }
+//  }
+
   @IBAction func descriptionTapped(sender: AnyObject) {
     self.delegate?.didPressVenueDetailButton(selectedVenue!)
   }
@@ -121,53 +121,51 @@ extension MapViewController: CLLocationManagerDelegate {
     self.userCoordinates = locations[0].coordinate
     user.coordinates = self.userCoordinates
     centerMapOn(userCoordinates)
-    mapView.myLocationEnabled = true
-    mapView.settings.myLocationButton = true
   }
   
 }
 
-extension MapViewController: GMSMapViewDelegate {
-  
-  func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
-    let newChosenVenue = marker.userData as? Venue
-    if (selectedVenue != nil && selectedVenue!.name == newChosenVenue!.name) {
-      return true
-    }
+extension MapViewController: MKMapViewDelegate {
 
-    selectedVenue = newChosenVenue
-
-    mapView.animateToLocation(selectedVenue!.coordinates)
-    
-    venueDescriptionHeightConstraint.constant = 0
-    self.view.setNeedsUpdateConstraints()
-    UIView.animateWithDuration(0.1,
-        delay: 0,
-        usingSpringWithDamping: 0.7,
-        initialSpringVelocity: 0.0,
-        options: .BeginFromCurrentState,
-        animations: { self.view.layoutIfNeeded() },
-        completion: { (_) -> Void in
-          let venue = self.selectedVenue!
-
-          self.venueDescriptionNameLabel.text = venue.name
-          self.venueDescriptionCategoryLabel.text = venue.shortDescription
-          self.venueDescriptionDollars.text = venue.dollarSigns()
-
-          self.venueDescriptionThumbnailImage.sd_setImageWithURL(venue.thumbnailUrl)
-
-          self.venueDescriptionHeightConstraint.constant =
-              self.originalvenueDescriptionHeightConstraint!
-          self.view.setNeedsUpdateConstraints()
-          UIView.animateWithDuration(0.25,
-              delay: 0.0,
-              usingSpringWithDamping: 0.7,
-              initialSpringVelocity: 0.0,
-              options: .BeginFromCurrentState,
-              animations: { self.view.layoutIfNeeded() },
-              completion: nil)
-
-        })
-    return true
-  }
+//  func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
+//    let newChosenVenue = marker.userData as? Venue
+//    if (selectedVenue != nil && selectedVenue!.name == newChosenVenue!.name) {
+//      return true
+//    }
+//
+//    selectedVenue = newChosenVenue
+//
+//    mapView.animateToLocation(selectedVenue!.coordinates)
+//    
+//    venueDescriptionHeightConstraint.constant = 0
+//    self.view.setNeedsUpdateConstraints()
+//    UIView.animateWithDuration(0.1,
+//        delay: 0,
+//        usingSpringWithDamping: 0.7,
+//        initialSpringVelocity: 0.0,
+//        options: .BeginFromCurrentState,
+//        animations: { self.view.layoutIfNeeded() },
+//        completion: { (_) -> Void in
+//          let venue = self.selectedVenue!
+//
+//          self.venueDescriptionNameLabel.text = venue.name
+//          self.venueDescriptionCategoryLabel.text = venue.shortDescription
+//          self.venueDescriptionDollars.text = venue.dollarSigns()
+//
+//          self.venueDescriptionThumbnailImage.sd_setImageWithURL(venue.thumbnailUrl)
+//
+//          self.venueDescriptionHeightConstraint.constant =
+//              self.originalvenueDescriptionHeightConstraint!
+//          self.view.setNeedsUpdateConstraints()
+//          UIView.animateWithDuration(0.25,
+//              delay: 0.0,
+//              usingSpringWithDamping: 0.7,
+//              initialSpringVelocity: 0.0,
+//              options: .BeginFromCurrentState,
+//              animations: { self.view.layoutIfNeeded() },
+//              completion: nil)
+//
+//        })
+//    return true
+//  }
 }

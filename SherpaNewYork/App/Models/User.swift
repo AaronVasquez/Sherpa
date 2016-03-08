@@ -1,13 +1,5 @@
-//
-//  User.swift
-//  SherpaNewYork
-//
-//  Created by Edmund Mai on 3/6/16.
-//  Copyright © 2016 Aaron Vasquez. All rights reserved.
-//
-
-import Foundation
 import CoreLocation
+import Foundation
 
 private let kDefaultLatitude: Double = 40.713
 private let kDefaultLongitude: Double = -74.000
