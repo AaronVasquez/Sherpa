@@ -4,7 +4,7 @@ import MapKit
 
 import SDWebImage.UIImageView_WebCache
 
-private let kDefaultZoomLevel = 15.0
+private let kDefaultZoomSpan = 0.01
 private let kInitialDescriptionHeight: CGFloat = 66.0
 
 private let kShowFilterSegue = "showVenueFilterViewController"
@@ -118,9 +118,13 @@ extension MapViewController: CLLocationManagerDelegate {
     locationManager.stopUpdatingLocation()
     
     // TODO: Add condition for if the person is not in NYC so that it defaults to times square
-    self.userCoordinates = locations[0].coordinate
-    user.coordinates = self.userCoordinates
-    centerMapOn(userCoordinates)
+    let userLocation = locations[0].coordinate
+
+    self.userCoordinates = userLocation
+    user.coordinates = userLocation
+
+    let mapRegion = MKCoordinateRegionMake(userLocation, MKCoordinateSpanMake(kDefaultZoomSpan, kDefaultZoomSpan))
+    mapView.setRegion(mapRegion, animated: false)
   }
   
 }
