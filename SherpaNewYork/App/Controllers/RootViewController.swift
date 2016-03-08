@@ -51,7 +51,7 @@ class RootViewController: UIViewController {
 
     UIView.transitionFromView(fromView,
       toView: toView,
-      duration: 0.1,
+      duration: 0.05,
       options: UIViewAnimationOptions.TransitionCrossDissolve,
       completion: nil)
   }
