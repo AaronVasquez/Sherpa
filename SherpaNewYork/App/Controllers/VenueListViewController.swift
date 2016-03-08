@@ -48,7 +48,7 @@ extension VenueListViewController: UITableViewDataSource {
     venueTableCell.informationContainerView.backgroundColor =
         UIColor.init(gradientStyle:.TopToBottom,
                      withFrame: informationView.bounds,
-                     andColors: [UIColor.clearColor(), UIColor.init(white: 0.0, alpha: 0.8)])
+                     andColors: [UIColor.clearColor(), UIColor.init(white: 0.0, alpha: 0.5)])
 
     venueTableCell.bannerImageView.sd_setImageWithURL(venue.photoUrls[0])
 

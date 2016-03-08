@@ -486,7 +486,7 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DxH-lK-T4M">
                                                     <rect key="frame" x="0.0" y="0.0" width="328" height="199"/>
-                                                    <color key="backgroundColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
                                                 <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JqB-x5-Sai">
                                                     <rect key="frame" x="0.0" y="100" width="328" height="100"/>
@@ -514,7 +514,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.51784205436706543" green="0.58159953355789185" blue="0.58617168664932251" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.68888300657272339" green="0.71366006135940552" blue="0.73448425531387329" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="gNK-XX-ohQ" firstAttribute="leading" secondItem="lVe-5G-uTh" secondAttribute="leading" id="5kA-Yx-glS"/>
                                                         <constraint firstItem="E5i-rE-KXl" firstAttribute="leading" secondItem="lVe-5G-uTh" secondAttribute="trailing" constant="14" id="FCL-J8-oES"/>
