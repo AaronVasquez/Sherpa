@@ -2,6 +2,7 @@ import UIKit
 import CoreLocation
 
 import DGRunkeeperSwitch
+import SVProgressHUD
 
 private let kDefaultLatitude: Double = 40.713
 private let kDefaultLongitude: Double = -74.000
@@ -29,10 +30,12 @@ class RootViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    // Loads venues.
+    SVProgressHUD.show()
     VenueRepository.fetchVenues { (venues) -> () in
       self.venueCollection = VenueCollection.init(venues: venues)
       self.reloadViews()
+
+      SVProgressHUD.dismiss()
     }
 
     // Sets up the toggle view.

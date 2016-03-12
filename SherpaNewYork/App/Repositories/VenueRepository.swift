@@ -7,6 +7,7 @@ internal let kVenueRepositoryUrl = "VenuesData"
 
 struct VenueRepository {
 
+  // TODO: Add a progress callback.
   static func fetchVenues(completion: ([Venue]) -> ()){
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), {
       let venues = buildVenues(loadVenueData())

@@ -1,5 +1,7 @@
 import UIKit
 
+import SVProgressHUD
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -10,6 +12,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Remove ugly hairline.
     UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarPosition: .Any, barMetrics: .Default)
     UINavigationBar.appearance().shadowImage = UIImage()
+
+    // Sets up SVProgressHUD
+    SVProgressHUD.setBackgroundColor(UIColor.flatMintColor())
+    SVProgressHUD.setForegroundColor(UIColor.whiteColor())
+    SVProgressHUD.setRingThickness(4.0)
 
     return true
   }
