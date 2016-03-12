@@ -7,5 +7,6 @@ target 'SherpaNewYork' do
   pod "DGRunkeeperSwitch"
   pod 'MHFacebookImageViewer', git: 'https://github.com/michaelhenry/MHFacebookImageViewer.git'
   pod 'SDWebImage'
+  pod 'SVProgressHUD'
   pod 'SwiftyJSON'
 end

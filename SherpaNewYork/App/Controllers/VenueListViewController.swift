@@ -31,7 +31,11 @@ public class VenueListViewController: UIViewController {
 extension VenueListViewController: UITableViewDataSource {
   
   public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return venueCollection!.filteredVenues.count
+    if let venues = venueCollection?.filteredVenues {
+      return venues.count
+    } else {
+      return 0
+    }
   }
 
   public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)

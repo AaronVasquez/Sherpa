@@ -1,14 +1,17 @@
 import Foundation
 import CoreLocation
 
+// TODO: This class is not needed. It is just a wrapper around a list. Let's keep the list generic.
 public class VenueCollection {
-  let allVenues = VenueRepository.fetchVenues()
+  let allVenues: [Venue]
   private(set) var filteredVenues: [Venue]
 
-  required public init() {
-    self.filteredVenues = self.allVenues;
+  required public init(venues: [Venue]) {
+    self.allVenues = venues
+    self.filteredVenues = venues;
   }
 
+  // TODO: This should be a function that just returns a new collection.
   func applyFilter(filter: VenueFilter, location: CLLocation) {
     filteredVenues = allVenues.filter({
       // Only filter if there are some types to be filtered.

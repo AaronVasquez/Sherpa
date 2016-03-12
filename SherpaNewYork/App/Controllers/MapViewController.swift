@@ -61,7 +61,10 @@ class MapViewController: UIViewController {
     hideDescriptions()
     clearMapView(mapView)
 
-    venueCollection!.filteredVenues.forEach({ self.addMapPin(mapView, venue: $0) })
+    if let venues = venueCollection?.filteredVenues {
+      venues.forEach({ self.addMapPin(mapView, venue: $0) })
+    }
+
   }
   
   func hideDescriptions() {
