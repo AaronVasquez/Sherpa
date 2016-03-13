@@ -106,14 +106,14 @@ class MapViewController: UIViewController {
   }
 
 // TODO: Customize the annotation pin.
-//  private func colorForType(type: VenueType) -> UIColor {
-//    switch type {
-//    case .Restuarant:
-//      return UIColor.flatOrangeColor()
-//    case .Entertainment:
-//      return UIColor.flatBlueColor()
-//    }
-//  }
+  private func colorForType(type: VenueType) -> UIColor {
+    switch type {
+    case .Restuarant:
+      return UIColor.flatOrangeColor()
+    case .Entertainment:
+      return UIColor.flatBlueColor()
+    }
+  }
 
   @IBAction func descriptionTapped(sender: AnyObject) {
     self.delegate?.didPressVenueDetailButton(selectedVenue!)
@@ -137,6 +137,37 @@ extension MapViewController: CLLocationManagerDelegate {
 }
 
 extension MapViewController: MKMapViewDelegate {
+
+  func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    if annotation is MKUserLocation {
+      return nil
+    }
+
+    let annotationPinId = "annotationPinId"
+    let pinImageName = "pin-icon"
+
+    let venueAnnotation = annotation as! VenueAnnotation
+    let venue = venueAnnotation.venue!
+
+    var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(annotationPinId)
+    if annotationView != nil {
+      return annotationView
+    } else {
+      let pinImage = UIImage(named: pinImageName)?.imageWithRenderingMode(.AlwaysTemplate)
+      let pinImageView = UIImageView.init(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+      pinImageView.image = pinImage
+      pinImageView.contentMode = .ScaleAspectFit
+      pinImageView.tintColor = self.colorForType(venue.type)
+
+
+      annotationView = MKAnnotationView.init(annotation: annotation, reuseIdentifier: annotationPinId)
+      annotationView!.canShowCallout = false
+      annotationView!.addSubview(pinImageView)
+      pinImageView.center = annotationView!.center
+      annotationView!.draggable = false
+      return annotationView
+    }
+  }
 
   func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
     let venueAnnotation = view.annotation as! VenueAnnotation
