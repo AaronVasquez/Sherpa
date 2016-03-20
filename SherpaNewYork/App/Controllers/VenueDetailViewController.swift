@@ -6,6 +6,9 @@ import MHFacebookImageViewer.UIImageView_MHFacebookImageViewer
 import SDWebImage.UIImageView_WebCache
 import SafariServices
 
+private let annotationPinId = "annotationPinId"
+private let pinImageName = "pin-icon"
+
 class VenueDetailViewController: UIViewController {
   
   var venue: Venue?
@@ -96,6 +99,32 @@ extension VenueDetailViewController: UIScrollViewDelegate {
 }
 
 extension VenueDetailViewController: MKMapViewDelegate {
+  // This is copied and pasted :(
+  func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    if annotation is MKUserLocation { return nil }
+
+    let venueAnnotation = annotation as! VenueAnnotation
+    let venue = venueAnnotation.venue!
+
+    var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(annotationPinId)
+    if annotationView == nil {
+      annotationView = MKAnnotationView.init(annotation: annotation, reuseIdentifier: annotationPinId)
+    }
+
+    let pinImage = UIImage(named: pinImageName)?.imageWithRenderingMode(.AlwaysTemplate)
+    let pinImageView = UIImageView.init(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+    pinImageView.image = pinImage
+    pinImageView.contentMode = .ScaleAspectFit
+    pinImageView.tintColor = UIColor.flatMintColor()
+
+    annotationView!.canShowCallout = false
+    annotationView!.addSubview(pinImageView)
+    annotationView!.frame = pinImageView.frame
+    pinImageView.center = annotationView!.center
+    annotationView!.draggable = false
+
+    return annotationView
+  }
 }
 
 extension VenueDetailViewController: UICollectionViewDataSource {
