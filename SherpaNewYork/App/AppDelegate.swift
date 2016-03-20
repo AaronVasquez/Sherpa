@@ -14,8 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UINavigationBar.appearance().shadowImage = UIImage()
 
     // Sets up SVProgressHUD
-    SVProgressHUD.setBackgroundColor(UIColor.flatMintColor())
-    SVProgressHUD.setForegroundColor(UIColor.whiteColor())
+    SVProgressHUD.setBackgroundColor(UIColor.whiteColor())
+    SVProgressHUD.setForegroundColor(UIColor.flatMintColor())
     SVProgressHUD.setRingThickness(4.0)
 
     return true

@@ -10,7 +10,6 @@ struct VenueRepository {
   // TODO: Add a progress callback.
   static func fetchVenues(completion: ([Venue]) -> ()){
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), {
-      NSThread.sleepForTimeInterval(1) // DO NOT SHIP WITH THIS!!!!
       let venues = buildVenues(loadVenueData())
       dispatch_async(dispatch_get_main_queue(), { completion(venues) })
     })
