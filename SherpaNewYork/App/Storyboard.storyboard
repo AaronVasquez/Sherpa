@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4vD-LM-CcY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4vD-LM-CcY">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -20,7 +20,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="mF3-C5-Xhx">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="936"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="q0L-mi-FpN">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="q0L-mi-FpN">
                                         <rect key="frame" x="0.0" y="-10" width="320" height="200"/>
                                         <color key="backgroundColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -58,6 +58,9 @@
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="TOh-35-suh">
+                                        <rect key="frame" x="140" y="143" width="39" height="37"/>
+                                    </pageControl>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4xd-CH-pyy">
                                         <rect key="frame" x="0.0" y="192" width="320" height="212"/>
                                         <subviews>
@@ -67,12 +70,6 @@
                                                     <constraint firstAttribute="height" constant="30" id="qe2-mg-9ko"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <color key="textColor" red="0.42655369639396667" green="0.47584608197212219" blue="0.48026475310325623" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQ3-zM-mWq">
-                                                <rect key="frame" x="0.0" y="44" width="320" height="49"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.42655369639396667" green="0.47584608197212219" blue="0.48026475310325623" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -100,13 +97,13 @@
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGz-DX-bH3">
-                                                <rect key="frame" x="50" y="135" width="262" height="24"/>
+                                                <rect key="frame" x="50" y="135" width="167" height="24"/>
                                                 <state key="normal" title="www.sherpa.com"/>
                                                 <connections>
                                                     <action selector="websiteTapped:" destination="xHo-vO-qm2" eventType="touchUpInside" id="krw-RB-FM6"/>
                                                 </connections>
                                             </button>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="lL1-uX-Jld">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin-icon" translatesAutoresizingMaskIntoConstraints="NO" id="lL1-uX-Jld">
                                                 <rect key="frame" x="0.0" y="167" width="50" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="2Bq-bz-Cva"/>
@@ -119,6 +116,12 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQ3-zM-mWq">
+                                                <rect key="frame" x="0.0" y="44" width="320" height="49"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.42655369639396667" green="0.47584608197212219" blue="0.48026475310325623" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -164,6 +167,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="TCh-0g-i6h" firstAttribute="leading" secondItem="4xd-CH-pyy" secondAttribute="leading" id="B2b-Nm-f0g"/>
+                                    <constraint firstItem="TOh-35-suh" firstAttribute="top" secondItem="q0L-mi-FpN" secondAttribute="bottom" constant="-47" id="BKu-Im-Ed4"/>
                                     <constraint firstItem="TCh-0g-i6h" firstAttribute="top" secondItem="mF3-C5-Xhx" secondAttribute="top" constant="463" id="BuT-eR-GfO"/>
                                     <constraint firstItem="q0L-mi-FpN" firstAttribute="centerX" secondItem="mF3-C5-Xhx" secondAttribute="centerX" id="GDg-Ea-Z09"/>
                                     <constraint firstAttribute="trailing" secondItem="q0L-mi-FpN" secondAttribute="trailing" id="NDc-d4-GO6"/>
@@ -181,6 +185,7 @@
                         <constraints>
                             <constraint firstItem="mF3-C5-Xhx" firstAttribute="top" secondItem="D0b-L9-uJL" secondAttribute="bottom" id="KhZ-kZ-H4m"/>
                             <constraint firstItem="Yei-5n-i7X" firstAttribute="top" secondItem="mF3-C5-Xhx" secondAttribute="bottom" id="g8N-FS-KPp"/>
+                            <constraint firstItem="TOh-35-suh" firstAttribute="centerX" secondItem="uot-eu-rHg" secondAttribute="centerX" id="hRG-Bq-IH5"/>
                             <constraint firstItem="mF3-C5-Xhx" firstAttribute="leading" secondItem="uot-eu-rHg" secondAttribute="leading" id="qk4-dB-rLa"/>
                             <constraint firstAttribute="trailing" secondItem="mF3-C5-Xhx" secondAttribute="trailing" id="wut-N1-pbS"/>
                         </constraints>
@@ -194,6 +199,7 @@
                     <connections>
                         <outlet property="carousel" destination="q0L-mi-FpN" id="d5P-JA-VEP"/>
                         <outlet property="longDescription" destination="FQ3-zM-mWq" id="Rj1-r8-43x"/>
+                        <outlet property="pageControl" destination="TOh-35-suh" id="ebM-U2-caT"/>
                         <outlet property="phoneNumber" destination="FXf-uR-biI" id="VMX-tQ-WWx"/>
                         <outlet property="rootScrollView" destination="mF3-C5-Xhx" id="Ffu-pT-ZEz"/>
                         <outlet property="shortDescription" destination="vhK-4f-dHj" id="MCi-d8-q2g"/>
@@ -246,7 +252,7 @@
                         <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title=" " id="P0l-aM-Q3W"/>
                         <view key="titleView" contentMode="scaleToFill" id="WPp-wr-Qrb" customClass="DGRunkeeperSwitch" customModule="DGRunkeeperSwitch">
-                            <rect key="frame" x="96" y="6" width="128" height="33"/>
+                            <rect key="frame" x="96" y="5.5" width="128" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.19115509089999999" green="0.63786703349999996" blue="0.26147949700000001" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
@@ -576,7 +582,7 @@
                                         <color key="textColor" red="0.42655369640000002" green="0.475846082" blue="0.4802647531" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$$$$$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHX-Dc-x3O">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$$$$$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHX-Dc-x3O">
                                         <rect key="frame" x="268" y="8" width="45" height="17"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                         <color key="textColor" red="0.51784205436706543" green="0.58159953355789185" blue="0.58617168664932251" alpha="1" colorSpace="calibratedRGB"/>
@@ -675,6 +681,6 @@
     <resources>
         <image name="link" width="256" height="256"/>
         <image name="phone" width="256" height="256"/>
-        <image name="pin" width="1024" height="1024"/>
+        <image name="pin-icon" width="128" height="128"/>
     </resources>
 </document>

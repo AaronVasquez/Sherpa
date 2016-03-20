@@ -15,6 +15,7 @@ class VenueDetailViewController: UIViewController {
   @IBOutlet weak var longDescription: UILabel!
   @IBOutlet weak var phoneNumber: UIButton!
   @IBOutlet weak var website: UIButton!
+  @IBOutlet weak var pageControl: UIPageControl!
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
@@ -24,6 +25,7 @@ class VenueDetailViewController: UIViewController {
     self.shortDescription.text = venue!.shortDescription
     self.phoneNumber.setTitle(venue!.phoneNumber, forState: .Normal)
     self.website.setTitle(venue!.websiteUrl.absoluteString, forState: .Normal)
+    self.pageControl.numberOfPages = venue!.photoUrls.count
     
     carousel.delegate = self
     carousel.dataSource = self
@@ -46,12 +48,17 @@ class VenueDetailViewController: UIViewController {
   }
 }
 
+extension VenueDetailViewController: UIScrollViewDelegate {
+  func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    pageControl.currentPage = (self.carousel.indexPathsForVisibleItems().first?.row)!
+  }
+}
+
 extension VenueDetailViewController: UICollectionViewDataSource {
 
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return venue!.photoUrls.count
   }
-
 
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCellWithReuseIdentifier("image", forIndexPath: indexPath) as! VenueDetailViewImageCell
@@ -75,6 +82,7 @@ extension VenueDetailViewController: UICollectionViewDelegate {
     sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
       return CGSizeMake(collectionView.bounds.size.width, 200)
   }
+
 }
 
 
