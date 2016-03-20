@@ -142,31 +142,28 @@ extension MapViewController: CLLocationManagerDelegate {
 extension MapViewController: MKMapViewDelegate {
 
   func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-    if annotation is MKUserLocation {
-      return nil
-    }
+    if annotation is MKUserLocation { return nil }
 
     let venueAnnotation = annotation as! VenueAnnotation
     let venue = venueAnnotation.venue!
 
     var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(annotationPinId)
-    if annotationView != nil {
-      return annotationView
-    } else {
-      let pinImage = UIImage(named: pinImageName)?.imageWithRenderingMode(.AlwaysTemplate)
-      let pinImageView = UIImageView.init(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-      pinImageView.image = pinImage
-      pinImageView.contentMode = .ScaleAspectFit
-      pinImageView.tintColor = self.colorForType(venue.type)
-
-
+    if annotationView == nil {
       annotationView = MKAnnotationView.init(annotation: annotation, reuseIdentifier: annotationPinId)
-      annotationView!.canShowCallout = false
-      annotationView!.addSubview(pinImageView)
-      pinImageView.center = annotationView!.center
-      annotationView!.draggable = false
-      return annotationView
     }
+
+    let pinImage = UIImage(named: pinImageName)?.imageWithRenderingMode(.AlwaysTemplate)
+    let pinImageView = UIImageView.init(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+    pinImageView.image = pinImage
+    pinImageView.contentMode = .ScaleAspectFit
+    pinImageView.tintColor = self.colorForType(venue.type)
+
+    annotationView!.canShowCallout = false
+    annotationView!.addSubview(pinImageView)
+    pinImageView.center = annotationView!.center
+    annotationView!.draggable = false
+
+    return annotationView
   }
 
   func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
@@ -185,33 +182,26 @@ extension MapViewController: MKMapViewDelegate {
 
     venueDescriptionHeightConstraint.constant = -10.0
     self.view.setNeedsUpdateConstraints()
-    UIView.animateWithDuration(0.1,
-        delay: 0,
+    self.hideDetailBanner { (_) -> Void in
+      let venue = self.selectedVenue!
+
+      self.venueDescriptionNameLabel.text = venue.name
+      self.venueDescriptionCategoryLabel.text = venue.shortDescription
+      self.venueDescriptionDollars.text = venue.dollarSigns()
+
+      self.venueDescriptionThumbnailImage.sd_setImageWithURL(venue.thumbnailUrl)
+
+      self.venueDescriptionHeightConstraint.constant =
+        self.originalvenueDescriptionHeightConstraint!
+      self.view.setNeedsUpdateConstraints()
+      UIView.animateWithDuration(0.25,
+        delay: 0.0,
         usingSpringWithDamping: 0.7,
         initialSpringVelocity: 0.0,
         options: .BeginFromCurrentState,
         animations: { self.view.layoutIfNeeded() },
-        completion: { (_) -> Void in
-          let venue = self.selectedVenue!
-
-          self.venueDescriptionNameLabel.text = venue.name
-          self.venueDescriptionCategoryLabel.text = venue.shortDescription
-          self.venueDescriptionDollars.text = venue.dollarSigns()
-
-          self.venueDescriptionThumbnailImage.sd_setImageWithURL(venue.thumbnailUrl)
-
-          self.venueDescriptionHeightConstraint.constant =
-              self.originalvenueDescriptionHeightConstraint!
-          self.view.setNeedsUpdateConstraints()
-          UIView.animateWithDuration(0.25,
-              delay: 0.0,
-              usingSpringWithDamping: 0.7,
-              initialSpringVelocity: 0.0,
-              options: .BeginFromCurrentState,
-              animations: { self.view.layoutIfNeeded() },
-              completion: nil)
-
-        })
+        completion: nil)
+    }
   }
 
   func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
@@ -219,6 +209,25 @@ extension MapViewController: MKMapViewDelegate {
     let venue = venueAnnotation.venue!
 
     self.changeColorForAnnotationView(view, color: self.colorForType(venue.type), animated: true)
+
+    if let currentVenue = selectedVenue {
+      if (venue === currentVenue) {
+        selectedVenue = nil
+        self.hideDetailBanner(nil)
+      }
+    }
+  }
+
+  private func hideDetailBanner(completion: ((Bool) -> Void)?) {
+    venueDescriptionHeightConstraint.constant = -10.0
+    self.view.setNeedsUpdateConstraints()
+    UIView.animateWithDuration(0.1,
+      delay: 0,
+      usingSpringWithDamping: 0.7,
+      initialSpringVelocity: 0.0,
+      options: .BeginFromCurrentState,
+      animations: { self.view.layoutIfNeeded() },
+      completion: completion)
   }
 
   private func changeColorForAnnotationView(annotationView: MKAnnotationView, color: UIColor, animated: Bool) {
