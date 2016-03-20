@@ -7,6 +7,9 @@ import SDWebImage.UIImageView_WebCache
 private let kDefaultZoomSpan = 0.01
 private let kInitialDescriptionHeight: CGFloat = 66.0
 
+private let annotationPinId = "annotationPinId"
+private let pinImageName = "pin-icon"
+
 private let kShowFilterSegue = "showVenueFilterViewController"
 
 class VenueAnnotation: MKPointAnnotation {
@@ -143,9 +146,6 @@ extension MapViewController: MKMapViewDelegate {
       return nil
     }
 
-    let annotationPinId = "annotationPinId"
-    let pinImageName = "pin-icon"
-
     let venueAnnotation = annotation as! VenueAnnotation
     let venue = venueAnnotation.venue!
 
@@ -175,6 +175,24 @@ extension MapViewController: MKMapViewDelegate {
     selectedVenue = venue
 
     centerMapOn(venue.coordinates)
+
+
+    // Deselect all other annotations.
+    mapView.selectedAnnotations
+      .filter { return !$0.isEqual(venueAnnotation) }
+      .forEach { mapView.deselectAnnotation($0, animated: true) }
+
+    UIView.animateWithDuration(0.25,
+      delay: 0.0,
+      usingSpringWithDamping: 0.7,
+      initialSpringVelocity: 0.0,
+      options: .BeginFromCurrentState,
+      animations: {
+        view.subviews
+          .filter { return $0 is UIImageView }
+          .forEach { $0.tintColor = UIColor.flatMintColor() } // TODO: Extract this as mainColor.
+      },
+      completion: nil)
 
     venueDescriptionHeightConstraint.constant = -10.0
     self.view.setNeedsUpdateConstraints()
