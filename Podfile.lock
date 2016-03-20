@@ -24,6 +24,25 @@ PODS:
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
   - DGRunkeeperSwitch (1.1.1)
+  - FormatterKit (1.8.0):
+    - FormatterKit/AddressFormatter (= 1.8.0)
+    - FormatterKit/ArrayFormatter (= 1.8.0)
+    - FormatterKit/ColorFormatter (= 1.8.0)
+    - FormatterKit/LocationFormatter (= 1.8.0)
+    - FormatterKit/NameFormatter (= 1.8.0)
+    - FormatterKit/OrdinalNumberFormatter (= 1.8.0)
+    - FormatterKit/TimeIntervalFormatter (= 1.8.0)
+    - FormatterKit/UnitOfInformationFormatter (= 1.8.0)
+    - FormatterKit/URLRequestFormatter (= 1.8.0)
+  - FormatterKit/AddressFormatter (1.8.0)
+  - FormatterKit/ArrayFormatter (1.8.0)
+  - FormatterKit/ColorFormatter (1.8.0)
+  - FormatterKit/LocationFormatter (1.8.0)
+  - FormatterKit/NameFormatter (1.8.0)
+  - FormatterKit/OrdinalNumberFormatter (1.8.0)
+  - FormatterKit/TimeIntervalFormatter (1.8.0)
+  - FormatterKit/UnitOfInformationFormatter (1.8.0)
+  - FormatterKit/URLRequestFormatter (1.8.0)
   - MHFacebookImageViewer (1.0):
     - AFNetworking (~> 2.4.1)
   - SDWebImage (3.7.5):
@@ -35,6 +54,7 @@ PODS:
 DEPENDENCIES:
   - ChameleonFramework/Swift
   - DGRunkeeperSwitch
+  - FormatterKit
   - MHFacebookImageViewer (from `https://github.com/michaelhenry/MHFacebookImageViewer.git`)
   - SDWebImage
   - SVProgressHUD
@@ -53,6 +73,7 @@ SPEC CHECKSUMS:
   AFNetworking: 41d45d2c14219af0fa5addf3cfd433a002c13c9f
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   DGRunkeeperSwitch: da12f199532a99958a1e87ec0a5af61efdba11ec
+  FormatterKit: bddde83e054edf9d9ee14f9de3b3a5103db256f4
   MHFacebookImageViewer: 5235694a4b4ec539dcbb9bdd0127da1d04711d1e
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
