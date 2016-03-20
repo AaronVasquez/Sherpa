@@ -199,6 +199,7 @@
                     <connections>
                         <outlet property="carousel" destination="q0L-mi-FpN" id="d5P-JA-VEP"/>
                         <outlet property="longDescription" destination="FQ3-zM-mWq" id="Rj1-r8-43x"/>
+                        <outlet property="mapView" destination="TCh-0g-i6h" id="QiT-K0-Z5c"/>
                         <outlet property="pageControl" destination="TOh-35-suh" id="ebM-U2-caT"/>
                         <outlet property="phoneNumber" destination="FXf-uR-biI" id="VMX-tQ-WWx"/>
                         <outlet property="rootScrollView" destination="mF3-C5-Xhx" id="Ffu-pT-ZEz"/>

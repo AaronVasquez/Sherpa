@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import MapKit
 
 import MHFacebookImageViewer.UIImageView_MHFacebookImageViewer
 import SDWebImage.UIImageView_WebCache
@@ -16,6 +17,12 @@ class VenueDetailViewController: UIViewController {
   @IBOutlet weak var phoneNumber: UIButton!
   @IBOutlet weak var website: UIButton!
   @IBOutlet weak var pageControl: UIPageControl!
+  @IBOutlet weak var mapView: MKMapView!
+  
+  override func viewDidLoad() {
+    mapView.delegate = self
+    mapView.setCenterCoordinate(venue!.coordinates, animated: true)
+  }
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
@@ -26,6 +33,8 @@ class VenueDetailViewController: UIViewController {
     self.phoneNumber.setTitle(venue!.phoneNumber, forState: .Normal)
     self.website.setTitle(venue!.websiteUrl.absoluteString, forState: .Normal)
     self.pageControl.numberOfPages = venue!.photoUrls.count
+    
+    addMapPin(mapView, venue: venue!)
     
     carousel.delegate = self
     carousel.dataSource = self
@@ -46,12 +55,25 @@ class VenueDetailViewController: UIViewController {
     let svc = SFSafariViewController(URL: venue!.websiteUrl)
     self.presentViewController(svc, animated: true, completion: nil)
   }
+  
+  private func addMapPin(map: MKMapView, venue: Venue) {
+    let annotation = VenueAnnotation.init()
+    annotation.coordinate = venue.coordinates
+    annotation.venue = venue
+    map.addAnnotation(annotation)
+    
+    let region = MKCoordinateRegionMakeWithDistance(venue.coordinates, 500, 500)
+    map.setRegion(region, animated: false)
+  }
 }
 
 extension VenueDetailViewController: UIScrollViewDelegate {
   func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
     pageControl.currentPage = (self.carousel.indexPathsForVisibleItems().first?.row)!
   }
+}
+
+extension VenueDetailViewController: MKMapViewDelegate {
 }
 
 extension VenueDetailViewController: UICollectionViewDataSource {
