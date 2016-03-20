@@ -172,27 +172,16 @@ extension MapViewController: MKMapViewDelegate {
   func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
     let venueAnnotation = view.annotation as! VenueAnnotation
     let venue = venueAnnotation.venue!
+
+    // Highlight the selected venue.
     selectedVenue = venue
-
+    self.changeColorForAnnotationView(view, color: UIColor.flatMintColor(), animated: true)
     centerMapOn(venue.coordinates)
-
 
     // Deselect all other annotations.
     mapView.selectedAnnotations
       .filter { return !$0.isEqual(venueAnnotation) }
       .forEach { mapView.deselectAnnotation($0, animated: true) }
-
-    UIView.animateWithDuration(0.25,
-      delay: 0.0,
-      usingSpringWithDamping: 0.7,
-      initialSpringVelocity: 0.0,
-      options: .BeginFromCurrentState,
-      animations: {
-        view.subviews
-          .filter { return $0 is UIImageView }
-          .forEach { $0.tintColor = UIColor.flatMintColor() } // TODO: Extract this as mainColor.
-      },
-      completion: nil)
 
     venueDescriptionHeightConstraint.constant = -10.0
     self.view.setNeedsUpdateConstraints()
@@ -224,4 +213,28 @@ extension MapViewController: MKMapViewDelegate {
 
         })
   }
+
+  func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
+    let venueAnnotation = view.annotation as! VenueAnnotation
+    let venue = venueAnnotation.venue!
+
+    self.changeColorForAnnotationView(view, color: self.colorForType(venue.type), animated: true)
+  }
+
+  private func changeColorForAnnotationView(annotationView: MKAnnotationView, color: UIColor, animated: Bool) {
+    let animations = {
+      annotationView.subviews
+        .filter { return $0 is UIImageView }
+        .forEach { $0.tintColor = color }
+    }
+
+    if (!animated) { return animations() }
+
+    UIView.animateWithDuration(0.15,
+      delay: 0.0,
+      options: .CurveEaseInOut,
+      animations: animations,
+      completion: nil)
+  }
+
 }
