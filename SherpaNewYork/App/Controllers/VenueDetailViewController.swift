@@ -22,6 +22,7 @@ class VenueDetailViewController: UIViewController {
   override func viewDidLoad() {
     mapView.delegate = self
     mapView.setCenterCoordinate(venue!.coordinates, animated: true)
+    mapView.scrollEnabled = false
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -35,14 +36,14 @@ class VenueDetailViewController: UIViewController {
     self.pageControl.numberOfPages = venue!.photoUrls.count
     
     addMapPin(mapView, venue: venue!)
-    
     carousel.delegate = self
     carousel.dataSource = self
   }
 
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    rootScrollView.contentSize = CGSize(width: 320, height: 1000)//rootStackView.bounds.size
+
+//    rootScrollView.contentSize = CGSize(width: 320, height: self.mapView.bounds.origin.y+self.mapView.frame.height)
   }
 
   @IBAction func phoneNumberTapped(sender: AnyObject) {
@@ -63,9 +64,10 @@ class VenueDetailViewController: UIViewController {
     self.presentViewController(svc, animated: true, completion: nil)
   }
   
-  @IBAction func mapTapped(sender: AnyObject) {    
+  @IBAction func mapTapped(sender: AnyObject) {
     let placemark = MKPlacemark(coordinate: venue!.coordinates, addressDictionary: nil)
     let mapItem = MKMapItem(placemark: placemark)
+    mapItem.name = venue!.name
     let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeTransit]
     mapItem.openInMapsWithLaunchOptions(launchOptions)
   }
