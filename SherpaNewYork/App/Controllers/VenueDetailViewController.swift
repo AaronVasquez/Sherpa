@@ -64,6 +64,7 @@ class VenueDetailViewController: UIViewController {
   
   @IBAction func websiteTapped(sender: AnyObject) {
     let svc = SFSafariViewController(URL: venue!.websiteUrl)
+    svc.view.tintColor = UIColor.flatMintColor()
     self.presentViewController(svc, animated: true, completion: nil)
   }
   
