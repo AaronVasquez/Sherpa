@@ -153,13 +153,14 @@ extension MapViewController: MKMapViewDelegate {
     }
 
     let pinImage = UIImage(named: pinImageName)?.imageWithRenderingMode(.AlwaysTemplate)
-    let pinImageView = UIImageView.init(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+    let pinImageView = UIImageView.init(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
     pinImageView.image = pinImage
     pinImageView.contentMode = .ScaleAspectFit
     pinImageView.tintColor = self.colorForType(venue.type)
 
     annotationView!.canShowCallout = false
     annotationView!.addSubview(pinImageView)
+    annotationView!.frame = pinImageView.frame
     pinImageView.center = annotationView!.center
     annotationView!.draggable = false
 
@@ -175,14 +176,8 @@ extension MapViewController: MKMapViewDelegate {
     self.changeColorForAnnotationView(view, color: UIColor.flatMintColor(), animated: true)
     centerMapOn(venue.coordinates)
 
-    // Deselect all other annotations.
-    mapView.selectedAnnotations
-      .filter { return !$0.isEqual(venueAnnotation) }
-      .forEach { mapView.deselectAnnotation($0, animated: true) }
-
-    venueDescriptionHeightConstraint.constant = -10.0
-    self.view.setNeedsUpdateConstraints()
-    self.hideDetailBanner { (_) -> Void in
+    let showDetailView: (Bool) -> Void = {
+      (_) -> Void in
       let venue = self.selectedVenue!
 
       self.venueDescriptionNameLabel.text = venue.name
@@ -191,17 +186,22 @@ extension MapViewController: MKMapViewDelegate {
 
       self.venueDescriptionThumbnailImage.sd_setImageWithURL(venue.thumbnailUrl)
 
-      self.venueDescriptionHeightConstraint.constant =
-        self.originalvenueDescriptionHeightConstraint!
-      self.view.setNeedsUpdateConstraints()
-      UIView.animateWithDuration(0.25,
+      UIView.animateWithDuration(0.2,
         delay: 0.0,
         usingSpringWithDamping: 0.7,
         initialSpringVelocity: 0.0,
         options: .BeginFromCurrentState,
-        animations: { self.view.layoutIfNeeded() },
+        animations: {
+          self.venueDescriptionHeightConstraint.constant =
+            self.originalvenueDescriptionHeightConstraint!
+          self.view.setNeedsUpdateConstraints()
+          self.view.layoutIfNeeded()
+        },
         completion: nil)
     }
+
+    // This is being called twice because -mapView:didDeselectAnnotationView is calling it too.
+    self.hideDetailBanner(showDetailView)
   }
 
   func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
@@ -219,14 +219,16 @@ extension MapViewController: MKMapViewDelegate {
   }
 
   private func hideDetailBanner(completion: ((Bool) -> Void)?) {
-    venueDescriptionHeightConstraint.constant = -10.0
-    self.view.setNeedsUpdateConstraints()
-    UIView.animateWithDuration(0.1,
+    UIView.animateWithDuration(0.15,
       delay: 0,
       usingSpringWithDamping: 0.7,
       initialSpringVelocity: 0.0,
       options: .BeginFromCurrentState,
-      animations: { self.view.layoutIfNeeded() },
+      animations: {
+        self.venueDescriptionHeightConstraint.constant = -10.0
+        self.view.setNeedsUpdateConstraints()
+        self.view.layoutIfNeeded()
+      },
       completion: completion)
   }
 
