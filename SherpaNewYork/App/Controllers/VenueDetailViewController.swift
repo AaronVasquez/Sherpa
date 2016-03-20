@@ -46,9 +46,16 @@ class VenueDetailViewController: UIViewController {
   }
 
   @IBAction func phoneNumberTapped(sender: AnyObject) {
-    if let number = NSURL(string: "tel://\(venue!.phoneNumber)") {
-      UIApplication.sharedApplication().openURL(number)
-    }
+    let alert = UIAlertController(title: venue!.name, message: "Call \(venue!.phoneNumber)", preferredStyle: UIAlertControllerStyle.Alert)
+    
+    alert.addAction(UIAlertAction(title: "Call", style: UIAlertActionStyle.Default, handler: { action in
+      if let number = NSURL(string: "tel://\(self.venue!.phoneNumber)") {
+        UIApplication.sharedApplication().openURL(number)
+      }
+    }))
+    alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
+    
+    self.presentViewController(alert, animated: true, completion: nil)
   }
   
   @IBAction func websiteTapped(sender: AnyObject) {
@@ -56,19 +63,32 @@ class VenueDetailViewController: UIViewController {
     self.presentViewController(svc, animated: true, completion: nil)
   }
   
+  @IBAction func mapTapped(sender: AnyObject) {    
+    let placemark = MKPlacemark(coordinate: venue!.coordinates, addressDictionary: nil)
+    let mapItem = MKMapItem(placemark: placemark)
+    let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeTransit]
+    mapItem.openInMapsWithLaunchOptions(launchOptions)
+  }
+  
   private func addMapPin(map: MKMapView, venue: Venue) {
     let annotation = VenueAnnotation.init()
     annotation.coordinate = venue.coordinates
     annotation.venue = venue
     map.addAnnotation(annotation)
-    
+
     let region = MKCoordinateRegionMakeWithDistance(venue.coordinates, 500, 500)
     map.setRegion(region, animated: false)
   }
+  
+  
 }
 
 extension VenueDetailViewController: UIScrollViewDelegate {
   func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    pageControl.currentPage = (self.carousel.indexPathsForVisibleItems().first?.row)!
+  }
+  
+  func scrollViewDidScroll(scrollView: UIScrollView) {
     pageControl.currentPage = (self.carousel.indexPathsForVisibleItems().first?.row)!
   }
 }

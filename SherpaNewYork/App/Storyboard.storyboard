@@ -115,6 +115,9 @@
                                                 <state key="normal" title="123 Fake Street">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="mapTapped:" destination="xHo-vO-qm2" eventType="touchUpInside" id="7WD-4h-bRD"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQ3-zM-mWq">
                                                 <rect key="frame" x="0.0" y="44" width="320" height="49"/>
@@ -160,9 +163,13 @@
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TCh-0g-i6h" customClass="MKMapView">
                                         <rect key="frame" x="0.0" y="418" width="320" height="187"/>
                                         <color key="backgroundColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="187" id="efT-9h-8xb"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="9W4-gg-jRo" appends="YES" id="Myo-Ha-EoC"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -208,6 +215,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1wZ-F4-28p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="9W4-gg-jRo">
+                    <connections>
+                        <action selector="mapTapped:" destination="xHo-vO-qm2" id="aua-aP-kc0"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1530" y="-571"/>
         </scene>
