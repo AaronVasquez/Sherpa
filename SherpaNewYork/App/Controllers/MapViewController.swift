@@ -186,7 +186,7 @@ extension MapViewController: MKMapViewDelegate {
 
       self.venueDescriptionThumbnailImage.sd_setImageWithURL(venue.thumbnailUrl)
 
-      UIView.animateWithDuration(0.2,
+      UIView.animateWithDuration(0.25,
         delay: 0.0,
         usingSpringWithDamping: 0.7,
         initialSpringVelocity: 0.0,
@@ -219,7 +219,7 @@ extension MapViewController: MKMapViewDelegate {
   }
 
   private func hideDetailBanner(completion: ((Bool) -> Void)?) {
-    UIView.animateWithDuration(0.15,
+    UIView.animateWithDuration(0.1,
       delay: 0,
       usingSpringWithDamping: 0.7,
       initialSpringVelocity: 0.0,
