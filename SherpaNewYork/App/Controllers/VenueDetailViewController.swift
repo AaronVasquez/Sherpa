@@ -96,6 +96,10 @@ extension VenueDetailViewController: UIScrollViewDelegate {
   func scrollViewDidScroll(scrollView: UIScrollView) {
     pageControl.currentPage = (self.carousel.indexPathsForVisibleItems().first?.row)!
   }
+  
+  func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+    pageControl.currentPage = (self.carousel.indexPathsForVisibleItems().first?.row)!
+  }
 }
 
 extension VenueDetailViewController: MKMapViewDelegate {
