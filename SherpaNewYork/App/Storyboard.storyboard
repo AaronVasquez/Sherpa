@@ -61,7 +61,7 @@
                                     <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="TOh-35-suh">
                                         <rect key="frame" x="140" y="143" width="39" height="37"/>
                                     </pageControl>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4xd-CH-pyy">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4xd-CH-pyy">
                                         <rect key="frame" x="0.0" y="192" width="320" height="226"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhK-4f-dHj">
@@ -69,11 +69,11 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="qe2-mg-9ko"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <color key="textColor" red="0.42655369639396667" green="0.47584608197212219" blue="0.48026475310325623" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone" translatesAutoresizingMaskIntoConstraints="NO" id="h17-3P-PD3">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="phone" translatesAutoresizingMaskIntoConstraints="NO" id="h17-3P-PD3">
                                                 <rect key="frame" x="0.0" y="101" width="50" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="f5D-tT-6WA"/>
@@ -90,7 +90,7 @@
                                                     <action selector="phoneNumberTapped:" destination="xHo-vO-qm2" eventType="touchUpInside" id="4Gj-RG-G4n"/>
                                                 </connections>
                                             </button>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="link" translatesAutoresizingMaskIntoConstraints="NO" id="Lrh-Xr-eMS">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="link" translatesAutoresizingMaskIntoConstraints="NO" id="Lrh-Xr-eMS">
                                                 <rect key="frame" x="0.0" y="134" width="50" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="7Po-XP-HPT"/>
@@ -105,7 +105,7 @@
                                                     <action selector="websiteTapped:" destination="xHo-vO-qm2" eventType="touchUpInside" id="krw-RB-FM6"/>
                                                 </connections>
                                             </button>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin-icon" translatesAutoresizingMaskIntoConstraints="NO" id="lL1-uX-Jld">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="pin-icon" translatesAutoresizingMaskIntoConstraints="NO" id="lL1-uX-Jld">
                                                 <rect key="frame" x="0.0" y="167" width="50" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="2Bq-bz-Cva"/>
@@ -122,13 +122,20 @@
                                                     <action selector="mapTapped:" destination="xHo-vO-qm2" eventType="touchUpInside" id="7WD-4h-bRD"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Long description that can stretch multiple lines" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQ3-zM-mWq">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQ3-zM-mWq">
                                                 <rect key="frame" x="20" y="44" width="280" height="49"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="49" id="aUI-rc-eGs"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <color key="textColor" red="0.42655369639396667" green="0.47584608197212219" blue="0.48026475310325623" alpha="1" colorSpace="calibratedRGB"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Long description that can stretch multiple lines">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.42655369639396667" green="0.47584608197212219" blue="0.48026475310325623" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.6180000000000001" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -163,7 +170,7 @@
                                             <constraint firstItem="eyp-xR-Ksg" firstAttribute="leading" secondItem="lL1-uX-Jld" secondAttribute="trailing" id="ziK-bB-cjg"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TCh-0g-i6h" customClass="MKMapView">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TCh-0g-i6h" customClass="MKMapView">
                                         <rect key="frame" x="0.0" y="417" width="320" height="257"/>
                                         <color key="backgroundColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
                                         <gestureRecognizers/>
