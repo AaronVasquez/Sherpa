@@ -519,40 +519,33 @@
                                                 <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JqB-x5-Sai">
                                                     <rect key="frame" x="0.0" y="100" width="328" height="100"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chick N' Shack" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVe-5G-uTh">
-                                                            <rect key="frame" x="8" y="48" width="244" height="20"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="20" id="01P-lv-lcn"/>
-                                                                <constraint firstAttribute="width" constant="244" id="yum-Wx-JrL"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNK-XX-ohQ">
-                                                            <rect key="frame" x="8" y="71" width="312" height="21"/>
+                                                            <rect key="frame" x="8" y="49" width="36" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$$$$$" textAlignment="right" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E5i-rE-KXl">
-                                                            <rect key="frame" x="266" y="48" width="45" height="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E5i-rE-KXl">
+                                                            <rect key="frame" x="8" y="71" width="56" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chick N' Shack" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVe-5G-uTh">
+                                                            <rect key="frame" x="8" y="25" width="116" height="20"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.68888300657272339" green="0.71366006135940552" blue="0.73448425531387329" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstItem="gNK-XX-ohQ" firstAttribute="leading" secondItem="lVe-5G-uTh" secondAttribute="leading" id="5kA-Yx-glS"/>
-                                                        <constraint firstItem="E5i-rE-KXl" firstAttribute="leading" secondItem="lVe-5G-uTh" secondAttribute="trailing" constant="14" id="FCL-J8-oES"/>
-                                                        <constraint firstItem="E5i-rE-KXl" firstAttribute="top" secondItem="JqB-x5-Sai" secondAttribute="top" constant="48" id="Usa-S6-ory"/>
-                                                        <constraint firstItem="lVe-5G-uTh" firstAttribute="leading" secondItem="JqB-x5-Sai" secondAttribute="leadingMargin" id="XP5-X5-WOt"/>
-                                                        <constraint firstItem="lVe-5G-uTh" firstAttribute="top" secondItem="E5i-rE-KXl" secondAttribute="top" id="hLD-Nf-iWd"/>
-                                                        <constraint firstItem="gNK-XX-ohQ" firstAttribute="trailing" secondItem="JqB-x5-Sai" secondAttribute="trailingMargin" id="kfO-SG-9IR"/>
-                                                        <constraint firstItem="gNK-XX-ohQ" firstAttribute="bottom" secondItem="JqB-x5-Sai" secondAttribute="bottomMargin" id="vgs-Ys-L4k"/>
-                                                        <constraint firstAttribute="trailing" secondItem="E5i-rE-KXl" secondAttribute="trailing" constant="17" id="vu5-Dj-44X"/>
-                                                        <constraint firstItem="gNK-XX-ohQ" firstAttribute="top" secondItem="lVe-5G-uTh" secondAttribute="bottom" constant="3" id="wAD-SP-uqj"/>
+                                                        <constraint firstItem="E5i-rE-KXl" firstAttribute="top" secondItem="gNK-XX-ohQ" secondAttribute="bottom" constant="4" id="9Gx-oC-PHE"/>
+                                                        <constraint firstItem="gNK-XX-ohQ" firstAttribute="leading" secondItem="JqB-x5-Sai" secondAttribute="leading" constant="8" id="9OC-S9-Dvv"/>
+                                                        <constraint firstItem="E5i-rE-KXl" firstAttribute="leading" secondItem="JqB-x5-Sai" secondAttribute="leading" constant="8" id="fHp-Ti-KJG"/>
+                                                        <constraint firstItem="gNK-XX-ohQ" firstAttribute="top" secondItem="lVe-5G-uTh" secondAttribute="bottom" constant="5" id="mt7-eJ-dQU"/>
+                                                        <constraint firstItem="lVe-5G-uTh" firstAttribute="leading" secondItem="JqB-x5-Sai" secondAttribute="leading" constant="8" id="oRW-3a-8DU"/>
+                                                        <constraint firstItem="lVe-5G-uTh" firstAttribute="top" secondItem="JqB-x5-Sai" secondAttribute="top" constant="25" id="xNb-Ze-1Ss"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -570,8 +563,8 @@
                                         <connections>
                                             <outlet property="bannerImageView" destination="DxH-lK-T4M" id="g23-7e-Yph"/>
                                             <outlet property="descriptionLabel" destination="gNK-XX-ohQ" id="Vw3-Z1-x2X"/>
-                                            <outlet property="dollarSigns" destination="E5i-rE-KXl" id="ayh-gU-N2F"/>
                                             <outlet property="informationContainerView" destination="JqB-x5-Sai" id="7XK-Da-ywo"/>
+                                            <outlet property="subdescriptionLabel" destination="E5i-rE-KXl" id="VQV-CW-Qu0"/>
                                             <outlet property="titleLabel" destination="lVe-5G-uTh" id="rTP-Da-1fn"/>
                                         </connections>
                                     </tableViewCell>

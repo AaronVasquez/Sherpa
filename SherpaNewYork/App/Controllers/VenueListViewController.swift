@@ -47,8 +47,8 @@ extension VenueListViewController: UITableViewDataSource {
     let informationView = venueTableCell.informationContainerView
 
     venueTableCell.titleLabel.text = venue.name
-    venueTableCell.descriptionLabel.text = "\(venue.shortDescription) - \(user.distanceFrom((venue.coordinates)))"
-    venueTableCell.dollarSigns.text = venue.dollarSigns()
+    venueTableCell.descriptionLabel.text = "\(venue.shortDescription) - \(venue.dollarSigns())"
+    venueTableCell.subdescriptionLabel.text = user.distanceFrom(venue.coordinates)
     venueTableCell.informationContainerView.backgroundColor =
         UIColor.init(gradientStyle:.TopToBottom,
                      withFrame: informationView.bounds,
