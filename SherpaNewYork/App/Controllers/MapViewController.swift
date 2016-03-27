@@ -26,7 +26,6 @@ class MapViewController: UIViewController {
   @IBOutlet weak var venueDescriptionThumbnailImage: UIImageView!
   @IBOutlet weak var venueDescriptionNameLabel: UILabel!
   @IBOutlet weak var venueDescriptionCategoryLabel: UILabel!
-  @IBOutlet weak var venueDescriptionDollars: UILabel!
 
   private let locationManager = CLLocationManager()
 
@@ -181,8 +180,7 @@ extension MapViewController: MKMapViewDelegate {
       let venue = self.selectedVenue!
 
       self.venueDescriptionNameLabel.text = venue.name
-      self.venueDescriptionCategoryLabel.text = venue.shortDescription
-      self.venueDescriptionDollars.text = venue.dollarSigns()
+      self.venueDescriptionCategoryLabel.text = "\(venue.shortDescription) - \(venue.dollarSigns())"
 
       self.venueDescriptionThumbnailImage.sd_setImageWithURL(venue.thumbnailUrl)
 
